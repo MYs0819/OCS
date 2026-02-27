@@ -1,6 +1,6 @@
 /* ================================================================
 【 🎨 STYLE CONFIG - 視覺控制面板 】
-版本：v1.0.1
+版本：v1.2.0
 描述：此區域為全站視覺核心。請直接修改 :root 內的數值即可控制全站。
 ================================================================ */
 
@@ -16,10 +16,10 @@
   /* ------------------------------------------------------------
      📌 [分頁二：上傳說明] 視覺化教學 (藍色系)
      ------------------------------------------------------------ */
-  --p2-bgColor: #cfe2f3;       
-  --p2-headerColor: #a4c2f4;   
-  --p2-titleColor: #1c4587;    
-  --p2-textColor: #1c4587;     
+  --p2-bgColor: #cfe2f3;       /* 頁面背景色 (淺藍) */
+  --p2-headerColor: #a4c2f4;   /* 頂部兩層固定列背景色 (粉藍) */
+  --p2-titleColor: #1c4587;    /* 標題文字顏色 (深藍) */
+  --p2-textColor: #1c4587;     /* 說明文字顏色 */
 
   /* ------------------------------------------------------------
      📌 [分頁三：報到流程] 動態闖關區 (紅色系)
@@ -39,6 +39,14 @@
   --details-fontSize: 18px;        /* 大摺疊標題字體大小 */
   --details-subFontSize: 16px;     /* 小摺疊標題字體大小 */
   --details-radius: 8px;           /* 摺疊選單圓角弧度 */
+
+  /* ------------------------------------------------------------
+     👀 [範例對照區專用設定]
+     ------------------------------------------------------------ */
+  --sample-boxBgColor: #ffffff;    /* 範例框背景色 */
+  --sample-boxRadius: 8px;         /* 範例框圓角 */
+  --sample-imgRadius: 4px;         /* 範例圖片圓角 */
+  --sample-capFontSize: 14px;      /* 範例說明文字大小 */
 
   /* ------------------------------------------------------------
      ©️ [版權區專用設定] Footer 控制
@@ -74,7 +82,7 @@ body {
   height: var(--sticky-height);
   display: flex;
   align-items: center;
-  justify-content: center; /* 讓內容置中對齊 */
+  justify-content: center; 
   padding: 0 15px;
   font-size: 13px;
   font-weight: bold;
@@ -89,7 +97,7 @@ body {
 
 /* 精緻短版進度條 (融入同行) */
 .progress-track {
-  width: 60px; /* 控制短版長度 */
+  width: 60px; 
   background: rgba(0,0,0,0.1); 
   height: 8px; 
   border-radius: 4px; 
@@ -99,6 +107,33 @@ body {
   margin-left: 8px;
 }
 .progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease; }
+
+/* ================================================================
+   【 🔘 分頁導覽列 (新增) 】
+   ================================================================ */
+.nav-tabs { 
+  display: flex; 
+  background: #ffffff; 
+  position: sticky; 
+  top: calc(var(--sticky-height) * 2); /* 黏在狀態列下方 */
+  z-index: 90; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+}
+.tab-btn { 
+  flex: 1; 
+  text-align: center;
+  text-decoration: none; /* 去除超連結底線 */
+  padding: 15px 0; 
+  font-weight: bold; 
+  color: #a0a0a0; 
+  font-size: 14px; 
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+.tab-btn.active { 
+  color: #434343; 
+  border-bottom: 3px solid #434343; 
+}
 
 /* 分頁切換顏色自動連動 */
 body.page-1 { background-color: var(--p1-bgColor); color: var(--p1-textColor); }
@@ -132,7 +167,6 @@ summary {
   color: var(--details-titleColor);
 }
 
-/* 隱藏預設箭頭，換成自訂箭頭 */
 summary::-webkit-details-marker { display: none; }
 summary::after { content: "▼"; font-size: 12px; opacity: 0.5; }
 details[open] > summary::after { content: "▲"; }
@@ -147,19 +181,63 @@ details[open] > summary::after { content: "▲"; }
 /* 大小摺疊層次區分 */
 .main-summary { font-size: var(--details-fontSize); border-bottom: 1px solid rgba(0,0,0,0.05); }
 .sub-summary { background-color: var(--details-subBgColor); font-size: var(--details-subFontSize); border-top: 1px solid #eee; }
-details details { box-shadow: none; margin-bottom: 0; border-radius: 0; }
+details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: none; }
 
-/* 版權宣告 Footer (自動套用頂端變數) */
+/* ------------------------------------------------------------
+   👀 [範例對照區] 專用樣式架構
+   ------------------------------------------------------------ */
+.sample-box {
+  background-color: var(--sample-boxBgColor);
+  border-radius: var(--sample-boxRadius);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(0,0,0,0.05);
+  margin-left: 0; 
+  margin-right: 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: inline-block;
+}
+
+.sample-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--sample-imgRadius);
+  display: block;
+  margin-bottom: 8px; 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.sample-cap {
+  font-size: var(--sample-capFontSize);
+  color: var(--details-textColor);
+  text-align: left;
+  line-height: 1.5;
+  padding-left: 5px;
+  font-weight: bold; 
+}
+
+/* 按鈕與進度條基礎樣式 */
+.btn-primary { 
+  border: none; padding: 15px; width: 100%; font-weight: bold; 
+  font-size: var(--font-size-btn); cursor: pointer; margin-top: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: block;
+}
+
+/* 版權宣告 Footer (已新增上方分隔線) */
 .footer { 
   text-align: center; 
   padding: 40px 20px; 
   font-size: var(--footer-fontSize); 
   color: var(--footer-textColor); 
   line-height: 1.5; 
+  border-top: 1px solid rgba(0,0,0,0.1); /* 頂部分隔線 */
+  margin-top: 20px; /* 與內容區拉開距離 */
 }
 .footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; }
 
-/* 特殊評分文字顏色 */
+/* 特殊文字顏色 */
 .text-green { color: #10b981; font-weight: bold; }
 .text-gray { color: #6b7280; font-weight: bold; }
 .text-red { color: #ef4444; font-weight: bold; }
