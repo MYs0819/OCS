@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>入職報到闖關系統</title>
+    <title>入職報到勇者試煉</title>
+    
+    <meta property="og:title" content="🛠️｜MYs系統｜新手村登入區" />
+    <meta property="og:description" content="「闖關冒險即將開始！請詳閱任務指南並完成指派關卡，解鎖職場新身分！」" />
+    <meta property="og:image" content="https://mys0819.github.io/MYs/assets/img1/MYs_logo_去背1.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mys0819.github.io/MYs/" />
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
 </head>
@@ -13,8 +20,15 @@
         <span class="dyn-company">載入中...</span>　｜　<span class="dyn-team">載入中...</span>　｜　<span class="dyn-type">載入中...</span>　｜　<span class="dyn-name">載入中...</span>
     </div>
 
-    <div class="sticky-bar" id="block-status">
-        戰力：<span id="rank-text">🥚 報到新手村</span>　｜　分數：<span id="score-text">0分</span>　｜　狀態：<span id="status-tag">📝 準備中</span>　｜　進度：<span id="prog-val">0%</span>
+    <div class="sticky-bar" id="block-status-1">
+        戰力：<span id="rank-text">🥚 報到新手村</span>　｜　狀態：<span id="status-tag">📝 準備中</span>
+    </div>
+
+    <div class="sticky-bar" id="block-status-2">
+        🏆 冒險積分：<span id="score-text">0分</span>
+        <div class="progress-track">
+            <div class="progress-fill" id="score-fill" style="width: 0%;"></div>
+        </div>　｜　⚔️ 攻略進度：<span id="prog-val">0%</span>
         <div class="progress-track">
             <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
         </div>
@@ -128,7 +142,12 @@
             document.getElementById('prog-val').innerText = data.currentProg + "%";
             document.getElementById('prog-fill').style.width = data.currentProg + "%";
 
-            // ✅ 進度條平滑漸變邏輯 (0% 淺紅 -> 100% 綠色)
+            // ✅ 雙色進度條：冒險積分進度 (金黃色)
+            const scorePct = data.currentScore > 100 ? 100 : data.currentScore;
+            document.getElementById('score-fill').style.width = scorePct + "%";
+            document.getElementById('score-fill').style.backgroundColor = "#fbbf24";
+
+            // ✅ 雙色進度條：攻略進度平滑漸變邏輯 (0% 淺紅 -> 100% 綠色)
             const hue = (data.currentProg / 100) * 120; // 計算色相值：0是紅，120是綠
             document.getElementById('prog-fill').style.backgroundColor = `hsl(${hue}, 80%, 55%)`; // 動態覆寫背景顏色
         }
