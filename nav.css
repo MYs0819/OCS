@@ -1,27 +1,33 @@
 /* ================================================================
-【 🔘 NAV TABS CONFIG - 導覽列獨立視覺 】
+【 🔘 NAV TABS CONFIG - 分頁導覽列 】
 ================================================================ */
 
 .nav-tabs { 
-    display: flex; 
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     background: #1a1a1a; 
     position: sticky; 
-    top: calc(45px * 2); 
-    z-index: 90; 
+    top: calc(var(--header-height) * 2); /* 黏在兩層 60px 抬頭下方 (120px 處) */
+    height: var(--nav-height);           /* 垂直高度為 38px */
+    z-index: 900; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.5); 
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .tab-btn { 
-    flex: 1; 
+    flex: 1 !important; 
     text-align: center;
     text-decoration: none; 
-    padding: 15px 0; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold; 
     color: #888888; 
     font-size: 14px; 
     border-bottom: 3px solid transparent;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 /* 選中狀態 */
