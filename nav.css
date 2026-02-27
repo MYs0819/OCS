@@ -1,11 +1,16 @@
+/* ================================================================
+【 🔘 NAV TABS CONFIG 】
+================================================================ */
+
 .nav-tabs { 
   display: flex; 
   background: #ffffff; 
   position: sticky; 
-  top: calc(45px * 2); 
-  z-index: 90; 
+  top: calc(45px * 2); /* 這裡的 45px * 2 必須對應 CSS 設定的高，代表黏在第三層 */
+  z-index: 900; 
   box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
 }
+
 .tab-btn { 
   flex: 1; 
   text-align: center;
@@ -16,6 +21,7 @@
   font-size: 14px; 
   border-bottom: 3px solid transparent;
 }
+
 .tab-btn.active { 
   color: #434343; 
   border-bottom: 3px solid #434343; 
