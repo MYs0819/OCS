@@ -106,8 +106,9 @@ body {
   overflow: hidden;                                 /* 超出的文字隱藏 */
   text-overflow: ellipsis;                          /* 超出部分顯示刪節號 */
 }
-#block-identity { top: 0; }                         /* 第一層：身分列緊貼最頂端 */
-#block-status { top: var(--sticky-height); }        /* 第二層：狀態列緊貼第一層下方 */
+#block-identity { top: 0; }                                /* 第一層：身分列緊貼最頂端 */
+#block-status-1 { top: var(--sticky-height); }             /* 第二層：戰力與狀態 */
+#block-status-2 { top: calc(var(--sticky-height) * 2); }   /* 第三層：雙進度條專用 */
 
 /* 短版進度條 (嵌入於狀態列中) */
 .progress-track {
@@ -175,7 +176,7 @@ details[open] > details {
 .details-body { 
   padding: 15px; 
   font-size: var(--font-size-text); 
-  color: var(--details-textColor); /* 已套用比 #efefef 深一點的設定 */
+  color: var(--details-textColor); 
   white-space: pre-wrap; /* 嚴格保留 HTML 內的換行與空格設定 */
 }
 
@@ -237,7 +238,6 @@ details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: 
   border-top: 1px solid rgba(255,255,255,0.1); /* 暗黑模式下的淺白分隔線 */
   margin-top: 20px; 
 }
-/* ✅ 已修正：移除反轉顏色的語法，讓您的原版 Logo 可以顯現原色 */
 .footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; } 
 
 /* 更細緻的文字顏色設定 (供評核標準使用) */
