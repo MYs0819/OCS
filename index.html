@@ -15,7 +15,9 @@
 
     <div class="sticky-bar" id="block-status">
         戰力：<span id="rank-text">🥚 報到新手村</span>　｜　分數：<span id="score-text">0分</span>　｜　狀態：<span id="status-tag">📝 準備中</span>　｜　進度：<span id="prog-val">0%</span>
-        <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width: 0%;"></div></div>
+        <div class="progress-track">
+            <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
+        </div>
     </div>
 
     <nav class="nav-tabs">
@@ -156,18 +158,47 @@ ______________________________________________</div>
     </footer>
 
     <script>
-        const fetchedData = { companyName: "FIZZ FIZZ.TAIPEI", team: "外場團隊", type: "兼職", userName: "測試員", currentScore: 90, currentProg: 45 };
-        function getRankTitle(score) { if (score >= 96) return "🌟 S級傳說神隊友"; if (score >= 80) return "🟢 A級菁英玩家"; if (score >= 60) return "🥇 B級穩健玩家"; if (score >= 40) return "🧭 潛力探索者"; if (score >= 20) return "🥈 C級潛力玩家"; if (score >= 1)  return "🥉 實習小萌新"; return "🥚 報到新手村"; }
+        //* --------後台資料對接區--------*//
+        const fetchedData = { 
+            companyName: "FIZZ FIZZ.TAIPEI", 
+            team: "外場團隊", 
+            type: "兼職", 
+            userName: "測試員", 
+            currentScore: 90, 
+            currentProg: 45 
+        };
+        
+        // 🏆 7階段動態稱號轉換器 (已還原為完整展開版)
+        function getRankTitle(score) {
+            if (score >= 96) {
+                return "🌟 S級傳說神隊友";
+            } else if (score >= 80) {
+                return "🟢 A級菁英玩家";
+            } else if (score >= 60) {
+                return "🥇 B級穩健玩家";
+            } else if (score >= 40) {
+                return "🧭 潛力探索者";
+            } else if (score >= 20) {
+                return "🥈 C級潛力玩家";
+            } else if (score >= 1) {
+                return "🥉 實習小萌新";
+            } else {
+                return "🥚 報到新手村";
+            }
+        }
+
         function applyData(data) {
             document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
             document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
             document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
             document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
+            
             document.getElementById('score-text').innerText = data.currentScore + "分";
             document.getElementById('rank-text').innerText = getRankTitle(data.currentScore);
             document.getElementById('prog-val').innerText = data.currentProg + "%";
             document.getElementById('prog-fill').style.width = data.currentProg + "%";
         }
+
         window.onload = () => { applyData(fetchedData); };
     </script>
 </body>
