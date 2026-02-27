@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>入職報到闖關系統</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
 </head>
 <body class="page-2">
 
@@ -27,49 +28,30 @@
 
     <main class="tab-content active">
 
-        <details open>
+        <details>
             <summary class="main-summary">⏫ 上傳檔案教學</summary>
             <div class="details-body">1. 上傳之個人準備文件，請務必參考下方正確與錯誤範例。
 2. 檔案須符合本公司限定規格。
 
 <div style="line-height: 1.8; font-weight: bold; color: var(--p2-titleColor); background: rgba(255,255,255,0.6); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
 🍎 手機系統-𝗜𝗢𝗦:
-點擊備忘錄
-↓
-點擊右下角
-↓
-點擊相機圖示
-↓
-點擊掃描文件  
-↓
-開始掃描
-↓
-存檔雲端上傳
+點擊備忘錄 → 點擊相機 → 點擊掃描文件 → 存檔雲端上傳
 </div>
 
 <div style="line-height: 1.8; font-weight: bold; color: var(--p2-titleColor); background: rgba(255,255,255,0.6); padding: 15px; border-radius: 8px;">
 🤖 手機系統-𝗔𝗻𝗱𝗿𝗼𝗶𝗱:
-點擊雲端硬碟
-↓
-點擊＋
-↓
-點擊掃描文件
-↓
-開始掃描
-↓
-存檔雲端上傳
+點擊雲端硬碟 → 點擊＋ → 點擊掃描文件 → 存檔雲端上傳
 </div></div>
         </details>
 
-        <details open>
+        <details>
             <summary class="main-summary">👀 範例對照區</summary>
             <div class="details-body">
                 
                 <figure class="sample-box">
                     <strong style="font-size: 15px; color: var(--p2-titleColor);">📹 iPhone備忘錄掃描文件操作示範。</strong>
-                    <video controls preload="metadata" style="max-width: 100%; border-radius: 4px; display: block; margin-top: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <video controls preload="metadata" style="max-width: 100%; border-radius: 4px; display: block; margin-top: 8px;">
                         <source src="assets/ios掃描範例.mp4" type="video/mp4">
-                        您的瀏覽器不支援影片播放。
                     </video>
                 </figure>
 
@@ -77,43 +59,31 @@
 
                 <figure class="sample-box">
                     <img class="sample-img" src="assets/身分證範本-正面.jpg" alt="❗️身分證範本-正面.jpg">
-                    <figcaption class="sample-cap">✅ 正確範例-身分證正面範本 (四角對齊、清晰明亮)</figcaption>
-                </figure>
-
-                <figure class="sample-box">
-                    <img class="sample-img" src="assets/身分證範本-背面.png" alt="❗️身分證範本-背面.png">
-                    <figcaption class="sample-cap">✅ 正確範例-身分證背面範本 (四角對齊、清晰明亮)</figcaption>
+                    <figcaption class="sample-cap">✅ 正確範例-身分證正面範本</figcaption>
                 </figure>
 
                 <figure class="sample-box">
                     <img class="sample-img" src="assets/薪酬銀行範本.jpg" alt="❗️薪酬銀行範本.jpg">
-                    <figcaption class="sample-cap">✅ 正確範例-薪資戶頭範本 (四角對齊、清晰明亮)</figcaption>
+                    <figcaption class="sample-cap">✅ 正確範例-薪資戶頭範本</figcaption>
                 </figure>
-
 
                 <div style="margin-top: 25px; margin-bottom: 10px; font-weight: bold; color: var(--text-red);">以下為 ❌ 錯誤範例對照：</div>
 
                 <figure class="sample-box">
                     <img class="sample-img" src="assets/證件錯誤範例-1.jpg" alt="❗️證件錯誤範例-1.jpg">
-                    <figcaption class="sample-cap">❌ 錯誤範例-虽格式正確但須要好閱讀 (解析度太低)</figcaption>
-                </figure>
-
-                <figure class="sample-box">
-                    <img class="sample-img" src="assets/證件錯誤範例-2.jpg" alt="❗️證件錯誤範例-2.jpg">
-                    <figcaption class="sample-cap">❌ 錯誤範例-四角未對四個角且歪斜、有手指入鏡</figcaption>
+                    <figcaption class="sample-cap">❌ 錯誤範例-虽格式正確但須要好閱讀</figcaption>
                 </figure>
 
                 <figure class="sample-box">
                     <img class="sample-img" src="assets/戶頭錯誤範例.jpg" alt="❗️戶頭錯誤範例.jpg">
                     <figcaption class="sample-cap">❌ 錯誤範例-四角未對四個角且嚴重切邊</figcaption>
                 </figure>
-
             </div>
         </details>
 
     </main>
 
-    <footer class="footer" id="footer">
+    <footer class="footer">
         <img src="assets/MYs_logo_去背.png" alt="MYs Logo" class="footer-logo">
         © Copyright 2025 MYs System-v1.1.11-02-22-2026-115
     </footer>
@@ -127,7 +97,6 @@
             currentScore: 90,   
             currentProg: 45     
         };
-
         function getRankTitle(score) {
             if (score >= 96) return "🌟 S級傳說神隊友";
             if (score >= 80) return "🟢 A級菁英玩家";
@@ -137,23 +106,17 @@
             if (score >= 1)  return "🥉 實習小萌新";
             return "🥚 報到新手村"; 
         }
-
-        function applyDynamicData(data) {
+        function applyData(data) {
             document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
             document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
             document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
             document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
-
             document.getElementById('score-text').innerText = data.currentScore + "分";
             document.getElementById('rank-text').innerText = getRankTitle(data.currentScore);
-            
             document.getElementById('prog-val').innerText = data.currentProg + "%";
             document.getElementById('prog-fill').style.width = data.currentProg + "%";
         }
-
-        window.onload = () => {
-            applyDynamicData(fetchedData);
-        };
+        window.onload = () => { applyData(fetchedData); };
     </script>
 </body>
 </html>
