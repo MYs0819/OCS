@@ -4,39 +4,43 @@
 
 //* --------配色／字級設定區（可自行調整）--------*//
 .nav-tabs { 
-  display: flex;                   /* 【核心】確保按鈕在同一排水平排列 */
-  background: #ffffff;             /* 分頁按鈕列的背景底色 - 可調 */
-  position: sticky;                /* 絕對固定位置，不隨頁面滑動消失 */
+  display: flex;                   /* 【核心】強制所有按鈕並排在同一橫列 */
+  flex-direction: row;             /* 確保水平排列 */
+  flex-wrap: nowrap;               /* 禁止換行，維持在一排 */
+  background: #ffffff;             /* 按鈕列背景顏色 - 可調 */
+  position: sticky;                /* 絕對固定位置 */
   
-  /* 🚩 這裡的計算：黏在兩層 60px 身分與狀態列下方 (共 120px 處) */
-  top: 120px;                      /* 固定在距離頂部 120px 的位置 - 可調 */
+  /* 🚩 黏在兩層 60px 抬頭下方 (120px 處) */
+  top: 120px;                      /* 固定位置偏移量 - 可調 */
   
   height: 38px;                    /* 垂直高度縮小為 38px - 可調 */
-  z-index: 900;                    /* 層級設定：確保按鈕列在內容上方 */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 給予按鈕列下緣輕微陰影 */
+  z-index: 900;                    /* 層級：高於內容，低於狀態列 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 下方輕微陰影感 */
+  width: 100%;                     /* 滿版寬度 */
 }
 
 .tab-btn { 
-  flex: 1;                         /* 讓三個按鈕平均分配寬度 (各佔 33.3%) */
+  flex: 1;                         /* 【核心】讓三個按鈕等比例分配寬度 (33.3%) */
   text-align: center;              /* 文字居中 */
   text-decoration: none;           /* 移除超連結底線 */
-  display: flex;                   /* 啟用彈性佈局讓文字在格子內置中 */
+  display: flex;                   /* 啟用彈性佈局 */
   align-items: center;             /* 文字垂直置中 */
   justify-content: center;         /* 文字水平置中 */
   font-weight: bold;               /* 文字加粗 */
   color: #a0a0a0;                  /* 未選中時的文字顏色 - 可調 */
   font-size: 14px;                 /* 文字大小 - 可調 */
   border-bottom: 3px solid transparent; /* 預留底線空間防止跳動 */
-  transition: all 0.2s ease;       /* 顏色切換平滑動畫速度 */
+  transition: all 0.2s ease;       /* 切換動畫速度 */
+  white-space: nowrap;             /* 防止文字在按鈕內換行 */
 }
 
 /* 📌 當前所在頁面的按鈕樣式 */
 .tab-btn.active { 
   color: #434343;                  /* 選中時的文字顏色 - 可調 */
-  border-bottom: 3px solid #434343; /* 選中時的底部指示線顏色 - 可調 */
+  border-bottom: 3px solid #434343; /* 選中時的底部底線顏色 - 可調 */
 }
 
 /* 📌 手機觸碰按鈕時的反饋底色 */
 .tab-btn:active {
-  background-color: rgba(0,0,0,0.02); /* 點擊時的瞬間背景色反應 */
+  background-color: rgba(0,0,0,0.02); /* 點擊按鈕時的瞬間背景色反應 */
 }
