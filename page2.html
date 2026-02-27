@@ -18,7 +18,7 @@
     </div>
 
     <div class="sticky-bar" id="block-status">
-        战力：<span id="rank-text">🥚 報到新手村</span>　｜　分數：<span id="score-text">0分</span>　｜　狀態：<span id="status-tag">📝 準備中</span>　｜　進度：<span id="prog-val">0%</span>
+        戰力：<span id="rank-text">🥚 報到新手村</span>　｜　分數：<span id="score-text">0分</span>　｜　狀態：<span id="status-tag">📝 準備中</span>　｜　進度：<span id="prog-val">0%</span>
         <div class="progress-track">
             <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
         </div>
@@ -159,10 +159,14 @@
             document.getElementById('rank-text').innerText = getRankTitle(data.currentScore);
             document.getElementById('prog-val').innerText = data.currentProg + "%";
             document.getElementById('prog-fill').style.width = data.currentProg + "%";
+
+            // ✅ 新增：進度條平滑漸變邏輯 (0% 淺紅 -> 100% 綠色)
+            const hue = (data.currentProg / 100) * 120; // 計算色相值：0是紅，120是綠
+            document.getElementById('prog-fill').style.backgroundColor = `hsl(${hue}, 80%, 55%)`; // 動態覆寫背景顏色
         }
         window.onload = () => { applyData(fetchedData); };
 
-        // ✅ 新增：點擊圖片放大的專屬控制腳本
+        // 點擊圖片放大的專屬控制腳本
         function zoomImg(el) {
             const img = el.querySelector('img');
             if(img) {
