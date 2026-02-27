@@ -87,6 +87,19 @@ body {
 #block-identity { top: 0; }
 #block-status { top: var(--sticky-height); }
 
+/* 精緻短版進度條 (融入同行) */
+.progress-track {
+  width: 60px; /* 控制短版長度 */
+  background: rgba(0,0,0,0.1); 
+  height: 8px; 
+  border-radius: 4px; 
+  overflow: hidden; 
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+.progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease; }
+
 /* 分頁切換顏色自動連動 */
 body.page-1 { background-color: var(--p1-bgColor); color: var(--p1-textColor); }
 body.page-1 .sticky-bar { background-color: var(--p1-headerColor); color: var(--p1-titleColor); }
