@@ -1,35 +1,42 @@
 /* ================================================================
-【 🔘 NAV TABS CONFIG 】
-================================================================ */
+   【 🔘 NAV TABS CONFIG - 分頁導覽列 】
+   ================================================================ */
 
+//* --------配色／字級設定區（可自行調整）--------*//
 .nav-tabs { 
-  display: flex; 
-  background: #ffffff;             /* 按鈕列的背景底色 - 可自行調整 */
-  position: sticky;                /* 固定位置，不隨內容滾動而消失 */
-  top: calc(45px * 2);             /* 黏在兩層狀態列下方 (45px*2=90px) - 高度需對應 style.css */
-  z-index: 900;                    /* 層級設定，確保按鈕列在內容上方，但低於狀態列 */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 給予按鈕列下緣輕微的陰影感 - 可自行調整 */
+  display: flex;                   /* 啟用彈性佈局讓按鈕平分寬度 */
+  background: #ffffff;             /* 分頁按鈕列的背景底色 */
+  position: sticky;                /* 絕對固定位置，不隨頁面滑動消失 */
+  
+  /* 🚩 這裡的計算：var(--header-height) 是 60px，兩層就是 120px */
+  top: calc(var(--header-height) * 2); /* 確保精準黏在身分列與狀態列下方 (共120px處) */
+  
+  height: var(--nav-height);       /* 採用縮小後的 38px 高度 */
+  z-index: 900;                    /* 層級設定：低於狀態列(1000)，但高於下方內容區 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 給予按鈕列下緣輕微的陰影，增加立體感 */
 }
 
 .tab-btn { 
-  flex: 1;                         /* 平均分配三個按鈕的寬度 */
-  text-align: center;              /* 按鈕文字置中 */
-  text-decoration: none;           /* 移除超連結預設的底線 */
-  padding: 12px 0;                 /* 按鈕的上下內邊距，控制按鈕高度 - 可自行調整 */
-  font-weight: bold;               /* 文字加粗 */
-  color: #a0a0a0;                  /* 未選中（非當前頁面）時的文字顏色 - 可自行調整 */
-  font-size: 14px;                 /* 按鈕字體大小 - 可自行調整 */
-  border-bottom: 3px solid transparent; /* 預留底線位置，防止切換時畫面跳動 */
-  transition: all 0.2s ease;       /* 切換顏色與底線時的平滑動畫速度 */
+  flex: 1;                         /* 讓三個按鈕平均分配寬度 (33.3%) */
+  text-align: center;              /* 文字水平居中 */
+  text-decoration: none;           /* 移除超連結預設的藍色底線 */
+  display: flex;                   /* 啟用彈性佈局 */
+  align-items: center;             /* 文字垂直置中 */
+  justify-content: center;         /* 文字水平置中 */
+  font-weight: bold;               /* 字體加粗 */
+  color: #a0a0a0;                  /* 未選中（非當前頁面）時的文字顏色 */
+  font-size: 14px;                 /* 按鈕內的字體大小 */
+  border-bottom: 3px solid transparent; /* 預留 3px 的底線空間，防止切換時畫面跳動 */
+  transition: all 0.2s ease;       /* 顏色與底線變換時的平滑過渡動畫 */
 }
 
-/* 被選中（當前所在頁面）的分頁標籤樣式 */
+/* 📌 被選中（當前所在頁面）的分頁標籤樣式 */
 .tab-btn.active { 
-  color: #434343;                  /* 選中時的文字顏色 - 可自行調整 */
-  border-bottom: 3px solid #434343; /* 選中時的底部指示粗線顏色 - 可自行調整 */
+  color: #434343;                  /* 選中時的文字顏色 */
+  border-bottom: 3px solid #434343; /* 選中時的底部指示粗線顏色 */
 }
 
-/* 手機觸碰按鈕時的瞬間反饋底色 */
+/* 📌 手機觸碰按鈕時的瞬間反饋效果 */
 .tab-btn:active {
-  background-color: rgba(0,0,0,0.02); /* 點擊時出現淡淡的灰色背景 */
+  background-color: rgba(0,0,0,0.02); /* 點擊按鈕時出現淡淡的灰色背景感 */
 }
