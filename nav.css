@@ -1,18 +1,37 @@
 /* ================================================================
 【 🔘 NAV TABS CONFIG - 導覽列獨立視覺 】
+版本：v1.0.0
+描述：負責三個分頁切換按鈕的固定位置與點擊狀態。
 ================================================================ */
+
 .nav-tabs { 
   display: flex; 
-  background: #1a1a1a; 
+  background: #1a1a1a; /* 改為深色背景 */
   position: sticky; 
-  top: calc(45px * 2); 
+  top: calc(45px * 2); /* 黏在兩層狀態列下方 (45px*2=90px) */
   z-index: 90; 
   box-shadow: 0 2px 5px rgba(0,0,0,0.5); 
 }
+
 .tab-btn { 
-  flex: 1; text-align: center; text-decoration: none; padding: 15px 0; 
-  font-weight: bold; color: #888888; font-size: 14px; 
-  border-bottom: 3px solid transparent; transition: all 0.2s ease;
+  flex: 1; 
+  text-align: center;
+  text-decoration: none; 
+  padding: 15px 0; 
+  font-weight: bold; 
+  color: #888888; /* 未選中顏色 */
+  font-size: 14px; 
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
 }
-.tab-btn.active { color: #FFFFFF; border-bottom: 3px solid #FFFFFF; }
-.tab-btn:active { background-color: rgba(255,255,255,0.05); }
+
+/* 被選中的分頁標籤樣式 */
+.tab-btn.active { 
+  color: #FFFFFF; /* 選中改為白色 */
+  border-bottom: 3px solid #FFFFFF; 
+}
+
+/* 手機點擊效果優化 */
+.tab-btn:active {
+  background-color: rgba(255,255,255,0.05);
+}
