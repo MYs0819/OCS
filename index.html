@@ -15,9 +15,7 @@
 
     <div class="sticky-bar" id="block-status">
         戰力：<span id="rank-text">🥚 報到新手村</span>　｜　分數：<span id="score-text">0分</span>　｜　狀態：<span id="status-tag">📝 準備中</span>　｜　進度：<span id="prog-val">0%</span>
-        <div class="progress-track">
-            <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
-        </div>
+        <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width: 0%;"></div></div>
     </div>
 
     <nav class="nav-tabs">
@@ -27,17 +25,14 @@
     </nav>
 
     <main class="tab-content">
-
         <details>
             <summary class="main-summary">🔐 隱私聲明與填寫公約</summary>
-            
             <details>
                 <summary class="sub-summary">【聲明】</summary>
                 <div class="details-body">1. 此表單僅限錄取者使用.
 2. 若非上述身分請立即退出此表單.
 3. 此表所有權歸屬<span class="dyn-company">本公司</span>.</div>
             </details>
-
             <details>
                 <summary class="sub-summary">【填寫前須知事項】</summary>
                 <div class="details-body">1. 請依照表單順序執行填寫.
@@ -51,7 +46,6 @@
 
         <details>
             <summary class="main-summary">🏛️ 入職報到說明</summary>
-            
             <details>
                 <summary class="sub-summary">【報到前五大文件】</summary>
                 <div class="details-body">1. 報到前必須準備五大文件,當日要繳交
@@ -64,7 +58,6 @@
 3. 主動積極回報處理狀況.
 4. 每個階段未經管理員審核通過,無法解鎖下一階段.</div>
             </details>
-
             <details>
                 <summary class="sub-summary">【報到文件用途說明】</summary>
                 <div class="details-body">________________________________________________
@@ -103,7 +96,6 @@ ______________________________________________</div>
 
         <details>
             <summary class="main-summary">🛎 常見提問回應區</summary>
-            
             <details>
                 <summary class="sub-summary">💰 薪資轉帳相關</summary>
                 <div class="details-body">1. 本公司配合薪資轉帳銀行：
@@ -126,7 +118,6 @@ ______________________________________________</div>
 5. 是否能使用別間銀行存摺：
 ❗️不能。</div>
             </details>
-
             <details>
                 <summary class="sub-summary">🩺 體、健檢報告相關</summary>
                 <div class="details-body">1. 是否可以僅繳交一份體、健檢報告：
@@ -149,7 +140,6 @@ ______________________________________________</div>
 ❗️第一年自行負擔；第二年公司負責。</div>
             </details>
         </details>
-
     </main>
 
     <footer class="footer">
@@ -158,17 +148,8 @@ ______________________________________________</div>
     </footer>
 
     <script>
-        //* --------後台資料對接區--------*//
-        const fetchedData = { 
-            companyName: "FIZZ FIZZ.TAIPEI", 
-            team: "外場團隊", 
-            type: "兼職", 
-            userName: "測試員", 
-            currentScore: 90, 
-            currentProg: 45 
-        };
+        const fetchedData = { companyName: "FIZZ FIZZ.TAIPEI", team: "外場團隊", type: "兼職", userName: "測試員", currentScore: 90, currentProg: 45 };
         
-        // 🏆 7階段動態稱號轉換器 (已還原為完整展開版)
         function getRankTitle(score) {
             if (score >= 96) {
                 return "🌟 S級傳說神隊友";
@@ -192,13 +173,11 @@ ______________________________________________</div>
             document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
             document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
             document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
-            
             document.getElementById('score-text').innerText = data.currentScore + "分";
             document.getElementById('rank-text').innerText = getRankTitle(data.currentScore);
             document.getElementById('prog-val').innerText = data.currentProg + "%";
             document.getElementById('prog-fill').style.width = data.currentProg + "%";
         }
-
         window.onload = () => { applyData(fetchedData); };
     </script>
 </body>
