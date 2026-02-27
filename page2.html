@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入職報到闖關系統</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-1">
+
+    <div class="sticky-bar" id="block-identity">
+        <span class="dyn-company">載入中...</span>　｜　<span class="dyn-team">載入中...</span>　｜　<span class="dyn-type">載入中...</span>　｜　<span class="dyn-name">載入中...</span>
+    </div>
+
+    <div class="sticky-bar" id="block-status">
+        戰力：<span id="rank-text">🥚 報到新手村</span>　｜　分數：<span id="score-text">0分</span>　｜　狀態：<span id="status-tag">📝 準備中</span>　｜　進度：<span id="prog-val">0%</span>
+        <div class="progress-track">
+            <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
+        </div>
+    </div>
+
+    <nav class="nav-tabs">
+        <a href="index.html" class="tab-btn active">手冊說明</a>
+        <a href="page2.html" class="tab-btn">上傳教學</a>
+        <a href="#" class="tab-btn">報到流程</a>
+    </nav>
+
+    <main class="tab-content active">
+
+        <details>
+            <summary class="main-summary">🔐 隱私聲明與填寫公約</summary>
+            
+            <details>
+                <summary class="sub-summary">【聲明】</summary>
+                <div class="details-body">1. 此表單僅限錄取者使用.
+2. 若非上述身分請立即退出此表單.
+3. 此表所有權歸屬<span class="dyn-company">本公司</span>.</div>
+            </details>
+
+            <details>
+                <summary class="sub-summary">【填寫前須知事項】</summary>
+                <div class="details-body">1. 請依照表單順序執行填寫.
+2. 請先閱讀後有疑問再發問,勿未查看直接詢問.
+3. 填寫表單若遇到困難請向人資承辦提出職場禮貌詢問.
+4. 上傳之個人資料悉依個資相關法令規範辦理保存.
+5. 每個階段未經管理員審核通過,無法解鎖下一階段.
+6. <span class="dyn-company">本公司</span>-此表單簡稱本公司.</div>
+            </details>
+        </details>
+
+        <details>
+            <summary class="main-summary">🏛️ 入職報到說明</summary>
+            
+            <details>
+                <summary class="sub-summary">【報到前五大文件】</summary>
+                <div class="details-body">1. 報到前必須準備五大文件,當日要繳交
+    A. 經認證醫療機構-勞工體格檢查報告.
+    B. 經認證醫療機構-食品從業人員體檢報告.
+    C. 兩吋照片一張.
+    D. 前份工作健保轉出證明.(新鮮人免附)
+    E. 前份工作離職證明.(新鮮人免附)
+2. 請準備齊全後再送出表單且截圖回報.
+3. 主動積極回報處理狀況.
+4. 每個階段未經管理員審核通過,無法解鎖下一階段.</div>
+            </details>
+
+            <details>
+                <summary class="sub-summary">【報到文件用途說明】</summary>
+                <div class="details-body">________________________________________________
+1. 一般勞工體格檢查報告：
+❗️依據《職業安全衛生法》§20
+勞工健康保護規則§16~17
+⏍ 未滿40歲，提交的體檢報告必須在5年內。
+⏍ 40歲以上，未滿65歲，提交的體檢報告必須在3年內。
+⏍ 年滿65歲，提交的體檢報告必須在1年內。
+符合上述原則、可以不必再實施體檢。
+
+2. 食品從業人員體檢報告：
+❗️依據《食品安全衛生管理法》§8
+食品良好衛生規範準則§5
+檢查期限：本年度-近一年
+
+3. 兩吋照片一張：
+❗️用於個人資料建檔使用。
+
+4. 前份工作健保轉出證明：
+❗️檢核後加保用。
+
+5. 前份工作離職證明：
+❗️檢核用。
+______________________________________________</div>
+            </details>
+        </details>
+
+        <details>
+            <summary class="main-summary">🏅 積極度評核標準</summary>
+            <div class="details-body">👑 96-100分：[ 👑 卓越表現 ]
+<span class="text-green">🟢 80-95分：[ 🟢 表現良好 ]</span>
+<span class="text-gray">⚠️ 60-79分：[ ⚠ 尚在觀察 ]</span>
+<span class="text-red">🛑 60分以下：[ 🛑 資格重評 ]</span></div>
+        </details>
+
+        <details>
+            <summary class="main-summary">🛎 常見提問回應區</summary>
+            
+            <details>
+                <summary class="sub-summary">💰 薪資轉帳相關</summary>
+                <div class="details-body">1. 本公司配合薪資轉帳銀行：
+❗️台新國際商業銀行。
+
+2. 是否能接受數位帳戶：
+❗️不接受。
+本公司僅受理綜合活期儲蓄存款、活期性存款，
+不接受上述以外的任何類型之存款帳戶。
+
+3. 已有上述符合之帳戶是否還要開立帳戶：
+❗️毋須開立。
+
+4. 若沒有帳戶是否要去臨櫃開立：
+❗️毋須開立。
+本公司與該行是薪轉戶專案，
+將提供限定證明去辦理開戶；
+須完成報到程序後給予。
+
+5. 是否能使用別間銀行存摺：
+❗️不能。</div>
+            </details>
+
+            <details>
+                <summary class="sub-summary">🩺 體、健檢報告相關</summary>
+                <div class="details-body">1. 是否可以僅繳交一份體、健檢報告：
+❗️若體、健檢報告內有包含下列：
+食品從業人員體檢、一般勞工體格檢查的項目，
+那就可以僅繳交一份，但請注意！
+食品從業人員報告年限是要今年度，
+逾期請重新檢查。
+
+2. 傷寒必須要檢查，若檢核無該選項，
+❗️請重新或補做糞便傷寒檢查項目。
+
+3. 是否可使用之前任職公司的體、健檢報告：
+❗️回應與第一則相同。
+
+4. 查詢認證體檢醫院機構：
+❗️請點擊此文字連結查詢(超連結 <a href="https://hrpts.osha.gov.tw/Home/CertifiedHospInfoSearch" target="_blank" style="color:var(--p1-titleColor);">https://hrpts.osha.gov.tw/Home/CertifiedHospInfoSearch</a>)
+
+5. 體檢費用：
+❗️第一年自行負擔；第二年公司負責。</div>
+            </details>
+        </details>
+
+    </main>
+
+    <footer class="footer" id="footer">
+        <img src="assets/MYs_logo_去背.png" alt="MYs Logo" class="footer-logo">
+        © Copyright 2025 MYs System-v1.1.11-02-22-2026-115
+    </footer>
+
+    <script>
+        const fetchedData = {
+            companyName: "FIZZ FIZZ.TAIPEI", 
+            team: "外場團隊",
+            type: "兼職",
+            userName: "測試員",
+            currentScore: 90,   
+            currentProg: 45     
+        };
+
+        function getRankTitle(score) {
+            if (score >= 96) return "🌟 S級傳說神隊友";
+            if (score >= 80) return "🟢 A級菁英玩家";
+            if (score >= 60) return "🥇 B級穩健玩家";
+            if (score >= 40) return "🧭 潛力探索者";
+            if (score >= 20) return "🥈 C級潛力玩家";
+            if (score >= 1)  return "🥉 實習小萌新";
+            return "🥚 報到新手村"; 
+        }
+
+        function applyDynamicData(data) {
+            document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
+            document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
+            document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
+            document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
+
+            document.getElementById('score-text').innerText = data.currentScore + "分";
+            document.getElementById('rank-text').innerText = getRankTitle(data.currentScore);
+            
+            document.getElementById('prog-val').innerText = data.currentProg + "%";
+            document.getElementById('prog-fill').style.width = data.currentProg + "%";
+        }
+
+        window.onload = () => {
+            applyDynamicData(fetchedData);
+        };
+    </script>
+</body>
+</html>
