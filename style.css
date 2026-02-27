@@ -1,66 +1,46 @@
-/* ================================================================
-【 🎨 STYLE CONFIG - 全站通用視覺控制面板 】
-版本：v1.3.0
-描述：負責全站色彩、字體、摺疊選單與版權區視覺。
-================================================================ */
-
+//* --------配色／字級設定區（可自行調整）--------*//
 :root {
-  /* ------------------------------------------------------------
-     📌 [分頁一：內容說明] 手冊與規範 (黃色系)
-     規則：上面淺、下面深
-     ------------------------------------------------------------ */
-  --p1-headerColor: #fff2cc;   /* 頂部兩層固定列 (淺黃) */
-  --p1-bgColor: #ffe599;       /* 頁面背景色 (深黃) */
-  --p1-titleColor: #434343;    
-  --p1-textColor: #434343;     
+    /* ==================== 0. 全站通用背景與字體 ==================== */
+    --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%); /* 全站底層背景 */
+    --bg-style-2: linear-gradient(180deg, #1a1a1a 0%, #333333 100%);             /* 備用漸層樣式 */
+    --bg-style-3: #262626;                                                       /* 展開後背景色 */
+    
+    --main-textColor: #FFFFFF;    /* 全站字體顏色改為純白 */
 
-  /* ------------------------------------------------------------
-     📌 [分頁二：上傳說明] 視覺化教學 (藍色系)
-     規則：上面淺、下面深 (已修正)
-     ------------------------------------------------------------ */
-  --p2-headerColor: #cfe2f3;   /* 頂部兩層固定列 (淺藍) */
-  --p2-bgColor: #a4c2f4;       /* 頁面背景色 (深藍) */
-  --p2-titleColor: #1c4587;    
-  --p2-textColor: #1c4587;     
+    /* 📌 [分頁一：內容說明] 手冊與規範 (暗黑金屬系) */
+    --p1-headerColor: #1a1a1a;    /* 頂部固定列顏色 */
+    --p1-bgColor: var(--bg-style-1); 
+    --p1-titleColor: #FFFFFF;    
+    --p1-textColor: #FFFFFF;     
 
-  /* ------------------------------------------------------------
-     📌 [分頁三：報到流程] 動態闖關區 (紅色系)
-     ------------------------------------------------------------ */
-  --p3-headerColor: #f4cccc;   
-  --p3-bgColor: #ea9999;       
-  --p3-titleColor: #660000;    
-  --p3-textColor: #434343;     
+    /* 📌 [分頁二：上傳說明] 視覺化教學 (暗黑冷色系) */
+    --p2-headerColor: #1a1a1a;   
+    --p2-bgColor: var(--bg-style-1); 
+    --p2-titleColor: #FFFFFF;    
+    --p2-textColor: #FFFFFF;     
 
-  /* ------------------------------------------------------------
-     📂 [摺疊選單專用設定] 
-     ------------------------------------------------------------ */
-  --details-bgColor: #ffffff;      
-  --details-subBgColor: #fafafa;   
-  --details-titleColor: #434343;   
-  --details-textColor: #434343;    
-  --details-fontSize: 18px;        /* 大摺疊標題 18px */
-  --details-subFontSize: 16px;     /* 小摺疊標題 16px */
-  --details-radius: 8px;           
+    /* 📂 [摺疊選單專用設定] */
+    --details-bgColor: #333333;      /* 摺疊框未展開時底色 */
+    --details-subBgColor: #262626;   /* 展開後內部背景色 */
+    --details-titleColor: #FFFFFF;   /* 標題文字白色 */
+    --details-textColor: #FFFFFF;    /* 內容文字白色 */
+    --details-fontSize: 18px;        
+    --details-subFontSize: 16px;     
+    --details-radius: 8px;           
 
-  /* ------------------------------------------------------------
-     👀 [範例對照區專用設定]
-     ------------------------------------------------------------ */
-  --sample-boxBgColor: #ffffff;    
-  --sample-boxRadius: 8px;         
-  --sample-imgRadius: 4px;         
-  --sample-capFontSize: 14px;      
+    /* 👀 [範例對照區專用設定] */
+    --sample-boxBgColor: #333333;    
+    --sample-boxRadius: 8px;         
+    --sample-imgRadius: 4px;         
+    --sample-capFontSize: 14px;      
 
-  /* ------------------------------------------------------------
-     ©️ [版權區專用設定] Footer 控制
-     ------------------------------------------------------------ */
-  --footer-textColor: #666666; 
-  --footer-fontSize: 11px;     
+    /* ©️ [版權區專用設定] */
+    --footer-textColor: #bbbbbb; 
+    --footer-fontSize: 11px;     
 
-  /* ------------------------------------------------------------
-     📐 [通用尺寸設定] 
-     ------------------------------------------------------------ */
-  --font-size-text: 14px;      /* 摺疊內文字體 14px */
-  --sticky-height: 45px;       
+    /* 📐 [通用尺寸設定] */
+    --font-size-text: 14px;      
+    --sticky-height: 45px;       
 }
 
 /* ================================================================
@@ -69,130 +49,134 @@
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-/* 全站圓潤字體 */
 body { 
-  margin: 0; 
-  font-family: "Varela Round", "Nunito", "jf-openhuninn", "微軟正黑體", sans-serif; 
-  transition: background 0.3s; 
-  line-height: 1.6;
+    margin: 0; 
+    font-family: "Varela Round", "Nunito", "jf-openhuninn", "微軟正黑體", sans-serif; 
+    transition: background 0.3s; 
+    line-height: 1.6;
+    color: var(--main-textColor); /* 強制全局白色 */
 }
 
-/* 頂部固定列基礎樣式 (置中對齊) */
+/* 頂部固定列 */
 .sticky-bar {
-  position: sticky;
-  left: 0; right: 0;
-  height: var(--sticky-height);
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  padding: 0 15px;
-  font-size: 13px;
-  font-weight: bold;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  z-index: 100;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    position: sticky;
+    left: 0; right: 0;
+    height: var(--sticky-height);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    padding: 0 15px;
+    font-size: 13px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    z-index: 100;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 #block-identity { top: 0; }
 #block-status { top: var(--sticky-height); }
 
-/* 短版進度條 */
+/* 進度條 */
 .progress-track {
-  width: 60px; 
-  background: rgba(0,0,0,0.1); 
-  height: 8px; 
-  border-radius: 4px; 
-  overflow: hidden; 
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 8px;
+    width: 60px; 
+    background: rgba(255,255,255,0.1); 
+    height: 8px; 
+    border-radius: 4px; 
+    overflow: hidden; 
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
 }
 .progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease; }
 
 /* 顏色連動邏輯 */
-body.page-1 { background-color: var(--p1-bgColor); color: var(--p1-textColor); }
+body.page-1 { background: var(--p1-bgColor); color: var(--p1-textColor); }
 body.page-1 .sticky-bar { background-color: var(--p1-headerColor); color: var(--p1-titleColor); }
 
-body.page-2 { background-color: var(--p2-bgColor); color: var(--p2-textColor); }
+body.page-2 { background: var(--p2-bgColor); color: var(--p2-textColor); }
 body.page-2 .sticky-bar { background-color: var(--p2-headerColor); color: var(--p2-titleColor); }
 
-/* 內容區與摺疊選單 */
+/* 摺疊選單內容區樣式 */
 .tab-content { padding: 25px 20px; max-width: 600px; margin: 0 auto; }
 
 details { 
-  background-color: var(--details-bgColor);
-  border-radius: var(--details-radius); 
-  margin-bottom: 12px; 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  overflow: hidden;
+    background-color: var(--details-bgColor);
+    border-radius: var(--details-radius); 
+    margin-bottom: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    overflow: hidden;
 }
 
 summary { 
-  padding: 15px; 
-  font-weight: bold; 
-  cursor: pointer; 
-  list-style: none; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  color: var(--details-titleColor);
+    padding: 15px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    list-style: none; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    color: var(--details-titleColor);
 }
 
 summary::-webkit-details-marker { display: none; }
-summary::after { content: "▼"; font-size: 12px; opacity: 0.5; }
+summary::after { content: "▼"; font-size: 12px; opacity: 0.8; }
 details[open] > summary::after { content: "▲"; }
 
-.details-body { 
-  padding: 15px; 
-  font-size: var(--font-size-text); 
-  color: var(--details-textColor);
-  white-space: pre-wrap; 
+/* 展開後的背景顏色調整 */
+details[open] > .details-body, 
+details[open] > details {
+    background-color: var(--bg-style-3);
 }
 
-.main-summary { font-size: var(--details-fontSize); border-bottom: 1px solid rgba(0,0,0,0.05); }
-.sub-summary { background-color: var(--details-subBgColor); font-size: var(--details-subFontSize); border-top: 1px solid #eee; }
+.details-body { 
+    padding: 15px; 
+    font-size: var(--font-size-text); 
+    color: var(--details-textColor);
+    white-space: pre-wrap; 
+}
+
+.main-summary { font-size: var(--details-fontSize); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.sub-summary { background-color: rgba(255,255,255,0.05); font-size: var(--details-subFontSize); border-top: 1px solid rgba(255,255,255,0.1); }
 details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: none; }
 
-/* 範例對照區樣式 */
+/* 範例對照區 */
 .sample-box {
-  background-color: var(--sample-boxBgColor);
-  border-radius: var(--sample-boxRadius);
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid rgba(0,0,0,0.05);
-  margin-left: 0; margin-right: 0;
-  width: 100%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  display: inline-block;
+    background-color: var(--sample-boxBgColor);
+    border-radius: var(--sample-boxRadius);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: inline-block;
 }
 .sample-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--sample-imgRadius);
-  display: block;
-  margin-bottom: 8px; 
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--sample-imgRadius);
+    display: block;
+    margin-bottom: 8px; 
 }
 .sample-cap {
-  font-size: var(--sample-capFontSize);
-  color: var(--details-textColor);
-  text-align: left;
-  line-height: 1.5;
-  padding-left: 5px;
-  font-weight: bold; 
+    font-size: var(--sample-capFontSize);
+    color: #FFFFFF;
+    text-align: left;
+    line-height: 1.5;
+    padding-left: 5px;
+    font-weight: bold; 
 }
 
-/* 版權宣告 Footer (含上方分隔線) */
 .footer { 
-  text-align: center; 
-  padding: 40px 20px; 
-  font-size: var(--footer-fontSize); 
-  color: var(--footer-textColor); 
-  line-height: 1.5; 
-  border-top: 1px solid rgba(0,0,0,0.1); 
-  margin-top: 20px; 
+    text-align: center; 
+    padding: 40px 20px; 
+    font-size: var(--footer-fontSize); 
+    color: var(--footer-textColor); 
+    line-height: 1.5; 
+    border-top: 1px solid rgba(255,255,255,0.1); 
+    margin-top: 20px; 
 }
-.footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; }
+.footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; filter: brightness(0) invert(1); }
 
 .text-green { color: #10b981; font-weight: bold; }
 .text-red { color: #ef4444; font-weight: bold; }
