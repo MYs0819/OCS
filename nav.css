@@ -21,7 +21,7 @@
   padding: 15px 0; /* 按鈕上下內邊距，控制按鈕整體高度 */
   font-weight: bold; /* 字體加粗 */
   color: #888888; /* 未選中時的文字顏色改為淺灰 */
-  font-size: 14px; /* 字體大小設定 */
+  font-size: 16px; /* 字體大小設定 (原為14px，依需求調大2px變成16px) */
   border-bottom: 3px solid transparent; /* 預留 3px 的底線位置，防止切換時畫面跳動 */
   transition: all 0.2s ease; /* 切換分頁時的顏色平滑過渡動畫 */
 }
