@@ -1,512 +1,214 @@
-@charset "UTF-8";
+/* ================================================================
+【 🎨 STYLE CONFIG - 全站通用視覺控制面板 】
+版本：v1.3.0
+描述：負責全站色彩、字體、摺疊選單與版權區視覺。
+================================================================ */
 
-/* ================ 配色/字級/元件/圖片設定區（可自行調整） ================*/
 :root {
-    /* ==================== 0. 全站通用背景與字體 ==================== */
-    --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%);
-    --bg-style-2: linear-gradient(180deg, #1a1a1a 0%, #333333 100%);
-    --bg-style-3: #262626;
+  /* ------------------------------------------------------------
+      📌 [全站暗黑配色定義]
+     ------------------------------------------------------------ */
+  --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%);
+  --bg-style-2: linear-gradient(180deg, #1a1a1a 0%, #333333 100%);
+  --bg-style-3: #262626;
 
-    /* 圓體字型 */
-    --main-font: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; 
+  /* ------------------------------------------------------------
+      📌 [分頁一：內容說明] 手冊與規範 (套用暗黑風格)
+      規則：上面淺、下面深
+     ------------------------------------------------------------ */
+  --p1-headerColor: #1a1a1a;   /* 頂部固定列背景 */
+  --p1-bgColor: var(--bg-style-1); 
+  --p1-titleColor: #FFFFFF;    /* 字體改為純白 */
+  --p1-textColor: #FFFFFF;     /* 字體改為純白 */
 
-    /* ==================== 1. 導航列設定 (Navbar) ==================== */
-    
-    /* [首頁] [各大系統] [資訊補給] */
-    --nav-item-size: 18px;          /* 文字大小 */
-    --nav-text-color: #ddd;         /* 平常顏色 */
-    --nav-active-color: #FFFFFF;    /* 選中顏色 */
-    --nav-padding-y: 15px;          /* 上下厚度 */
-    --nav-padding-x: 20px;          /* 左右間距 */
+  /* ------------------------------------------------------------
+      📌 [分頁二：上傳說明] 視覺化教學 (套用暗黑風格)
+      規則：上面淺、下面深
+     ------------------------------------------------------------ */
+  --p2-headerColor: #1a1a1a;   
+  --p2-bgColor: var(--bg-style-1); 
+  --p2-titleColor: #FFFFFF;    
+  --p2-textColor: #FFFFFF;     
 
+  /* ------------------------------------------------------------
+      📌 [分頁三：報到流程] 動態闖關區
+     ------------------------------------------------------------ */
+  --p3-headerColor: #1a1a1a;   
+  --p3-bgColor: var(--bg-style-1); 
+  --p3-titleColor: #FFFFFF;    
+  --p3-textColor: #FFFFFF;     
 
-    /* ==================== 2. 首頁 (index.html) 獨立設定 ==================== */
-    
-    /* [MeiYang 卡片] */
-    --card-bg-color: #262626;        /* 卡片底色 */     
-    --home-name-size: 30px;          /* MeiYang 名字大小 */
-    --home-name-color: #FFFFFF;      /* MeiYang 名字顏色 */      
-    --home-desc-color: #efefef;      /* 預設內文顏色 */
-    --home-card-top-spacing: 20px;   /* 卡片距離頂部的高度 */
-    --home-name-margin-top: 0px;     /* 名字距離圖片的高度 */
+  /* ------------------------------------------------------------
+      📂 [摺疊選單專用設定] 
+     ------------------------------------------------------------ */
+  --details-bgColor: #333333;      /* 框框底色 #333333 */
+  --details-subBgColor: #262626;   /* 展開後顏色 #262626 */
+  --details-titleColor: #FFFFFF;   
+  --details-textColor: #FFFFFF;    
+  --details-fontSize: 18px;        /* 大摺疊標題 18px */
+  --details-subFontSize: 16px;     /* 小摺疊標題 16px */
+  --details-radius: 8px;           
 
-    /* [個人介紹與經歷] (可獨立調整) */
-    --intro-text-size: 16px;         /* 文字大小 */
-    --intro-text-color: #cccccc;     /* 文字顏色 */
-    
-    --exp-text-size: 16px;           /* 文字大小 */
-    --exp-text-color: #cccccc;       /* 文字顏色 */
+  /* ------------------------------------------------------------
+      👀 [範例對照區專用設定]
+     ------------------------------------------------------------ */
+  --sample-boxBgColor: #333333;    
+  --sample-boxRadius: 8px;         
+  --sample-imgRadius: 4px;         
+  --sample-capFontSize: 14px;      
 
-    /* [區塊標題] (音樂作品、業務承接事項) */
-    --home-section-title-size: 30px; /* 標題大小 */
-    --home-section-title-color: #FFFFFF; /* 標題顏色 */
+  /* ------------------------------------------------------------
+      ©️ [版權區專用設定] Footer 控制
+     ------------------------------------------------------------ */
+  --footer-textColor: #bbbbbb; 
+  --footer-fontSize: 11px;     
 
-    /* ==================== 3. 各大系統 & 資訊補給 (system/about) 獨立設定 ==================== */
-    
-    /* [大標題 H1] (四週變形工時、勞資知識補給站) */
-    --sys-h1-size: 30px;             /* H1 大小 */
-    --sys-h1-color: #FFFFFF;         /* H1 顏色 */
-
-    /* [小標題] (預排開放、正兼職須知) */
-    --sys-card-title-size: 20px;     /* 小標題大小 */
-    --sys-card-title-color: #f3f3f3; /* 小標題顏色 */
-
-    /* [內文說明] (開放連結為...) */
-    --sys-text-size: 14px;           /* 內文大小 */
-    --sys-text-color: #efefef;       /* 內文顏色 */
-    --sys-text-line-height: 1.5;     /* 行高 */
-    --sys-text-lines: 2;             /* 強制行數 (超過變...) */
-
-    /* ==================== 4. 頁尾版權 (Footer) 獨立設定 ==================== */
-    
-    /* [文字] (Email, Copyright) */
-    --footer-text-size: 14px;        /* 文字大小 */
-    --footer-text-color: #999999;    /* 文字顏色 */
-    
-    /* [圖片] (MYs Logo) */
-    --footer-logo-width-pc: 100px;    /* 電腦版寬度 */
-    --footer-logo-width-mobile: 100px; /* 手機版寬度 */
-
-    /* [間距控制] */
-    --footer-logo-margin-top: 1px;       /* Logo 距離上方橫線的距離 */
-    --footer-logo-margin-bottom: 0px;   /* Logo 距離下方 Email 的距離 */
-    --footer-text-margin-y: 4px;        /* Email 與 Copyright 的間距 */
-
-
-    /* ==================== 5. 其他元件設定 ==================== */
-    /* [按鈕] */
-    --btn-radius: 5px;               /* 圓角 */
-    --btn-font-size: 14px;           /* 大小 */
-    --btn-p-bg: #337ab7;             /* 背景藍 */
-    --btn-p-border: #2e6da4;         /* 邊框深藍 */
-
-    /* [彈跳視窗 (Modal)] */
-    --modal-bg-color: #e6b8af;       /* 視窗背景色 */
-    --modal-text-color: #333333;     /* 視窗內文字色 (深色) */
-    
-    /* [內容圖片] (視窗內的截圖) */
-    --content-img-width-pc: 80%;     /* 電腦版寬度 */
-    --content-img-width-mobile: 90%; /* 手機版寬度 */
+  /* ------------------------------------------------------------
+      📐 [通用尺寸設定] 
+     ------------------------------------------------------------ */
+  --font-size-text: 14px;      /* 摺疊內文字體 14px */
+  --sticky-height: 45px;       
 }
 
-/* ================ 設定區結束，下方為樣式邏輯 ================ */
+/* ================================================================
+【 🏗️ 基礎架構 】
+================================================================ */
 
-/* 基本設定 */
-body {
-    background: var(--bg-style-1);
-    background-attachment: fixed;
-    color: var(--main-text-color);
-    font-family: var(--main-font);
-    overflow-x: hidden;
-    padding-top: 50px;
-}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-/* RWD 容器 */
-.container.body-content {
-    max-width: 2000px !important;
-    padding-left: 200px;
-    padding-right: 200px;
-    overflow: hidden;
-}
-@media (max-width: 768px) {
-    .container.body-content { padding-left: 10px !important; padding-right: 10px !important; }
-    .indexSystemInfo { padding: 20px !important; }
-    .col-xs-6 h2 { font-size: 18px !important; } /* 手機版小標題 */
-    .footer-logo { width: var(--footer-logo-width-mobile) !important; }
-    .modal-body img, .text-center img { width: var(--content-img-width-mobile) !important; }
+/* 全站圓潤字體 */
+body { 
+  margin: 0; 
+  font-family: "Varela Round", "Nunito", "jf-openhuninn", "微軟正黑體", sans-serif; 
+  transition: background 0.3s; 
+  line-height: 1.6;
+  color: #FFFFFF; /* 全域字體白色 */
 }
 
-/* 電腦版圖片 */
-.modal-body img, .text-center img {
-    width: var(--content-img-width-pc);
-    height: auto;
-    display: inline-block;
+/* 頂部固定列基礎樣式 (置中對齊) */
+.sticky-bar {
+  position: sticky;
+  left: 0; right: 0;
+  height: var(--sticky-height);
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding: 0 15px;
+  font-size: 13px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  z-index: 100;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#block-identity { top: 0; }
+#block-status { top: var(--sticky-height); }
+
+/* 短版進度條 */
+.progress-track {
+  width: 60px; 
+  background: rgba(255,255,255,0.2); 
+  height: 8px; 
+  border-radius: 4px; 
+  overflow: hidden; 
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+.progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease; }
+
+/* 顏色連動邏輯 */
+body.page-1 { background: var(--p1-bgColor); background-attachment: fixed; color: var(--p1-textColor); }
+body.page-1 .sticky-bar { background: var(--p1-headerColor); color: var(--p1-titleColor); }
+
+body.page-2 { background: var(--p2-bgColor); background-attachment: fixed; color: var(--p2-textColor); }
+body.page-2 .sticky-bar { background: var(--p2-headerColor); color: var(--p2-titleColor); }
+
+/* 內容區與摺疊選單 */
+.tab-content { padding: 25px 20px; max-width: 600px; margin: 0 auto; }
+
+details { 
+  background-color: var(--details-bgColor);
+  border-radius: var(--details-radius); 
+  margin-bottom: 12px; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  overflow: hidden;
 }
 
-/* 導航列 (橫排) */
-.navbar-inverse { background-color: rgba(0,0,0,0.9); border: none; min-height: 50px; }
-.navbar-header { display: none !important; }
-.navbar-collapse.collapse {
-    display: block !important;
-    height: auto !important;
-    padding-bottom: 0;
-    overflow: visible !important;
-    text-align: center;
-}
-.navbar-nav { float: none !important; display: inline-block !important; margin: 0 auto; }
-.navbar-nav > li { float: left; }
-.navbar-nav > li > a {
-    font-size: var(--nav-item-size);
-    padding: var(--nav-padding-y) var(--nav-padding-x);
-    color: var(--nav-text-color) !important;
-}
-.navbar-nav > li.active > a {
-    color: var(--nav-active-color) !important;
-    font-weight: bold;
-    background-color: transparent !important;
-    text-decoration: underline;
+summary { 
+  padding: 15px; 
+  font-weight: bold; 
+  cursor: pointer; 
+  list-style: none; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  color: var(--details-titleColor);
 }
 
-/* 首頁卡片 */
-.happy {
-    width: 800px;
-    margin: var(--home-card-top-spacing) auto 20px auto; 
-    border: solid 1px gray;
-    background-color: var(--card-bg-color);
-    overflow: hidden; 
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "▼"; font-size: 12px; opacity: 0.5; }
+details[open] > summary::after { content: "▲"; }
+
+/* 分頁一下面框框展開後是這個顏色 #262626 */
+details[open] > .details-body {
+  background-color: var(--details-subBgColor);
 }
-.bdcard { width: 300px; float: left; padding: 20px; }
-.bdcard img { display: block; width: 100%; }
-.bdtext { 
-    float: right; 
-    width: 430px; 
-    padding: 20px 20px 0px 0px; 
-    color: var(--home-desc-color); 
-}
-.bdtext h1 {
-    font-size: var(--home-name-size);
-    color: var(--home-name-color);
-    margin-top: var(--home-name-margin-top);
-    margin-bottom: 10px;
-}
-/* 首頁文字獨立設定 */
-.bdtext .intro-text {
-    font-size: var(--intro-text-size);
-    color: var(--intro-text-color);
-    margin-bottom: 5px;
-}
-.bdtext .exp-text {
-    font-size: var(--exp-text-size);
-    color: var(--exp-text-color);
-    margin-bottom: 3px;
-}
-@media (max-width: 768px) {
-    .happy { width: 100% !important; height: auto !important; }
-    .bdcard, .bdtext { width: 100% !important; float: none !important; padding: 10px !important; }
+details[open] > details {
+  background-color: var(--details-subBgColor);
 }
 
-/* 首頁區塊標題 */
-.home-section-title {
-    font-size: var(--home-section-title-size) !important;
-    color: var(--home-section-title-color) !important;
-    font-weight: bold;
+.details-body { 
+  padding: 15px; 
+  font-size: var(--font-size-text); 
+  color: var(--details-textColor);
+  white-space: pre-wrap; 
 }
 
-/* 內容區塊背板 */
-.indexSystemInfo {
-    padding: 50px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-}
-.col-md-3, .col-xs-6 { margin-bottom: 30px; }
+.main-summary { font-size: var(--details-fontSize); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.sub-summary { background-color: rgba(255,255,255,0.03); font-size: var(--details-subFontSize); border-top: 1px solid rgba(255,255,255,0.05); }
+details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: none; }
 
-/* 系統/資訊頁 - H1 大標題 (強制置中) */
-h1.main-title {
-    text-align: center !important;
-    font-size: var(--sys-h1-size) !important;
-    color: var(--sys-h1-color) !important;
-    margin-bottom: 20px;
-    font-weight: bold;
-    margin-top: 0;
+/* 範例對照區樣式 */
+.sample-box {
+  background-color: var(--sample-boxBgColor);
+  border-radius: var(--sample-boxRadius);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-left: 0; margin-right: 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  display: inline-block;
 }
-/* 資訊頁副標題 */
-h2.sub-title {
-    text-align: center !important;
-    font-size: 30px;
-    margin-bottom: 40px;
-    color: var(--sys-h1-color); /* 跟隨大標題顏色 */
+.sample-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--sample-imgRadius);
+  display: block;
+  margin-bottom: 8px; 
 }
-
-/* 系統/資訊頁 - 小標題 */
-.indexSystemInfo h2:not(.main-title):not(.sub-title), .col-md-3 h2, .col-xs-6 h2 {
-    font-size: var(--sys-card-title-size) !important;
-    color: var(--sys-card-title-color) !important;
-    font-weight: bold;
-}
-
-/* 系統/資訊頁 - 內文 (強制兩行) */
-.desc-text {
-    color: var(--sys-text-color);
-    font-size: var(--sys-text-size);
-    line-height: var(--sys-text-line-height);
-    display: -webkit-box;
-    -webkit-line-clamp: var(--sys-text-lines);
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: calc(var(--sys-text-size) * var(--sys-text-line-height) * var(--sys-text-lines));
-    margin-bottom: 15px;
+.sample-cap {
+  font-size: var(--sample-capFontSize);
+  color: var(--details-textColor);
+  text-align: left;
+  line-height: 1.5;
+  padding-left: 5px;
+  font-weight: bold; 
 }
 
-/* 按鈕 */
-.btn-primary {
-    background-color: var(--btn-p-bg);
-    border-color: var(--btn-p-border);
-    border-radius: var(--btn-radius);
-    font-size: var(--btn-font-size);
+/* 版權宣告 Footer (含上方分隔線) */
+.footer { 
+  text-align: center; 
+  padding: 40px 20px; 
+  font-size: var(--footer-fontSize); 
+  color: var(--footer-textColor); 
+  line-height: 1.5; 
+  border-top: 1px solid rgba(255,255,255,0.1); 
+  margin-top: 20px; 
 }
+.footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; filter: brightness(0) invert(1); }
 
-/* Modal */
-.modal-content {
-    background-color: var(--modal-bg-color); 
-    color: var(--modal-text-color); 
-    text-align: left; 
-}
-/* 強制視窗標題置中 */
-.modal-header .modal-title {
-    text-align: center;
-}
-/* 點擊後看到的完整說明文字區塊 */
-.modal-desc-full {
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed #ccc;
-    font-size: var(--sys-text-size);
-    line-height: 1.6;
-}
-
-/* 頁尾 */
-hr {
-    margin-top: 10px;
-    margin-bottom: 0;
-    border-top: 1px solid #555; 
-}
-.footer-logo {
-    width: var(--footer-logo-width-pc);
-    height: auto;
-    margin-top: var(--footer-logo-margin-top);        
-    margin-bottom: var(--footer-logo-margin-bottom); 
-    display: inline-block;
-}
-footer p {
-    color: var(--footer-text-color) !important; 
-    font-size: var(--footer-text-size) !important; 
-    margin-top: var(--footer-text-margin-y);    
-    margin-bottom: var(--footer-text-margin-y); 
-}
-
-/* ==================== 6. 圖片放大燈箱 (Lightbox) ==================== */
-
-.lightbox-overlay {
-    display: none; /* 預設隱藏 */
-    position: fixed;
-    z-index: 99999; /* 確保在最上層 */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* 防止捲動 */
-    background-color: rgba(0,0,0,0.9); /* 黑色半透明背景 */
-}
-
-.lightbox-content {
-    /* ★★★ 絕對置中核心語法 ★★★ */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* 讓圖片中心點對準螢幕中心點 */
-    
-    display: block;
-    width: auto;      /* 寬度自動，配合高度 */
-    height: auto;     /* 高度自動 */
-    max-width: 90%;   /* 寬度不超過螢幕 90% */
-    max-height: 90%;  /* 高度不超過螢幕 90% */
-    object-fit: contain; /* 保持比例完整顯示 */
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-    z-index: 100000; /* 確保叉叉在圖片上面 */
-}
-
-.lightbox-close:hover,
-.lightbox-close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* RWD: 手機版微調 */
-@media only screen and (max-width: 700px){
-    .lightbox-content {
-        max-width: 95%; /* 手機版可以寬一點 */
-        max-height: 80%; /* 留點空間給叉叉 */
-    }
-}
-
-/* ==================== 7. 首頁折疊選單 (Accordion) ==================== */
-
-/* 外層面板設定 */
-.custom-panel {
-    border: none !important;
-    background-color: transparent !important;
-    box-shadow: none !important;
-    margin-bottom: 15px !important; /* 每個項目之間的距離 */
-}
-
-/* 標題框框設定 (點擊的那一條) */
-.custom-heading {
-    background-color: #333333 !important; /* 底色 (深灰) */
-    border: 1px solid #555 !important;    /* 邊框顏色 */
-    border-radius: 5px !important;        /* 圓角 */
-    color: #ffffff !important;            /* 文字顏色 */
-    padding: 15px !important;             /* 內距 (讓框框胖一點) */
-    cursor: pointer;
-    transition: background-color 0.3s;    /* 滑鼠移過去的變色效果 */
-}
-
-.custom-heading:hover {
-    background-color: #444444 !important; /* 滑鼠移過去變稍微亮一點 */
-}
-
-.custom-heading a {
-    text-decoration: none !important;     /* 去除底線 */
-    display: block;                        /* 讓整條都能點 */
-    font-size: 18px;                       /* 標題文字大小 */
-    font-weight: bold;
-}
-
-/* 展開後的內容區塊 */
-.custom-body {
-    background-color: #262626 !important; /* 展開後的底色 */
-    border: 1px solid #444 !important;    /* 展開後的邊框 */
-    border-top: none !important;          /* 去掉上面的邊，接合標題 */
-    color: #efefef !important;            /* 內文文字顏色 */
-    padding: 20px !important;
-}
-
-/* 內文清單設定 */
-.custom-list {
-    padding-left: 20px;
-    margin-bottom: 0;
-}
-
-.custom-list li {
-    font-size: 16px;       /* 內文文字大小 */
-    line-height: 1.8;      /* 行高 (行距) */
-    color: #cccccc;        /* 稍微淡一點的顏色 */
-    margin-bottom: 5px;
-}
-
-/* ==================== 8. 特殊排版修正 (連結2x2 & 圖示置中) ==================== */
-
-/* 1. 音樂連結設定 */
-/* 手機版 (預設)：維持原樣，置中就好 */
-.music-links-grid {
-    text-align: center;
-    margin-top: 10px;
-}
-
-/* 電腦版 (螢幕 > 992px)：強制變 2x2 田字型 */
-@media (min-width: 992px) {
-    .music-links-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* 左右各一半 */
-        gap: 10px;                      /* 連結之間的空隙 */
-        justify-items: center;          /* 連結本身置中 */
-        max-width: 250px;               /* 限制寬度，讓它排得緊湊一點 */
-        margin: 15px auto;              /* 整個區塊置中 */
-    }
-}
-
-/* 2. 社群圖示 (Social Icons) 設定 */
-.social-icons {
-    text-align: center;
-    margin-top: 20px;
-    
-    /* 強制不換行 & 確保寬度佔滿容器 */
-    white-space: nowrap; 
-    width: 100%;
-    display: block;
-}
-
-/* 讓裡面的圖片按鈕保持間距 */
-.social-icons a { 
-    display: inline-block; 
-    margin: 0 5px; 
-}
-
-/* ==================== 9. 聯絡表單與信箱圖示 (獨立設定) ==================== */
-
-/* 獨立設定留言牆視窗的背景色 */
-#modal-contact .modal-content {
-    background-color: #666666; /* 面板顏色 (深灰) */
-    /* border: 2px solid #333; */ /* 邊框顏色 */
-}
-
-/* A. 主標題設定 (例如：留言牆) */
-.contact-main-title {
-    color: #f3f3f3;       /* 文字顏色 (淺灰) */
-    font-size: 25px;      /* 文字大小 (大標題) */
-    font-weight: bold;    /* 文字粗細 (加粗) */
-    margin: 0;            /* 歸零，避免被推擠 */
-    padding: 10px 0;      /* 上下給一點空間，自然置中 */
-    line-height: 1.2;     /* 行高修正 */
-}
-
-/* B. 副標題設定 (例如：您的稱呼、聯絡信箱...) */
-.contact-sub-title {
-    color: #f3f3f3;       /* 文字顏色 (淺灰) */
-    font-size: 16px;      /* 文字大小 (標準) */
-    margin-bottom: 5px;   /* 與下方輸入框的距離 */
-    font-weight: bold;    /* 文字粗細 (加粗) */
-    display: block;       /* 確保獨佔一行 */
-}
-
-/* C. 填寫文字設定 (輸入框內部的字 & 預設提示字) */
-.contact-input-text {
-    color: #000000;       /* 文字顏色 (全黑) */
-    font-size: 13px;      /* 電腦版維持小字體 */
-    border-radius: 10px;  /* 邊框圓角 */
-    border: 1px solid #ccc; /* 邊框線條 */
-    background-color: #efefef; /* 輸入框背景顏色 (淺灰) */
-    padding: 10px;        /* 輸入框內部的留白 */
-    width: 100%;          /* 寬度 */
-    height: 45px !important;  /* 固定高度，確保每一格都一樣高 */
-    line-height: 1.5;         /* 文字垂直置中 */
-}
-
-/* D. 詳細內容輸入框 (Textarea) 獨立設定 - 必須放在 .contact-input-text 之後 */
-textarea.contact-input-text {
-    height: 150px !important; /* 預設 (手機版) 高度 150px */
-    resize: none;             /* 禁止使用者自己拉大小 */
-    line-height: 1.5;
-}
-
-/* E. 電腦版專用設定：拉高詳細內容框框 */
-@media screen and (min-width: 768px) {
-    textarea.contact-input-text {
-        height: 250px !important; /* 電腦版拉得更高，貼底對齊 */
-    }
-}
-
-/* F. 防止 iPhone 自動放大 (手機版強制 16px) */
-@media screen and (max-width: 768px) {
-    .contact-input-text {
-        font-size: 16px !important;
-    }
-    select.contact-input-text {
-        font-size: 16px !important;
-    }
-}
-
-/* 信箱小圖示設定 */
-.mail-icon-btn {
-    width: 25px;          /* 圖片寬度 */
-    height: auto;         /* 高度 */
-    cursor: pointer;      /* 滑鼠移過去變成手指形狀 */
-    transition: transform 0.2s; /* 動畫效果時間 */
-    opacity: 0.7;         /* 透明度 */
-}
-
-.mail-icon-btn:hover {
-    transform: scale(1.1); /* 滑鼠移過去放大 1.1 倍 */
-    opacity: 1;           /* 滑鼠移過去變完全不透明 */
-}
+.text-green { color: #10b981; font-weight: bold; }
+.text-red { color: #ef4444; font-weight: bold; }
