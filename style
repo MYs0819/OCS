@@ -1,0 +1,130 @@
+/* ================================================================
+【 🎨 STYLE CONFIG - 視覺控制面板 】
+版本：v1.0.1
+描述：此區域為全站視覺核心。請直接修改 :root 內的數值即可控制全站。
+================================================================ */
+
+:root {
+  /* ------------------------------------------------------------
+     📌 [分頁一：內容說明] 手冊與規範 (黃色系)
+     ------------------------------------------------------------ */
+  --p1-bgColor: #ffe599;       /* 頁面背景色 */
+  --p1-headerColor: #fff2cc;   /* 頂部三固定列背景色 */
+  --p1-titleColor: #434343;    /* 標題文字顏色 */
+  --p1-textColor: #434343;     /* 說明文字顏色 */
+  --p1-btnColor: #fff2cc;      /* 按鈕背景色 */
+  --p1-btnText: #434343;       /* 按鈕文字顏色 */
+  --p1-btnRadius: 15px;        /* 按鈕圓角 */
+
+  /* ------------------------------------------------------------
+     📌 [分頁二：上傳說明] 視覺化教學 (藍色系)
+     ------------------------------------------------------------ */
+  --p2-bgColor: #cfe2f3;       /* 頁面背景色 (淺藍) */
+  --p2-headerColor: #a4c2f4;   /* 頂部三固定列背景色 (粉藍) */
+  --p2-titleColor: #1c4587;    /* 標題文字顏色 (深藍) */
+  --p2-textColor: #1c4587;     /* 說明文字顏色 */
+  --p2-btnColor: #a4c2f4;      /* 按鈕背景色 */
+  --p2-btnText: #1c4587;       /* 按鈕文字顏色 */
+  --p2-btnRadius: 15px;
+
+  /* ------------------------------------------------------------
+     📌 [分頁三：報到流程] 動態闖關區 (紅色系)
+     ------------------------------------------------------------ */
+  --p3-bgColor: #ea9999;       /* 頁面背景色 (淺紅) */
+  --p3-headerColor: #f4cccc;   /* 頂部三固定列背景色 (粉紅) */
+  --p3-titleColor: #660000;    /* 標題文字顏色 (深紅) */
+  --p3-textColor: #434343;     /* 說明文字顏色 */
+  --p3-btnColor: #f4cccc;      /* 按鈕背景色 */
+  --p3-btnText: #660000;       /* 按鈕文字顏色 */
+  --p3-btnRadius: 15px;
+
+  /* ------------------------------------------------------------
+     📐 [通用尺寸與細節設定] 
+     ------------------------------------------------------------ */
+  --font-size-title: 20px;     
+  --font-size-text: 14px;      
+  --font-size-btn: 16px;       
+  --card-spacing: 20px;        
+  --sticky-height: 45px;       
+}
+
+/* ================================================================
+【 🏗️ 樣式架構區 - 下方負責邏輯連動 】
+================================================================ */
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { margin: 0; font-family: -apple-system, "微軟正黑體", sans-serif; transition: background 0.3s; }
+
+/* 頂部三層固定列基礎樣式 */
+.sticky-bar {
+  position: sticky;
+  left: 0; right: 0;
+  height: var(--sticky-height);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  z-index: 100;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#block-identity { top: 0; font-weight: bold; }
+#block-status { top: var(--sticky-height); }
+#block-progress { top: calc(var(--sticky-height) * 2); }
+
+/* 分頁切換顏色自動連動 */
+body.page-1 { background-color: var(--p1-bgColor); color: var(--p1-textColor); }
+body.page-1 .sticky-bar { background-color: var(--p1-headerColor); }
+body.page-1 .btn-primary { background-color: var(--p1-btnColor); color: var(--p1-btnText); border-radius: var(--p1-btnRadius); }
+
+body.page-2 { background-color: var(--p2-bgColor); color: var(--p2-textColor); }
+body.page-2 .sticky-bar { background-color: var(--p2-headerColor); }
+body.page-2 .btn-primary { background-color: var(--p2-btnColor); color: var(--p2-btnText); border-radius: var(--p2-btnRadius); }
+
+body.page-3 { background-color: var(--p3-bgColor); color: var(--p3-textColor); }
+body.page-3 .sticky-bar { background-color: var(--p3-headerColor); }
+body.page-3 .btn-primary { background-color: var(--p3-btnColor); color: var(--p3-btnText); border-radius: var(--p3-btnRadius); }
+
+/* 導覽分頁按鈕樣式 */
+.nav-tabs { 
+  display: flex; 
+  background: #fff; 
+  position: sticky; 
+  top: calc(var(--sticky-height) * 3); 
+  z-index: 90; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+.tab-btn { flex: 1; border: none; background: none; padding: 15px 0; font-weight: bold; color: #888; cursor: pointer; font-size: 14px; }
+.tab-btn.active { color: #434343; border-bottom: 3px solid #434343; }
+
+/* 內容區與摺疊選單 */
+.tab-content { display: none; padding: 25px 20px; max-width: 600px; margin: 0 auto; }
+.tab-content.active { display: block; }
+
+details { 
+  background: rgba(255,255,255,0.5); 
+  border-radius: 8px; 
+  margin-bottom: 12px; 
+  border: 1px solid rgba(0,0,0,0.05); 
+  overflow: hidden;
+}
+summary { padding: 15px; font-weight: bold; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+summary::after { content: "▼"; font-size: 10px; opacity: 0.5; }
+details[open] summary::after { content: "▲"; }
+.details-body { padding: 0 15px 15px 15px; font-size: var(--font-size-text); line-height: 1.7; white-space: pre-wrap; }
+
+/* 按鈕與進度條 */
+.btn-primary { 
+  border: none; padding: 15px; width: 100%; font-weight: bold; 
+  font-size: var(--font-size-btn); cursor: pointer; margin-top: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: block;
+}
+.progress-track { flex-grow: 1; background: rgba(0,0,0,0.1); height: 8px; border-radius: 4px; overflow: hidden; margin-left: 10px; }
+.progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease; }
+
+/* Footer */
+.footer { text-align: center; padding: 40px 20px; font-size: 11px; opacity: 0.6; line-height: 1.5; }
+.footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; }
