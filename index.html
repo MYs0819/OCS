@@ -60,7 +60,8 @@
 3. 主動積極回報處理狀況.</div>
             </details>
             
-            <details> <summary class="sub-summary">【報到文件用途說明】</summary>
+            <details>
+                <summary class="sub-summary">【報到文件用途說明】</summary>
                 <div class="details-body">1. 一般勞工體格檢查報告：
 ❗️依據《職業安全衛生法》§20
 勞工健康保護規則§16~17
@@ -89,8 +90,8 @@
             <summary class="main-summary">🏅 積極度評核標準</summary>
             <div class="details-body">👑 96-100分：[ 👑 卓越表現 ]
 <span class="text-green">🟢 80-95分  ：[ 🟢 表現良好 ]</span>
-<span class="text-gray">⚠️ 60-79分  ：[ ⚠️ 尚在觀察 ]</span>
-<span class="text-red">🛑 60分以下：[ 🛑 資格重評 ]</span></div>
+<span class="text-lightblue">⚠️ 60-79分  ：[ ⚠️ 尚在觀察 ]</span>
+<span class="text-lightred">🛑 60分以下：[ 🛑 資格重評 ]</span></div>
         </details>
     </main>
 
@@ -126,6 +127,10 @@
             document.getElementById('rank-text').innerText = getRankTitle(data.currentScore);
             document.getElementById('prog-val').innerText = data.currentProg + "%";
             document.getElementById('prog-fill').style.width = data.currentProg + "%";
+
+            // ✅ 新增：進度條平滑漸變邏輯 (0% 淺紅 -> 100% 綠色)
+            const hue = (data.currentProg / 100) * 120; // 計算色相值：0是紅，120是綠
+            document.getElementById('prog-fill').style.backgroundColor = `hsl(${hue}, 80%, 55%)`; // 動態覆寫背景顏色
         }
         window.onload = () => { applyData(fetchedData); };
     </script>
