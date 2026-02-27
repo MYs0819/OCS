@@ -45,7 +45,7 @@
   --details-subBgColor: #262626;      /* 摺疊框展開後的內部背景色 (更深的灰) */
   --details-titleColor: #efefef;      /* 摺疊框大標題的文字顏色 */
   --details-subTitleColor: #cccccc;   /* 小摺疊標題的文字顏色 */
-  --details-textColor: #b7b7b7c;       /* 摺疊框展開後的內文說明顏色 */
+  --details-textColor: #b7b7b7;       /* 摺疊框展開後的內文說明顏色 */
   --details-fontSize: 17px;           /* 大摺疊標題 (main-summary) */
   --details-subFontSize: 15px;        /* 小摺疊標題 (sub-summary) */
   --details-radius: 8px;              /* 摺疊框四周的圓角弧度 */
@@ -237,7 +237,8 @@ details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: 
   border-top: 1px solid rgba(255,255,255,0.1); /* 暗黑模式下的淺白分隔線 */
   margin-top: 20px; 
 }
-.footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; filter: brightness(0) invert(1); } /* 將原本黑色的 Logo 反轉為白色 */
+/* ✅ 已修正：移除反轉顏色的語法，讓您的原版 Logo 可以顯現原色 */
+.footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; } 
 
 /* 更細緻的文字顏色設定 (供評核標準使用) */
 .text-green { color: #10b981; font-weight: bold; }
