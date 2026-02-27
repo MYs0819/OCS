@@ -1,43 +1,47 @@
+/* ================================================================
+   【 🎨 STYLE CONFIG - 全站通用視覺控制面板 】
+   ================================================================ */
+
 //* --------配色／字級設定區（可自行調整）--------*//
 :root {
-  /* 📐 [頂部高度尺寸設定] */
-  --header-height: 60px;          /* 前兩排(身分列、狀態列)的高度，原45px拉長為60px */
-  --nav-height: 38px;             /* 第三排(分頁標籤列)的高度，原45px縮小為38px */
-  --total-top-gap: 158px;         /* 內容區頂部需預留的總空間 (60+60+38) */
+  /* 📐 [頂部尺寸設定] */
+  --header-height: 60px;          /* 前兩排(身分列、狀態列)拉長為 60px - 可調 */
+  --nav-height: 38px;             /* 分頁按鈕列縮小為 38px - 可調 */
+  --total-top-gap: 158px;         /* 內容區頂部預留總高度 (60+60+38) - 可調 */
 
   /* 📌 [分頁一：內容說明] 手冊與規範 (黃色系) */
-  --p1-headerColor: #fff2cc;      /* 頂部兩層固定列顏色 (淺黃) */
-  --p1-bgColor: #ffe599;          /* 頁面背景顏色 (深黃) */
-  --p1-titleColor: #434343;       /* 標題與資訊文字顏色 */
-  --p1-textColor: #434343;        /* 頁面說明文字顏色 */
+  --p1-headerColor: #fff2cc;      /* 頂部兩層固定列顏色 (淺黃) - 可調 */
+  --p1-bgColor: #ffe599;          /* 頁面背景顏色 (深黃) - 可調 */
+  --p1-titleColor: #434343;       /* 資訊列文字顏色 - 可調 */
+  --p1-textColor: #434343;        /* 內容說明文字顏色 - 可調 */
 
   /* 📌 [分頁二：上傳說明] 視覺化教學 (藍色系) */
-  --p2-headerColor: #cfe2f3;      /* 頂部兩層固定列顏色 (淺藍) */
-  --p2-bgColor: #a4c2f4;          /* 頁面背景顏色 (深藍) */
-  --p2-titleColor: #1c4587;       /* 標題與資訊文字顏色 */
-  --p2-textColor: #1c4587;        /* 頁面說明文字顏色 */
+  --p2-headerColor: #cfe2f3;      /* 頂部兩層固定列顏色 (淺藍) - 可調 */
+  --p2-bgColor: #a4c2f4;          /* 頁面背景顏色 (深藍) - 可調 */
+  --p2-titleColor: #1c4587;       /* 資訊列文字顏色 (深藍) - 可調 */
+  --p2-textColor: #1c4587;        /* 內容說明文字顏色 - 可調 */
 
   /* 📂 [摺疊選單專用設定] */
-  --details-bgColor: #ffffff;      /* 大摺疊外框背景顏色 */
-  --details-subBgColor: #fafafa;   /* 小摺疊標題背景顏色 */
-  --details-titleColor: #434343;   /* 摺疊標題文字顏色 */
-  --details-textColor: #434343;    /* 摺疊內文說明文字顏色 */
-  --details-fontSize: 18px;        /* 大摺疊標題字體大小 */
-  --details-subFontSize: 16px;     /* 小摺疊標題字體大小 */
-  --details-radius: 8px;           /* 摺疊選單圓角弧度 */
+  --details-bgColor: #ffffff;      /* 大摺疊外框背景顏色 - 可調 */
+  --details-subBgColor: #fafafa;   /* 小摺疊標題背景顏色 - 可調 */
+  --details-titleColor: #434343;   /* 摺疊標題顏色 - 可調 */
+  --details-textColor: #434343;    /* 摺疊內文顏色 - 可調 */
+  --details-fontSize: 18px;        /* 大摺疊標題大小 - 可調 */
+  --details-subFontSize: 16px;     /* 小摺疊標題大小 - 可調 */
+  --details-radius: 8px;           /* 圓角弧度 - 可調 */
 
   /* 👀 [範例對照區專用設定] */
-  --sample-boxBgColor: #ffffff;    /* 範例卡片背景顏色 */
-  --sample-boxRadius: 8px;         /* 範例框圓角弧度 */
-  --sample-imgRadius: 4px;         /* 圖片圓角弧度 */
-  --sample-capFontSize: 13px;      /* 圖片下方說明文字大小 */
+  --sample-boxBgColor: #ffffff;    /* 範例框背景顏色 - 可調 */
+  --sample-boxRadius: 8px;         /* 範例框圓角 - 可調 */
+  --sample-imgRadius: 4px;         /* 圖片圓角 - 可調 */
+  --sample-capFontSize: 13px;      /* 範例說明文字大小 - 可調 */
 
   /* ©️ [版權區專用設定] */
-  --footer-textColor: #666666;     /* 底部版權文字顏色 */
-  --footer-fontSize: 11px;         /* 底部版權字體大小 */
+  --footer-textColor: #666666;     /* 底部版權文字顏色 - 可調 */
+  --footer-fontSize: 11px;         /* 底部版權字體大小 - 可調 */
 
-  /* 📐 [通用字體設定] */
-  --font-size-text: 14px;          /* 全站內文說明字體大小 */
+  /* 📐 [字體設定] */
+  --font-size-text: 14px;          /* 全站說明字體大小 - 可調 */
 }
 
 /* ================================================================
@@ -58,10 +62,10 @@ body {
   position: sticky; 
   left: 0; 
   right: 0;
-  height: var(--header-height); /* 採用設定的 60px */
+  height: var(--header-height);   /* 採用設定的 60px */
   display: flex;
   align-items: center;
-  justify-content: center; /* 置中排版 */
+  justify-content: center;        /* 確保內容置中 */
   padding: 0 15px;
   font-size: 13px;
   font-weight: bold;
@@ -69,8 +73,8 @@ body {
   z-index: 1000; 
   white-space: nowrap;
 }
-#block-identity { top: 0; } /* 第一層：身分資訊 */
-#block-status { top: var(--header-height); } /* 第二層：狀態列 */
+#block-identity { top: 0; }
+#block-status { top: var(--header-height); } /* 黏在 60px 處 */
 
 /* 進度條樣式 */
 .progress-track {
@@ -85,16 +89,16 @@ body {
 }
 .progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease; }
 
-/* 🔴 頁面背景配色連動 (修正分頁二顏色顯示) */
+/* 🔴 關鍵配色連動邏輯 */
 body.page-1 { background-color: var(--p1-bgColor); color: var(--p1-textColor); }
 body.page-1 .sticky-bar { background-color: var(--p1-headerColor); color: var(--p1-titleColor); }
 
 body.page-2 { background-color: var(--p2-bgColor); color: var(--p2-textColor); }
 body.page-2 .sticky-bar { background-color: var(--p2-headerColor); color: var(--p2-titleColor); }
 
-/* 📋 內容區：核心修正 padding-top 避免被抬頭擋住 */
+/* 📋 內容區：補足頂部距離，防止被固定抬頭遮擋 */
 .tab-content { 
-  padding: var(--total-top-gap) 15px 20px 15px; /* 頂部精確預留 158px 空間 */
+  padding: var(--total-top-gap) 15px 20px 15px; /* 精確預留 158px */
   max-width: 600px; 
   margin: 0 auto; 
 }
@@ -146,7 +150,7 @@ details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: 
 .sample-img { max-width: 100%; border-radius: var(--sample-imgRadius); display: block; margin-bottom: 4px; }
 .sample-cap { font-size: var(--sample-capFontSize); font-weight: bold; line-height: 1.3; }
 
-/* 版權 Footer 與分隔線 */
+/* 版權 Footer */
 .footer { 
   text-align: center; 
   padding: 30px 20px; 
