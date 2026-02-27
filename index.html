@@ -19,6 +19,12 @@
         </div>
     </div>
 
+    <nav class="nav-tabs">
+        <a href="index.html" class="tab-btn active">手冊說明</a>
+        <a href="page2.html" class="tab-btn">上傳教學</a>
+        <a href="#" class="tab-btn">報到流程</a>
+    </nav>
+
     <main class="tab-content active">
 
         <details>
@@ -151,17 +157,15 @@ ______________________________________________</div>
     </footer>
 
     <script>
-        // 模擬系統後台動態抓取的資料 (預設讓您看 90 分的效果！)
         const fetchedData = {
             companyName: "FIZZ FIZZ.TAIPEI", 
             team: "外場團隊",
             type: "兼職",
             userName: "測試員",
-            currentScore: 90,   // 預設 90 分測試
-            currentProg: 45     // 預設進度 45% 測試
+            currentScore: 90,   
+            currentProg: 45     
         };
 
-        // 🏆 7階段動態稱號轉換器 (無括號說明版)
         function getRankTitle(score) {
             if (score >= 96) return "🌟 S級傳說神隊友";
             if (score >= 80) return "🟢 A級菁英玩家";
@@ -169,27 +173,22 @@ ______________________________________________</div>
             if (score >= 40) return "🧭 潛力探索者";
             if (score >= 20) return "🥈 C級潛力玩家";
             if (score >= 1)  return "🥉 實習小萌新";
-            return "🥚 報到新手村"; // 0分專屬
+            return "🥚 報到新手村"; 
         }
 
-        // 將變數與狀態自動填入畫面
         function applyDynamicData(data) {
-            // 替換公司與個人資訊
             document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
             document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
             document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
             document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
 
-            // 更新分數與稱號
             document.getElementById('score-text').innerText = data.currentScore + "分";
             document.getElementById('rank-text').innerText = getRankTitle(data.currentScore);
             
-            // 更新文字進度與圖形進度條寬度
             document.getElementById('prog-val').innerText = data.currentProg + "%";
             document.getElementById('prog-fill').style.width = data.currentProg + "%";
         }
 
-        // 頁面載入後自動執行
         window.onload = () => {
             applyDynamicData(fetchedData);
         };
