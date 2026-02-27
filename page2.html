@@ -15,7 +15,9 @@
 
     <div class="sticky-bar" id="block-status">
         戰力：<span id="rank-text">🥚 報到新手村</span>　｜　分數：<span id="score-text">0分</span>　｜　狀態：<span id="status-tag">📝 準備中</span>　｜　進度：<span id="prog-val">0%</span>
-        <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width: 0%;"></div></div>
+        <div class="progress-track">
+            <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
+        </div>
     </div>
 
     <nav class="nav-tabs">
@@ -28,17 +30,96 @@
 
         <details>
             <summary class="main-summary">⏫ 上傳檔案教學</summary>
-            <div class="details-body">1. 上傳之個人準備文件... (內容同前)</div>
+            <div class="details-body">1. 上傳之個人準備文件，請務必參考下方正確與錯誤範例。
+2. 檔案須符合本公司限定規格。
+
+<div style="line-height: 1.6; font-weight: bold; color: var(--p2-titleColor); background: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+🍎 手機系統-𝗜𝗢𝗦:
+點擊備忘錄
+↓
+點擊右下角
+↓
+點擊相機圖示
+↓
+點擊掃描文件  
+↓
+開始掃描
+↓
+存檔雲端上傳
+</div>
+
+<div style="line-height: 1.6; font-weight: bold; color: var(--p2-titleColor); background: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px;">
+🤖 手機系統-𝗔𝗻𝗱ｒｏｉｄ:
+點擊雲端硬碟
+↓
+點擊＋
+↓
+點擊掃描文件
+↓
+開始掃描
+↓
+存檔雲端上傳
+</div></div>
         </details>
 
         <details>
             <summary class="main-summary">👀 範例對照區</summary>
             <div class="details-body">
+                
                 <figure class="sample-box">
-                    <img class="sample-img" src="assets/體檢報告範本.jpg" alt="體檢範本">
+                    <strong style="font-size: 14px; color: var(--p2-titleColor);">📹 iPhone備忘錄掃描文件操作示範。</strong>
+                    <video controls preload="metadata" style="max-width: 100%; border-radius: 4px; display: block; margin-top: 5px;">
+                        <source src="assets/ios掃描範例.mp4" type="video/mp4">
+                        您的瀏覽器不支援影片播放。
+                    </video>
+                </figure>
+
+                <div style="margin-top: 15px; margin-bottom: 8px; font-weight: bold; color: var(--text-green);">以下為 ✅ 正確範例對照：</div>
+
+                <figure class="sample-box">
+                    <img class="sample-img" src="assets/體檢報告範本.jpg" alt="❗️體檢報告範本.jpg">
                     <figcaption class="sample-cap">✅ 正確範例-體檢報告上傳限定規格</figcaption>
                 </figure>
-                </div>
+
+                <figure class="sample-box">
+                    <img class="sample-img" src="assets/身分證範本-正面.jpg" alt="❗️身分證範本-正面.jpg">
+                    <figcaption class="sample-cap">✅ 正確範例-身分證正面範本</figcaption>
+                </figure>
+
+                <figure class="sample-box">
+                    <img class="sample-img" src="assets/身分證範本-背面.png" alt="❗️身分證範本-背面.png">
+                    <figcaption class="sample-cap">✅ 正確範例-身分證背面範本</figcaption>
+                </figure>
+
+                <figure class="sample-box">
+                    <img class="sample-img" src="assets/薪酬銀行範本.jpg" alt="❗️薪酬銀行範本.jpg">
+                    <figcaption class="sample-cap">✅ 正確範例-薪資戶頭範本</figcaption>
+                </figure>
+
+
+                <div style="margin-top: 15px; margin-bottom: 8px; font-weight: bold; color: var(--text-red);">以下為 ❌ 錯誤範例對照：</div>
+
+                <figure class="sample-box">
+                    <img class="sample-img" src="assets/錯誤範例-1.jpg" alt="❗️錯誤範例-1.jpg">
+                    <figcaption class="sample-cap">❌ 錯誤範例-雖格式正確但須要好閱讀</figcaption>
+                </figure>
+
+                <figure class="sample-box">
+                    <img class="sample-img" src="assets/錯誤範例-2.jpg" alt="❗️錯誤範例-2.jpg">
+                    <figcaption class="sample-cap">❌ 錯誤範例-四角未對四個角</figcaption>
+                </figure>
+
+                <figure class="sample-box">
+                    <img class="sample-img" src="assets/錯誤範例-3.jpg" alt="❗️錯誤範例-3.jpg">
+                    <figcaption class="sample-cap">❌ 錯誤範例-四角未對且有小手入鏡</figcaption>
+                </figure>
+
+                <figure class="sample-box">
+                    <img class="sample-img" src="assets/戶頭錯誤範例.jpg" alt="❗️戶頭錯誤範例.jpg">
+                    <figcaption class="sample-cap">❌ 錯誤範例-四角未對且嚴重切邊</figcaption>
+                </figure>
+
+            </div>
         </details>
 
     </main>
@@ -49,19 +130,47 @@
     </footer>
 
     <script>
-        /* JS 邏輯同 index.html，確保狀態同步顯示 */
-        const fetchedData = { companyName: "FIZZ FIZZ.TAIPEI", team: "外場團隊", type: "兼職", userName: "測試員", currentScore: 90, currentProg: 45 };
-        function getRankTitle(score) { if (score >= 96) return "🌟 S級傳說神隊友"; if (score >= 80) return "🟢 A級菁英玩家"; if (score >= 60) return "🥇 B級穩健玩家"; if (score >= 40) return "🧭 潛力探索者"; if (score >= 20) return "🥈 C級潛力玩家"; if (score >= 1)  return "🥉 實習小萌新"; return "🥚 報到新手村"; }
+        //* --------後台資料對接區--------*//
+        const fetchedData = { 
+            companyName: "FIZZ FIZZ.TAIPEI", 
+            team: "外場團隊", 
+            type: "兼職", 
+            userName: "測試員", 
+            currentScore: 90, 
+            currentProg: 45 
+        };
+        
+        // 🏆 7階段動態稱號轉換器 (已還原為完整展開版)
+        function getRankTitle(score) {
+            if (score >= 96) {
+                return "🌟 S級傳說神隊友";
+            } else if (score >= 80) {
+                return "🟢 A級菁英玩家";
+            } else if (score >= 60) {
+                return "🥇 B級穩健玩家";
+            } else if (score >= 40) {
+                return "🧭 潛力探索者";
+            } else if (score >= 20) {
+                return "🥈 C級潛力玩家";
+            } else if (score >= 1) {
+                return "🥉 實習小萌新";
+            } else {
+                return "🥚 報到新手村";
+            }
+        }
+
         function applyData(data) {
             document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
             document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
             document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
             document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
+            
             document.getElementById('score-text').innerText = data.currentScore + "分";
             document.getElementById('rank-text').innerText = getRankTitle(data.currentScore);
             document.getElementById('prog-val').innerText = data.currentProg + "%";
             document.getElementById('prog-fill').style.width = data.currentProg + "%";
         }
+
         window.onload = () => { applyData(fetchedData); };
     </script>
 </body>
