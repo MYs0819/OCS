@@ -1,52 +1,39 @@
-/* ================================================================
-【 🎨 STYLE CONFIG - 全站通用視覺控制面板 】
-版本：v1.4.0
-描述：修正分頁二色彩邏輯，並大幅縮減範例區間距。
-================================================================ */
-
+//* --------配色／字級設定區（可自行調整）--------*//
 :root {
-  /* ------------------------------------------------------------
-     📌 [分頁一：內容說明] 手冊與規範 (黃色系)
-     ------------------------------------------------------------ */
-  --p1-headerColor: #fff2cc;   /* 頂部淺黃 */
-  --p1-bgColor: #ffe599;       /* 背景深黃 */
-  --p1-titleColor: #434343;    
-  --p1-textColor: #434343;     
+  /* 📌 [分頁一：內容說明] 手冊與規範 (黃色系) */
+  --p1-headerColor: #fff2cc;   /* 頂部兩層固定列顏色 (淺黃) */
+  --p1-bgColor: #ffe599;       /* 頁面背景顏色 (深黃) */
+  --p1-titleColor: #434343;    /* 標題文字顏色 */
+  --p1-textColor: #434343;     /* 說明文字顏色 */
 
-  /* ------------------------------------------------------------
-     📌 [分頁二：上傳說明] 視覺化教學 (藍色系)
-     規則：上面淺、下面深
-     ------------------------------------------------------------ */
-  --p2-headerColor: #cfe2f3;   /* 頂部淺藍 */
-  --p2-bgColor: #a4c2f4;       /* 背景深藍 */
-  --p2-titleColor: #1c4587;    
-  --p2-textColor: #1c4587;     
+  /* 📌 [分頁二：上傳說明] 視覺化教學 (藍色系) */
+  --p2-headerColor: #cfe2f3;   /* 頂部兩層固定列顏色 (淺藍) */
+  --p2-bgColor: #a4c2f4;       /* 頁面背景顏色 (深藍) */
+  --p2-titleColor: #1c4587;    /* 標題文字顏色 (深藍) */
+  --p2-textColor: #1c4587;     /* 說明文字顏色 */
 
-  /* ------------------------------------------------------------
-     📂 [摺疊選單專用設定] 
-     ------------------------------------------------------------ */
-  --details-bgColor: #ffffff;      
-  --details-subBgColor: #fafafa;   
-  --details-titleColor: #434343;   
-  --details-textColor: #434343;    
-  --details-fontSize: 18px;        
-  --details-subFontSize: 16px;     
-  --details-radius: 8px;           
+  /* 📂 [摺疊選單專用設定] */
+  --details-bgColor: #ffffff;      /* 大摺疊背景色 */
+  --details-subBgColor: #fafafa;   /* 小摺疊背景色 */
+  --details-titleColor: #434343;   /* 摺疊標題文字顏色 */
+  --details-textColor: #434343;    /* 摺疊內文文字顏色 */
+  --details-fontSize: 18px;        /* 大摺疊標題字體大小，預設18px */
+  --details-subFontSize: 16px;     /* 小摺疊標題字體大小，預設16px */
+  --details-radius: 8px;           /* 摺疊選單圓角，預設8px */
 
-  /* ------------------------------------------------------------
-     👀 [範例對照區專用設定] - 已調緊間距
-     ------------------------------------------------------------ */
-  --sample-boxBgColor: #ffffff;    
-  --sample-boxRadius: 8px;         
-  --sample-imgRadius: 4px;         
-  --sample-capFontSize: 13px;      /* 稍微縮小一點字體讓排版更緊 */
+  /* 👀 [範例對照區專用設定] */
+  --sample-boxBgColor: #ffffff;    /* 範例框背景色 */
+  --sample-boxRadius: 8px;         /* 範例框圓角 */
+  --sample-imgRadius: 4px;         /* 圖片圓角 */
+  --sample-capFontSize: 13px;      /* 範例說明文字大小 */
 
   /* ©️ [版權區專用設定] */
-  --footer-textColor: #666666; 
-  --footer-fontSize: 11px;     
+  --footer-textColor: #666666;     /* 版權文字顏色 */
+  --footer-fontSize: 11px;         /* 版權字體大小 */
 
-  --font-size-text: 14px;      
-  --sticky-height: 45px;       
+  /* 📐 [通用尺寸設定] */
+  --font-size-text: 14px;          /* 全站說明內文字體大小，預設14px */
+  --sticky-height: 45px;           /* 每層固定列的高度，預設45px */
 }
 
 /* ================================================================
@@ -59,11 +46,12 @@ body {
   margin: 0; 
   font-family: "Varela Round", "Nunito", "jf-openhuninn", "微軟正黑體", sans-serif; 
   transition: background 0.3s; 
-  line-height: 1.5; /* 縮減行高 */
+  line-height: 1.5; 
 }
 
+/* 🚩 頂部三層固定邏輯：確保無論如何滑動都不會移動 */
 .sticky-bar {
-  position: sticky;
+  position: sticky; /* 使用 sticky 配合 top 實現固定 */
   left: 0; right: 0;
   height: var(--sticky-height);
   display: flex;
@@ -73,10 +61,13 @@ body {
   font-size: 13px;
   font-weight: bold;
   border-bottom: 1px solid rgba(0,0,0,0.05);
-  z-index: 100;
+  z-index: 1000; /* 確保在最上層 */
   white-space: nowrap;
 }
+#block-identity { top: 0; } /* 第一層：身分資訊列 */
+#block-status { top: var(--sticky-height); } /* 第二層：戰力狀態列 */
 
+/* 進度條樣式 */
 .progress-track {
   width: 60px; 
   background: rgba(0,0,0,0.1); 
@@ -89,24 +80,26 @@ body {
 }
 .progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease; }
 
+/* 頁面背景顏色連動 */
 body.page-1 { background-color: var(--p1-bgColor); color: var(--p1-textColor); }
 body.page-1 .sticky-bar { background-color: var(--p1-headerColor); color: var(--p1-titleColor); }
 
 body.page-2 { background-color: var(--p2-bgColor); color: var(--p2-textColor); }
 body.page-2 .sticky-bar { background-color: var(--p2-headerColor); color: var(--p2-titleColor); }
 
-.tab-content { padding: 15px 15px; max-width: 600px; margin: 0 auto; } /* 縮減內容區 Padding */
+/* 摺疊選單主結構 */
+.tab-content { padding: 15px 15px; max-width: 600px; margin: 0 auto; }
 
 details { 
   background-color: var(--details-bgColor);
   border-radius: var(--details-radius); 
-  margin-bottom: 10px; /* 縮小摺疊間距 */
+  margin-bottom: 10px; 
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   overflow: hidden;
 }
 
 summary { 
-  padding: 12px 15px; /* 縮小 Padding */
+  padding: 12px 15px; 
   font-weight: bold; 
   cursor: pointer; 
   list-style: none; 
@@ -130,44 +123,25 @@ details[open] > summary::after { content: "▲"; }
 .main-summary { font-size: var(--details-fontSize); border-bottom: 1px solid rgba(0,0,0,0.05); }
 .sub-summary { background-color: var(--details-subBgColor); font-size: var(--details-subFontSize); border-top: 1px solid #eee; }
 
-/* ------------------------------------------------------------
-   👀 [範例對照區] 緊湊排版
-   ------------------------------------------------------------ */
+/* 範例框樣式區 */
 .sample-box {
   background-color: var(--sample-boxBgColor);
   border-radius: var(--sample-boxRadius);
-  padding: 8px; /* 縮減內邊距 */
-  margin-bottom: 8px; /* 縮減與下一個範例的距離 */
+  padding: 8px;
+  margin-bottom: 8px;
   border: 1px solid rgba(0,0,0,0.05);
-  margin-left: 0; margin-right: 0;
   width: 100%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   display: block;
 }
+.sample-img { max-width: 100%; border-radius: var(--sample-imgRadius); display: block; margin-bottom: 4px; }
+.sample-cap { font-size: var(--sample-capFontSize); font-weight: bold; }
 
-.sample-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--sample-imgRadius);
-  display: block;
-  margin-bottom: 4px; /* 【關鍵】縮短圖片與文字的距離 */
-}
-
-.sample-cap {
-  font-size: var(--sample-capFontSize);
-  color: var(--details-textColor);
-  text-align: left;
-  line-height: 1.3;
-  padding-left: 2px;
-  font-weight: bold; 
-}
-
+/* 版權區樣式 */
 .footer { 
   text-align: center; 
   padding: 30px 20px; 
   font-size: var(--footer-fontSize); 
   color: var(--footer-textColor); 
-  line-height: 1.5; 
   border-top: 1px solid rgba(0,0,0,0.1); 
   margin-top: 15px; 
 }
