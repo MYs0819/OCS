@@ -6,11 +6,11 @@
 
 .nav-tabs { 
   display: flex; 
-  background: #ffffff; 
+  background: #1a1a1a; /* 改為深色背景 */
   position: sticky; 
   top: calc(45px * 2); /* 黏在兩層狀態列下方 (45px*2=90px) */
   z-index: 90; 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5); 
 }
 
 .tab-btn { 
@@ -19,7 +19,7 @@
   text-decoration: none; 
   padding: 15px 0; 
   font-weight: bold; 
-  color: #a0a0a0; 
+  color: #888888; /* 未選中顏色 */
   font-size: 14px; 
   border-bottom: 3px solid transparent;
   transition: all 0.2s ease;
@@ -27,11 +27,11 @@
 
 /* 被選中的分頁標籤樣式 */
 .tab-btn.active { 
-  color: #434343; 
-  border-bottom: 3px solid #434343; 
+  color: #FFFFFF; /* 選中改為白色 */
+  border-bottom: 3px solid #FFFFFF; 
 }
 
 /* 手機點擊效果優化 */
 .tab-btn:active {
-  background-color: rgba(0,0,0,0.02);
+  background-color: rgba(255,255,255,0.05);
 }
