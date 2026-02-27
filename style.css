@@ -46,6 +46,12 @@
   --font-size-btn: 16px;       
   --card-spacing: 20px;        
   --sticky-height: 45px;       
+
+  /* ------------------------------------------------------------
+     ©️ [版權區專用設定] Footer 控制
+     ------------------------------------------------------------ */
+  --footer-textColor: #666666; /* 版權文字顏色 */
+  --footer-fontSize: 11px;     /* 版權字體大小 */
 }
 
 /* ================================================================
@@ -78,14 +84,20 @@ body { margin: 0; font-family: -apple-system, "微軟正黑體", sans-serif; tra
 body.page-1 { background-color: var(--p1-bgColor); color: var(--p1-textColor); }
 body.page-1 .sticky-bar { background-color: var(--p1-headerColor); }
 body.page-1 .btn-primary { background-color: var(--p1-btnColor); color: var(--p1-btnText); border-radius: var(--p1-btnRadius); }
+body.page-1 details { background-color: #ffffff; }
+body.page-1 summary { color: var(--p1-titleColor); }
 
 body.page-2 { background-color: var(--p2-bgColor); color: var(--p2-textColor); }
 body.page-2 .sticky-bar { background-color: var(--p2-headerColor); }
 body.page-2 .btn-primary { background-color: var(--p2-btnColor); color: var(--p2-btnText); border-radius: var(--p2-btnRadius); }
+body.page-2 details { background-color: #ffffff; }
+body.page-2 summary { color: var(--p2-titleColor); }
 
 body.page-3 { background-color: var(--p3-bgColor); color: var(--p3-textColor); }
 body.page-3 .sticky-bar { background-color: var(--p3-headerColor); }
 body.page-3 .btn-primary { background-color: var(--p3-btnColor); color: var(--p3-btnText); border-radius: var(--p3-btnRadius); }
+body.page-3 details { background-color: #ffffff; }
+body.page-3 summary { color: var(--p3-titleColor); }
 
 /* 導覽分頁按鈕樣式 */
 .nav-tabs { 
@@ -104,16 +116,20 @@ body.page-3 .btn-primary { background-color: var(--p3-btnColor); color: var(--p3
 .tab-content.active { display: block; }
 
 details { 
-  background: rgba(255,255,255,0.5); 
   border-radius: 8px; 
   margin-bottom: 12px; 
   border: 1px solid rgba(0,0,0,0.05); 
   overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
-summary { padding: 15px; font-weight: bold; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+summary { padding: 15px; font-weight: bold; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 16px; }
 summary::after { content: "▼"; font-size: 10px; opacity: 0.5; }
 details[open] summary::after { content: "▲"; }
 .details-body { padding: 0 15px 15px 15px; font-size: var(--font-size-text); line-height: 1.7; white-space: pre-wrap; }
+
+/* 內部小摺疊選單的樣式區隔 */
+details details { box-shadow: none; border: none; border-top: 1px solid #eee; border-radius: 0; margin-bottom: 0; }
+details details summary { background: #fafafa; font-size: 15px; }
 
 /* 按鈕與進度條 */
 .btn-primary { 
@@ -125,6 +141,17 @@ details[open] summary::after { content: "▲"; }
 .progress-track { flex-grow: 1; background: rgba(0,0,0,0.1); height: 8px; border-radius: 4px; overflow: hidden; margin-left: 10px; }
 .progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease; }
 
-/* Footer */
-.footer { text-align: center; padding: 40px 20px; font-size: 11px; opacity: 0.6; line-height: 1.5; }
+/* 版權宣告 Footer (自動套用頂端變數) */
+.footer { 
+  text-align: center; 
+  padding: 40px 20px; 
+  font-size: var(--footer-fontSize); 
+  color: var(--footer-textColor); 
+  line-height: 1.5; 
+}
 .footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; }
+
+/* 特殊評分文字顏色 */
+.text-green { color: #10b981; font-weight: bold; }
+.text-gray { color: #6b7280; font-weight: bold; }
+.text-red { color: #ef4444; font-weight: bold; }
