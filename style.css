@@ -1,29 +1,36 @@
+/* ================================================================
+   【 🎨 STYLE CONFIG - 全站通用視覺控制面板 】
+   ================================================================ */
+
 //* --------配色／字級設定區（可自行調整）--------*//
 :root {
-    /* ==================== 0. 全站通用背景與字體 ==================== */
-    --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%); /* 全站底層背景 */
-    --bg-style-2: linear-gradient(180deg, #1a1a1a 0%, #333333 100%);             /* 備用漸層樣式 */
-    --bg-style-3: #262626;                                                       /* 展開後背景色 */
-    
-    --main-textColor: #FFFFFF;    /* 全站字體顏色改為純白 */
+    /* 📐 [頂部高度尺寸設定] */
+    --header-height: 60px;          /* 前兩排(身分列、狀態列)的高度 - 可調 */
+    --nav-height: 38px;             /* 第三排(分頁導覽列)的高度 - 可調 */
+    --total-top-gap: 158px;         /* 內容區頂部預留總高度 (60+60+38) - 可調 */
 
-    /* 📌 [分頁一：內容說明] 手冊與規範 (暗黑金屬系) */
-    --p1-headerColor: #1a1a1a;    /* 頂部固定列顏色 */
+    /* ==================== 0. 全站通用背景與字體 ==================== */
+    --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%); /* 全站背景 */
+    --bg-style-3: #262626;                                                       /* 展開後背景色 */
+    --main-textColor: #FFFFFF;                                                   /* 全站白色字體 */
+
+    /* 📌 [分頁一：內容說明] (暗黑系) */
+    --p1-headerColor: #1a1a1a;      
     --p1-bgColor: var(--bg-style-1); 
     --p1-titleColor: #FFFFFF;    
     --p1-textColor: #FFFFFF;     
 
-    /* 📌 [分頁二：上傳說明] 視覺化教學 (暗黑冷色系) */
+    /* 📌 [分頁二：上傳說明] (暗黑系) */
     --p2-headerColor: #1a1a1a;   
     --p2-bgColor: var(--bg-style-1); 
     --p2-titleColor: #FFFFFF;    
     --p2-textColor: #FFFFFF;     
 
     /* 📂 [摺疊選單專用設定] */
-    --details-bgColor: #333333;      /* 摺疊框未展開時底色 */
-    --details-subBgColor: #262626;   /* 展開後內部背景色 */
-    --details-titleColor: #FFFFFF;   /* 標題文字白色 */
-    --details-textColor: #FFFFFF;    /* 內容文字白色 */
+    --details-bgColor: #333333;      /* 摺疊框未展開底色 */
+    --details-subBgColor: #262626;   /* 展開後背景色 */
+    --details-titleColor: #FFFFFF;   
+    --details-textColor: #FFFFFF;    
     --details-fontSize: 18px;        
     --details-subFontSize: 16px;     
     --details-radius: 8px;           
@@ -40,7 +47,6 @@
 
     /* 📐 [通用尺寸設定] */
     --font-size-text: 14px;      
-    --sticky-height: 45px;       
 }
 
 /* ================================================================
@@ -54,14 +60,15 @@ body {
     font-family: "Varela Round", "Nunito", "jf-openhuninn", "微軟正黑體", sans-serif; 
     transition: background 0.3s; 
     line-height: 1.6;
-    color: var(--main-textColor); /* 強制全局白色 */
+    color: var(--main-textColor);
+    min-height: 100vh; /* 確保背景漸層涵蓋全高度 */
 }
 
-/* 頂部固定列 */
+/* 🚩 頂部三層固定邏輯：還原垂直高度 60px */
 .sticky-bar {
     position: sticky;
     left: 0; right: 0;
-    height: var(--sticky-height);
+    height: var(--header-height);
     display: flex;
     align-items: center;
     justify-content: center; 
@@ -69,13 +76,13 @@ body {
     font-size: 13px;
     font-weight: bold;
     border-bottom: 1px solid rgba(255,255,255,0.1);
-    z-index: 100;
+    z-index: 1000;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 #block-identity { top: 0; }
-#block-status { top: var(--sticky-height); }
+#block-status { top: var(--header-height); } /* 黏在第一層 60px 下方 */
 
 /* 進度條 */
 .progress-track {
@@ -90,15 +97,19 @@ body {
 }
 .progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease; }
 
-/* 顏色連動邏輯 */
-body.page-1 { background: var(--p1-bgColor); color: var(--p1-textColor); }
+/* 背景連動：確保全網頁背景變色 */
+body.page-1 { background: var(--p1-bgColor); background-attachment: fixed; }
 body.page-1 .sticky-bar { background-color: var(--p1-headerColor); color: var(--p1-titleColor); }
 
-body.page-2 { background: var(--p2-bgColor); color: var(--p2-textColor); }
+body.page-2 { background: var(--p2-bgColor); background-attachment: fixed; }
 body.page-2 .sticky-bar { background-color: var(--p2-headerColor); color: var(--p2-titleColor); }
 
-/* 摺疊選單內容區樣式 */
-.tab-content { padding: 25px 20px; max-width: 600px; margin: 0 auto; }
+/* 📋 內容區：修正 padding-top (158px) 避免擋到摺疊選單 */
+.tab-content { 
+    padding: var(--total-top-gap) 20px 25px 20px; 
+    max-width: 600px; 
+    margin: 0 auto; 
+}
 
 details { 
     background-color: var(--details-bgColor);
@@ -123,10 +134,10 @@ summary::-webkit-details-marker { display: none; }
 summary::after { content: "▼"; font-size: 12px; opacity: 0.8; }
 details[open] > summary::after { content: "▲"; }
 
-/* 展開後的背景顏色調整 */
+/* 展開後的背景顏色切換為 #262626 */
 details[open] > .details-body, 
 details[open] > details {
-    background-color: var(--bg-style-3);
+    background-color: var(--details-subBgColor);
 }
 
 .details-body { 
@@ -140,7 +151,7 @@ details[open] > details {
 .sub-summary { background-color: rgba(255,255,255,0.05); font-size: var(--details-subFontSize); border-top: 1px solid rgba(255,255,255,0.1); }
 details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: none; }
 
-/* 範例對照區 */
+/* 範例對照區樣式 */
 .sample-box {
     background-color: var(--sample-boxBgColor);
     border-radius: var(--sample-boxRadius);
@@ -148,7 +159,6 @@ details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: 
     margin-bottom: 15px;
     border: 1px solid rgba(255,255,255,0.1);
     width: 100%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     display: inline-block;
 }
 .sample-img {
@@ -164,17 +174,18 @@ details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: 
     text-align: left;
     line-height: 1.5;
     padding-left: 5px;
-    font-weight: bold; 
+    font-weight: bold; 
 }
 
-.footer { 
-    text-align: center; 
-    padding: 40px 20px; 
-    font-size: var(--footer-fontSize); 
-    color: var(--footer-textColor); 
-    line-height: 1.5; 
-    border-top: 1px solid rgba(255,255,255,0.1); 
-    margin-top: 20px; 
+/* 版權宣告 */
+.footer { 
+    text-align: center; 
+    padding: 40px 20px; 
+    font-size: var(--footer-fontSize); 
+    color: var(--footer-textColor); 
+    line-height: 1.5; 
+    border-top: 1px solid rgba(255,255,255,0.1); 
+    margin-top: 20px; 
 }
 .footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; filter: brightness(0) invert(1); }
 
