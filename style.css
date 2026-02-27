@@ -6,65 +6,58 @@
 
 :root {
   /* ------------------------------------------------------------
-      📌 [全站暗黑配色定義]
+     📌 [分頁一：內容說明] 手冊與規範 (黃色系)
+     規則：上面淺、下面深
      ------------------------------------------------------------ */
-  --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%);
-  --bg-style-2: linear-gradient(180deg, #1a1a1a 0%, #333333 100%);
-  --bg-style-3: #262626;
+  --p1-headerColor: #fff2cc;   /* 頂部兩層固定列 (淺黃) */
+  --p1-bgColor: #ffe599;       /* 頁面背景色 (深黃) */
+  --p1-titleColor: #434343;    
+  --p1-textColor: #434343;     
 
   /* ------------------------------------------------------------
-      📌 [分頁一：內容說明] 手冊與規範 (套用暗黑風格)
-      規則：上面淺、下面深
+     📌 [分頁二：上傳說明] 視覺化教學 (藍色系)
+     規則：上面淺、下面深 (已修正)
      ------------------------------------------------------------ */
-  --p1-headerColor: #1a1a1a;   /* 頂部固定列背景 */
-  --p1-bgColor: var(--bg-style-1); 
-  --p1-titleColor: #FFFFFF;    /* 字體改為純白 */
-  --p1-textColor: #FFFFFF;     /* 字體改為純白 */
+  --p2-headerColor: #cfe2f3;   /* 頂部兩層固定列 (淺藍) */
+  --p2-bgColor: #a4c2f4;       /* 頁面背景色 (深藍) */
+  --p2-titleColor: #1c4587;    
+  --p2-textColor: #1c4587;     
 
   /* ------------------------------------------------------------
-      📌 [分頁二：上傳說明] 視覺化教學 (套用暗黑風格)
-      規則：上面淺、下面深
+     📌 [分頁三：報到流程] 動態闖關區 (紅色系)
      ------------------------------------------------------------ */
-  --p2-headerColor: #1a1a1a;   
-  --p2-bgColor: var(--bg-style-1); 
-  --p2-titleColor: #FFFFFF;    
-  --p2-textColor: #FFFFFF;     
+  --p3-headerColor: #f4cccc;   
+  --p3-bgColor: #ea9999;       
+  --p3-titleColor: #660000;    
+  --p3-textColor: #434343;     
 
   /* ------------------------------------------------------------
-      📌 [分頁三：報到流程] 動態闖關區
+     📂 [摺疊選單專用設定] 
      ------------------------------------------------------------ */
-  --p3-headerColor: #1a1a1a;   
-  --p3-bgColor: var(--bg-style-1); 
-  --p3-titleColor: #FFFFFF;    
-  --p3-textColor: #FFFFFF;     
-
-  /* ------------------------------------------------------------
-      📂 [摺疊選單專用設定] 
-     ------------------------------------------------------------ */
-  --details-bgColor: #333333;      /* 框框底色 #333333 */
-  --details-subBgColor: #262626;   /* 展開後顏色 #262626 */
-  --details-titleColor: #FFFFFF;   
-  --details-textColor: #FFFFFF;    
+  --details-bgColor: #ffffff;      
+  --details-subBgColor: #fafafa;   
+  --details-titleColor: #434343;   
+  --details-textColor: #434343;    
   --details-fontSize: 18px;        /* 大摺疊標題 18px */
   --details-subFontSize: 16px;     /* 小摺疊標題 16px */
   --details-radius: 8px;           
 
   /* ------------------------------------------------------------
-      👀 [範例對照區專用設定]
+     👀 [範例對照區專用設定]
      ------------------------------------------------------------ */
-  --sample-boxBgColor: #333333;    
+  --sample-boxBgColor: #ffffff;    
   --sample-boxRadius: 8px;         
   --sample-imgRadius: 4px;         
   --sample-capFontSize: 14px;      
 
   /* ------------------------------------------------------------
-      ©️ [版權區專用設定] Footer 控制
+     ©️ [版權區專用設定] Footer 控制
      ------------------------------------------------------------ */
-  --footer-textColor: #bbbbbb; 
+  --footer-textColor: #666666; 
   --footer-fontSize: 11px;     
 
   /* ------------------------------------------------------------
-      📐 [通用尺寸設定] 
+     📐 [通用尺寸設定] 
      ------------------------------------------------------------ */
   --font-size-text: 14px;      /* 摺疊內文字體 14px */
   --sticky-height: 45px;       
@@ -82,7 +75,6 @@ body {
   font-family: "Varela Round", "Nunito", "jf-openhuninn", "微軟正黑體", sans-serif; 
   transition: background 0.3s; 
   line-height: 1.6;
-  color: #FFFFFF; /* 全域字體白色 */
 }
 
 /* 頂部固定列基礎樣式 (置中對齊) */
@@ -96,7 +88,7 @@ body {
   padding: 0 15px;
   font-size: 13px;
   font-weight: bold;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
   z-index: 100;
   white-space: nowrap;
   overflow: hidden;
@@ -108,7 +100,7 @@ body {
 /* 短版進度條 */
 .progress-track {
   width: 60px; 
-  background: rgba(255,255,255,0.2); 
+  background: rgba(0,0,0,0.1); 
   height: 8px; 
   border-radius: 4px; 
   overflow: hidden; 
@@ -119,11 +111,11 @@ body {
 .progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease; }
 
 /* 顏色連動邏輯 */
-body.page-1 { background: var(--p1-bgColor); background-attachment: fixed; color: var(--p1-textColor); }
-body.page-1 .sticky-bar { background: var(--p1-headerColor); color: var(--p1-titleColor); }
+body.page-1 { background-color: var(--p1-bgColor); color: var(--p1-textColor); }
+body.page-1 .sticky-bar { background-color: var(--p1-headerColor); color: var(--p1-titleColor); }
 
-body.page-2 { background: var(--p2-bgColor); background-attachment: fixed; color: var(--p2-textColor); }
-body.page-2 .sticky-bar { background: var(--p2-headerColor); color: var(--p2-titleColor); }
+body.page-2 { background-color: var(--p2-bgColor); color: var(--p2-textColor); }
+body.page-2 .sticky-bar { background-color: var(--p2-headerColor); color: var(--p2-titleColor); }
 
 /* 內容區與摺疊選單 */
 .tab-content { padding: 25px 20px; max-width: 600px; margin: 0 auto; }
@@ -132,7 +124,7 @@ details {
   background-color: var(--details-bgColor);
   border-radius: var(--details-radius); 
   margin-bottom: 12px; 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   overflow: hidden;
 }
 
@@ -151,14 +143,6 @@ summary::-webkit-details-marker { display: none; }
 summary::after { content: "▼"; font-size: 12px; opacity: 0.5; }
 details[open] > summary::after { content: "▲"; }
 
-/* 分頁一下面框框展開後是這個顏色 #262626 */
-details[open] > .details-body {
-  background-color: var(--details-subBgColor);
-}
-details[open] > details {
-  background-color: var(--details-subBgColor);
-}
-
 .details-body { 
   padding: 15px; 
   font-size: var(--font-size-text); 
@@ -166,8 +150,8 @@ details[open] > details {
   white-space: pre-wrap; 
 }
 
-.main-summary { font-size: var(--details-fontSize); border-bottom: 1px solid rgba(255,255,255,0.05); }
-.sub-summary { background-color: rgba(255,255,255,0.03); font-size: var(--details-subFontSize); border-top: 1px solid rgba(255,255,255,0.05); }
+.main-summary { font-size: var(--details-fontSize); border-bottom: 1px solid rgba(0,0,0,0.05); }
+.sub-summary { background-color: var(--details-subBgColor); font-size: var(--details-subFontSize); border-top: 1px solid #eee; }
 details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: none; }
 
 /* 範例對照區樣式 */
@@ -176,10 +160,10 @@ details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: 
   border-radius: var(--sample-boxRadius);
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(0,0,0,0.05);
   margin-left: 0; margin-right: 0;
   width: 100%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   display: inline-block;
 }
 .sample-img {
@@ -205,10 +189,40 @@ details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: 
   font-size: var(--footer-fontSize); 
   color: var(--footer-textColor); 
   line-height: 1.5; 
-  border-top: 1px solid rgba(255,255,255,0.1); 
+  border-top: 1px solid rgba(0,0,0,0.1); 
   margin-top: 20px; 
 }
-.footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; filter: brightness(0) invert(1); }
+.footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; }
 
 .text-green { color: #10b981; font-weight: bold; }
 .text-red { color: #ef4444; font-weight: bold; }
+
+/* ================================================================
+【 🎡 左右滑動專用容器 】(本次新增)
+================================================================ */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding-bottom: 10px;
+  /* 讓滑動更順暢的語法 */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 當 sample-box 放在滑動容器內時，固定它的寬度並關閉底部 margin */
+.horizontal-scroll .sample-box {
+  flex: 0 0 240px; 
+  width: 240px;
+  margin-bottom: 0; 
+  scroll-snap-align: start;
+}
+
+/* 美化底部的捲軸 */
+.horizontal-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
