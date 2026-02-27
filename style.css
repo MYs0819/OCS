@@ -47,7 +47,8 @@
   --details-bgColor: #333333;      /* 摺疊框未展開時的預設底色 (深灰) */
   --details-subBgColor: #262626;   /* 摺疊框展開後的內部背景色 (更深的灰) */
   --details-titleColor: #FFFFFF;   /* 摺疊框大標題的文字顏色：純白 */
-  --details-textColor: #FFFFFF;    /* 摺疊框展開後的內文說明顏色：純白 */
+  --details-subTitleColor: #efefef; /* 小摺疊標題的文字顏色：淺白 */
+  --details-textColor: #cccccc;    /* 摺疊框展開後的內文說明顏色：比 #efefef 深一點 */
   --details-fontSize: 18px;        /* 大摺疊標題 (main-summary) 字體大小 18px */
   --details-subFontSize: 16px;     /* 小摺疊標題 (sub-summary) 字體大小 16px */
   --details-radius: 8px;           /* 摺疊框四周的圓角弧度 */
@@ -64,8 +65,8 @@
   /* ------------------------------------------------------------
      ©️ [版權區專用設定] Footer 控制
      ------------------------------------------------------------ */
-  --footer-textColor: #bbbbbb; /* Footer 版權文字顏色 (淺灰) */
-  --footer-fontSize: 11px;     /* Footer 版權文字大小 */
+  --footer-textColor: #999999; /* Footer 版權文字顏色 */
+  --footer-fontSize: 14px;     /* Footer 版權文字大小 */
 
   /* ------------------------------------------------------------
      📐 [通用尺寸設定] 
@@ -177,13 +178,13 @@ details[open] > details {
 .details-body { 
   padding: 15px; 
   font-size: var(--font-size-text); 
-  color: var(--details-textColor);
+  color: var(--details-textColor); /* 已套用比 #efefef 深一點的設定 */
   white-space: pre-wrap; /* 嚴格保留 HTML 內的換行與空格設定 */
 }
 
 /* 區分大標與小標的外觀 */
 .main-summary { font-size: var(--details-fontSize); border-bottom: 1px solid rgba(255,255,255,0.05); } /* 大標下方加一條暗線 */
-.sub-summary { background-color: rgba(255,255,255,0.03); font-size: var(--details-subFontSize); border-top: 1px solid rgba(255,255,255,0.05); } /* 小標上方加一條暗線區隔 */
+.sub-summary { background-color: rgba(255,255,255,0.03); font-size: var(--details-subFontSize); color: var(--details-subTitleColor); border-top: 1px solid rgba(255,255,255,0.05); } /* 小標上方加一條暗線區隔，並套用專屬顏色 */
 details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: none; } /* 巢狀選單內層去除框線陰影 */
 
 /* ================================================================
