@@ -7,7 +7,7 @@
   display: flex;        /* 啟用彈性佈局，讓三個按鈕平分寬度並排 */
   background: #1a1a1a;  /* 配合暗黑模式，背景改為極深灰 */
   position: sticky;     /* 鎖定在頁面上方不動 */
-  top: calc(45px * 2);  /* 黏在兩層狀態列下方 (45px*2=90px的位置) */
+  top: calc(45px * 3);  /* 黏在三層狀態列下方 (45px*3=135px的位置) */
   z-index: 90;          /* 層級設定：確保低於上方狀態列(100)，但高於下方內容區 */
   box-shadow: 0 2px 5px rgba(0,0,0,0.5); /* 底部陰影加深以融入暗黑背景 */
   border-bottom: 1px solid rgba(255,255,255,0.05); /* 底部增加極淡分隔線 */
