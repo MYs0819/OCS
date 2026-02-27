@@ -6,37 +6,30 @@
     <title>入職報到闖關系統</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="page-1"> <div class="sticky-bar" id="block-identity">
-        <span class="dyn-company">載入中...</span> | <span class="dyn-team">載入中...</span> | <span class="dyn-type">載入中...</span> | <span class="dyn-name">載入中...</span>
+<body class="page-1">
+
+    <div class="sticky-bar" id="block-identity">
+        <span class="dyn-company">載入中...</span>　｜　<span class="dyn-team">載入中...</span>　｜　<span class="dyn-type">載入中...</span>　｜　<span class="dyn-name">載入中...</span>
     </div>
 
     <div class="sticky-bar" id="block-status">
-        戰力：<span id="score-text">🌟 S級傳說神隊友 (90分)</span> 
-        <span style="margin: 0 10px; opacity: 0.3;">|</span>
-        狀態：<span id="status-tag">📝 準備中</span>
-    </div>
-
-    <div class="sticky-bar" id="block-progress">
-        進度：<span id="prog-val">0%</span>
-        <div class="progress-track">
-            <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
-        </div>
+        戰力：<span id="rank-text">🥚 報到新手村</span>　｜　分數：<span id="score-text">0分</span>　｜　狀態：<span id="status-tag">📝 準備中</span>　｜　進度：<span id="prog-val">0%</span>
     </div>
 
     <main class="tab-content active">
 
         <details open>
-            <summary>🏛️ 入職報到說明</summary>
+            <summary class="main-summary">🔐 隱私聲明與填寫公約</summary>
             
             <details>
-                <summary>【聲明】</summary>
+                <summary class="sub-summary">【聲明】</summary>
                 <div class="details-body">1. 此表單僅限錄取者使用.
 2. 若非上述身分請立即退出此表單.
 3. 此表所有權歸屬<span class="dyn-company">本公司</span>.</div>
             </details>
 
             <details>
-                <summary>【填寫前須知事項】</summary>
+                <summary class="sub-summary">【填寫前須知事項】</summary>
                 <div class="details-body">1. 請依照表單順序執行填寫.
 2. 請先閱讀後有疑問再發問,勿未查看直接詢問.
 3. 填寫表單若遇到困難請向人資承辦提出職場禮貌詢問.
@@ -44,9 +37,13 @@
 5. 每個階段未經管理員審核通過,無法解鎖下一階段.
 6. <span class="dyn-company">本公司</span>-此表單簡稱本公司.</div>
             </details>
+        </details>
 
+        <details>
+            <summary class="main-summary">🏛️ 入職報到說明</summary>
+            
             <details>
-                <summary>【報到前五大文件】</summary>
+                <summary class="sub-summary">【報到前五大文件】</summary>
                 <div class="details-body">1. 報到前必須準備五大文件,當日要繳交
     A. 經認證醫療機構-勞工體格檢查報告.
     B. 經認證醫療機構-食品從業人員體檢報告.
@@ -54,14 +51,13 @@
     D. 前份工作健保轉出證明.(新鮮人免附)
     E. 前份工作離職證明.(新鮮人免附)
 2. 請準備齊全後再送出表單且截圖回報.
-3. 主主動積極回報處理狀況.
+3. 主動積極回報處理狀況.
 4. 每個階段未經管理員審核通過,無法解鎖下一階段.</div>
             </details>
 
             <details>
-                <summary>【報到文件用途說明】</summary>
-                <div class="details-body">________________________________________________
-1. 一般勞工體格檢查報告：
+                <summary class="sub-summary">【報到文件用途說明】</summary>
+                <div class="details-body">1. 一般勞工體格檢查報告：
 ❗️依據《職業安全衛生法》§20
 勞工健康保護規則§16~17
 ⏍ 未滿40歲，提交的體檢報告必須在5年內。
@@ -77,28 +73,27 @@
 3. 兩吋照片一張：
 ❗️用於個人資料建檔使用。
 
-4.  前份工作健保轉出證明：
+4. 前份工作健保轉出證明：
 ❗️檢核後加保用。
 
 5. 前份工作離職證明：
-❗️檢核用。
-______________________________________________</div>
+❗️檢核用。</div>
             </details>
         </details>
 
         <details>
-            <summary>🏅 積極度評核標準</summary>
-            <div class="details-body">👑 105分以上：[ 👑 卓越表現 ] (早鳥完成、全數過關)
-<span class="text-green">🟢 80-104分：綠色文字。良好。</span>
-<span class="text-gray">⚠️ 60-79分：灰色粗體 [ ⚠ 尚在觀察 ]。</span>
-<span class="text-red">🛑 60分以下：紅色粗體 [ 🛑 資格重評 ]。</span></div>
+            <summary class="main-summary">🏅 積極度評核標準</summary>
+            <div class="details-body">👑 96-100分：[ 👑 卓越表現 ]
+<span class="text-green">🟢 80-95分：[ 🟢 表現良好 ]</span>
+<span class="text-gray">⚠️ 60-79分：[ ⚠ 尚在觀察 ]</span>
+<span class="text-red">🛑 60分以下：[ 🛑 資格重評 ]</span></div>
         </details>
 
         <details>
-            <summary>🛎 常見提問回應區</summary>
+            <summary class="main-summary">🛎 常見提問回應區</summary>
             
             <details>
-                <summary>💰 薪資轉帳相關</summary>
+                <summary class="sub-summary">💰 薪資轉帳相關</summary>
                 <div class="details-body">1. 本公司配合薪資轉帳銀行：
 ❗️台新國際商業銀行。
 
@@ -121,7 +116,7 @@ ______________________________________________</div>
             </details>
 
             <details>
-                <summary>🩺 體、健檢報告相關</summary>
+                <summary class="sub-summary">🩺 體、健檢報告相關</summary>
                 <div class="details-body">1. 是否可以僅繳交一份體、健檢報告：
 ❗️若體、健檢報告內有包含下列：
 食品從業人員體檢、一般勞工體格檢查的項目，
@@ -151,20 +146,39 @@ ______________________________________________</div>
     </footer>
 
     <script>
-        // 模擬系統後台動態抓取的資料 (未來可串接 Google Sheets API)
+        // 模擬系統後台動態抓取的資料 (包含公司資訊與初始分數)
         const fetchedData = {
             companyName: "FIZZ FIZZ.TAIPEI", 
             team: "外場團隊",
             type: "兼職",
-            userName: "測試員"
+            userName: "測試員",
+            currentScore: 0,   // 預設 0 分
+            currentProg: 0     // 預設進度 0%
         };
 
-        // 將變數自動填入畫面上的對應位置
+        // 🏆 7階段動態稱號轉換器 (無括號說明版)
+        function getRankTitle(score) {
+            if (score >= 96) return "🌟 S級傳說神隊友";
+            if (score >= 80) return "🟢 A級菁英玩家";
+            if (score >= 60) return "🥇 B級穩健玩家";
+            if (score >= 40) return "🧭 潛力探索者";
+            if (score >= 20) return "🥈 C級潛力玩家";
+            if (score >= 1)  return "🥉 實習小萌新";
+            return "🥚 報到新手村"; // 0分專屬
+        }
+
+        // 將變數與狀態自動填入畫面
         function applyDynamicData(data) {
+            // 替換公司與個人資訊
             document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
             document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
             document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
             document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
+
+            // 更新分數與稱號
+            document.getElementById('score-text').innerText = data.currentScore + "分";
+            document.getElementById('rank-text').innerText = getRankTitle(data.currentScore);
+            document.getElementById('prog-val').innerText = data.currentProg + "%";
         }
 
         // 頁面載入後自動執行
