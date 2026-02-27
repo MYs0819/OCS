@@ -9,12 +9,16 @@
 </head>
 <body class="page-2">
 
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="">
+    </div>
+
     <div class="sticky-bar" id="block-identity">
         <span class="dyn-company">載入中...</span>　｜　<span class="dyn-team">載入中...</span>　｜　<span class="dyn-type">載入中...</span>　｜　<span class="dyn-name">載入中...</span>
     </div>
 
     <div class="sticky-bar" id="block-status">
-        戰力：<span id="rank-text">🥚 報到新手村</span>　｜　分數：<span id="score-text">0分</span>　｜　狀態：<span id="status-tag">📝 準備中</span>　｜　進度：<span id="prog-val">0%</span>
+        战力：<span id="rank-text">🥚 報到新手村</span>　｜　分數：<span id="score-text">0分</span>　｜　狀態：<span id="status-tag">📝 準備中</span>　｜　進度：<span id="prog-val">0%</span>
         <div class="progress-track">
             <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
         </div>
@@ -33,7 +37,7 @@
             <div class="details-body">1. 上傳之個人準備文件，請務必參考下方正確與錯誤範例。
 2. 檔案須符合本公司限定規格。
 
-<div style="line-height: 1.8; font-weight: bold; color: var(--p2-titleColor); background: rgba(255,255,255,0.6); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+<div style="line-height: 1.8; font-weight: bold; color: var(--p2-titleColor); background: var(--sample-boxBgColor); padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
 🍎 手機系統-IOS:
 點擊備忘錄
 ↓
@@ -48,7 +52,7 @@
 存檔雲端上傳
 </div>
 
-<div style="line-height: 1.8; font-weight: bold; color: var(--p2-titleColor); background: rgba(255,255,255,0.6); padding: 15px; border-radius: 8px;">
+<div style="line-height: 1.8; font-weight: bold; color: var(--p2-titleColor); background: var(--sample-boxBgColor); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 1px 3px rgba(0,0,0,0.3);">
 🤖 手機系統-Android:
 點擊雲端硬碟
 ↓
@@ -75,22 +79,22 @@
                 <div style="margin-top: 15px; margin-bottom: 8px; font-weight: bold; color: var(--text-green);">以下為 ✅ 正確範例對照：</div>
 
                 <div class="horizontal-scroll">
-                    <figure class="sample-box">
+                    <figure class="sample-box" onclick="zoomImg(this)">
                         <img class="sample-img" src="assets/體檢報告範本.jpg" alt="❗️體檢報告範本.jpg">
                         <figcaption class="sample-cap">✅ 正確範例-體檢報告上傳限定規格</figcaption>
                     </figure>
 
-                    <figure class="sample-box">
+                    <figure class="sample-box" onclick="zoomImg(this)">
                         <img class="sample-img" src="assets/身分證範本-正面.jpg" alt="❗️身分證範本-正面.jpg">
                         <figcaption class="sample-cap">✅ 正確範例-身分證正面範本</figcaption>
                     </figure>
 
-                    <figure class="sample-box">
+                    <figure class="sample-box" onclick="zoomImg(this)">
                         <img class="sample-img" src="assets/身分證範本-背面.png" alt="❗️身分證範本-背面.png">
                         <figcaption class="sample-cap">✅ 正確範例-身分證背面範本</figcaption>
                     </figure>
 
-                    <figure class="sample-box">
+                    <figure class="sample-box" onclick="zoomImg(this)">
                         <img class="sample-img" src="assets/薪酬銀行範本.jpg" alt="❗️薪酬銀行範本.jpg">
                         <figcaption class="sample-cap">✅ 正確範例-薪資戶頭範本</figcaption>
                     </figure>
@@ -99,27 +103,26 @@
                 <div style="margin-top: 15px; margin-bottom: 8px; font-weight: bold; color: var(--text-red);">以下為 ❌ 錯誤範例對照：</div>
 
                 <div class="horizontal-scroll">
-                    <figure class="sample-box">
+                    <figure class="sample-box" onclick="zoomImg(this)">
                         <img class="sample-img" src="assets/錯誤範例-1.jpg" alt="❗️錯誤範例-1.jpg">
                         <figcaption class="sample-cap">❌ 錯誤範例-雖格式正確但須要好閱讀</figcaption>
                     </figure>
 
-                    <figure class="sample-box">
+                    <figure class="sample-box" onclick="zoomImg(this)">
                         <img class="sample-img" src="assets/錯誤範例-2.jpg" alt="❗️錯誤範例-2.jpg">
                         <figcaption class="sample-cap">❌ 錯誤範例-四角未對四個角</figcaption>
                     </figure>
 
-                    <figure class="sample-box">
+                    <figure class="sample-box" onclick="zoomImg(this)">
                         <img class="sample-img" src="assets/錯誤範例-3.jpg" alt="❗️錯誤範例-3.jpg">
                         <figcaption class="sample-cap">❌ 錯誤範例-四角未對且有小手入鏡</figcaption>
                     </figure>
 
-                    <figure class="sample-box">
+                    <figure class="sample-box" onclick="zoomImg(this)">
                         <img class="sample-img" src="assets/戶頭錯誤範例.jpg" alt="❗️戶頭錯誤範例.jpg">
                         <figcaption class="sample-cap">❌ 錯誤範例-四角未對且嚴重切邊</figcaption>
                     </figure>
                 </div>
-
             </div>
         </details>
     </main>
@@ -158,6 +161,15 @@
             document.getElementById('prog-fill').style.width = data.currentProg + "%";
         }
         window.onload = () => { applyData(fetchedData); };
+
+        // ✅ 新增：點擊圖片放大的專屬控制腳本
+        function zoomImg(el) {
+            const img = el.querySelector('img');
+            if(img) {
+                document.getElementById('lightbox-img').src = img.src;
+                document.getElementById('lightbox').style.display = 'flex';
+            }
+        }
     </script>
 </body>
 </html>
