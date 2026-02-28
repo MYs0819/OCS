@@ -4,13 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💼 勇者入職試煉</title>
-    
-    <meta property="og:title" content="🛠️｜MYs系統｜新手村登入區" />
-    <meta property="og:description" content="闖關冒險即將開始！請詳閱任務指南並完成關卡，解鎖職場新身分！" />
-    <meta property="og:image" content="https://mys0819.github.io/MYs/assets/img1/MYs_logo_去背1.png" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mys0819.github.io/MYs/" />
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
     <script src="game-engine.js"></script>
@@ -31,12 +24,9 @@
 
     <div class="sticky-bar" id="block-status-3" style="top: 135px;">
         🏆 冒險積分：<span id="score-text">0分</span>
-        <div class="progress-track">
-            <div class="progress-fill" id="score-fill" style="width: 0%;"></div>
-        </div>　｜　⚔️ 攻略進度：<span id="prog-val">0%</span>
-        <div class="progress-track">
-            <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
-        </div>
+        <div class="progress-track"><div class="progress-fill" id="score-fill" style="width: 0%;"></div></div>
+        　｜　⚔️ 攻略進度：<span id="prog-val">0%</span>
+        <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width: 0%;"></div></div>
     </div>
 
     <nav class="nav-tabs" style="top: 180px;">
@@ -47,7 +37,7 @@
 
     <main class="tab-content active">
         <details>
-            <summary class="main-summary">🔐 隱私聲明與公約</summary>
+            <summary class="main-summary">🔐 隱私聲明公約</summary>
             <details>
                 <summary class="sub-summary">【本表單聲明啟示】</summary>
                 <div class="details-body">■ 此表單僅限錄取者使用.
@@ -106,26 +96,27 @@
         </details>
 
         <details>
-            <summary class="main-summary">🛡️ 裝備修復指南 (狀態與退件說明)</summary>
+            <summary class="main-summary">🛡️ 退件說明指南</summary>
             <div class="details-body">
 ■ 狀態顯示說明：
-⚔️ 狩獵裝備中：代表「資料已上傳」.
-⚖️ 提交公會審查：代表「資料傳完，等待審核」.
-⏳ 系統鑑定中：代表「人資正在審核中」.
-❌ 強化失敗：代表「被退件，需重新補件」.
+⚔️ 狩獵裝備中-代表「單份資料已上傳」.
+⚖️ 提交公會審查-代表「資料傳完,等待審核」.
+⏳ 系統鑑定中-代表「人資正在審核中」.
+❌ 強化失敗-代表「被退件,需重新補件」.
 
-■ 若顯示 ❌ 強化失敗，請修正後重新上傳：
-1. 文字模糊 (鑑定失敗)：拍照時光線不足或對焦不準.
-2. 切到邊角 (屬性殘缺)：文件四個角未完整入鏡.
-3. 雜物過多 (異物侵入)：背景太亂或拍到手指入鏡.
+■ 若顯示❌ 強化失敗,請修正後重新上傳:
+    - 文字模糊 (鑑定失敗)-光線不足或對焦不準.
+    - 切到邊角 (屬性殘缺)-文件四個角未完整入鏡.
+    - 雜物過多 (異物侵入)-背景太亂或手指入鏡.
 
-💡 解決方案：請參考 🏹 鍛造秘笈 使用掃描功能重新打造.
+💡 解決方案:請參考🏹 鍛造秘笈掃描重新打造.
             </div>
         </details>
 
         <details>
             <summary class="main-summary">🏅 積極度之評核</summary>
-            <div class="details-body">💎 [ 巔峰神話 ]：101分以上 (隱藏彩蛋達成)
+            <div class="details-body">
+<span style="color: #FFFFFF;">💎 [ 巔峰神話 ]：101分以上</span>
 👑 [ 卓越表現 ]：96-100分
 <span class="text-green">🟢 [ 表現良好 ]：80-95分</span>
 <span class="text-lightblue">⚠️ [ 有待觀察 ]：60-79分</span>
@@ -139,37 +130,28 @@
     </footer>
 
     <script>
-    const fetchedData = {
-        companyName: "FIZZ FIZZ.TAIPEI", 
-        team: "外場團隊",
-        type: "兼職",
-        userName: "測試員",
-        currentProg: 0      
-    };
-
-    function applyData(data) {
-        // ✅ 這一部分只管「第一層：身分列」，不觸碰戰力和狀態
-        document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
-        document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
-        document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
-        document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
-        
-        // ✅ 這一部分只管「攻略進度條」，不觸碰冒險積分
-        const progValEl = document.getElementById('prog-val');
-        const progFillEl = document.getElementById('prog-fill');
-        
-        if (progValEl && progFillEl) {
-            progValEl.innerText = data.currentProg + "%";
-            progFillEl.style.width = data.currentProg + "%";
-            const hue = (data.currentProg / 100) * 120;
-            progFillEl.style.backgroundColor = `hsl(${hue}, 80%, 55%)`;
+        const fetchedData = {
+            companyName: "FIZZ FIZZ.TAIPEI", 
+            team: "外場團隊",
+            type: "兼職",
+            userName: "測試員",
+            currentProg: 0      
+        };
+        function applyData(data) {
+            document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
+            document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
+            document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
+            document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
+            const pVal = document.getElementById('prog-val');
+            const pFill = document.getElementById('prog-fill');
+            if(pVal && pFill) {
+                pVal.innerText = data.currentProg + "%";
+                pFill.style.width = data.currentProg + "%";
+                const hue = (data.currentProg / 100) * 120;
+                pFill.style.backgroundColor = `hsl(${hue}, 80%, 55%)`;
+            }
         }
-    }
-
-    // 確保頁面載入後，先跑身分資料，再由 GameEngine 接手戰力資料
-    window.addEventListener('load', () => {
-        applyData(fetchedData);
-    });
-</script>
+        window.addEventListener('load', () => applyData(fetchedData));
+    </script>
 </body>
 </html>
