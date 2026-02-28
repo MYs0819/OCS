@@ -1,18 +1,19 @@
 /* ================================================================
-   【 ⚙️ GAME ENGINE - 觸發強化版 】
+   【 ⚙️ GAME ENGINE  】
    ================================================================ */
 const GameEngine = {
     state: {
         score: 0,
-        items: ['🧤 布製護手'],
+        items: ['👕 粗製布衣'], // 更新為新版預設防具
         location: '⛺ 新手村',
-        status: '📦 準備領取裝備',
-        achievements: []
+        status: '📦 檢整裝備中',
+        achievements: [],
+        weaponType: null // 記憶玩家抽到的武器種類
     },
 
     ranks: [
         { min: 101, title: "💎 SS級 神話級玩家" },
-        { min: 96,  title: "🌟 S級 傳說神隊友" },
+        { min: 96,  title: "🌟 S級 傳說級玩家" },
         { min: 80,  title: "🟢 A級 菁英玩家" },
         { min: 60,  title: "🥇 B級 穩健玩家" },
         { min: 40,  title: "🥈 C級 潛力玩家" },
@@ -28,33 +29,54 @@ const GameEngine = {
 
     save() { localStorage.setItem('hero_progress', JSON.stringify(this.state)); },
 
-    unlock(id, label, scoreGain, newItem = null) {
+    unlock(id, label, scoreGain, action = null) {
         // 檢查是否重複解鎖
         if (this.state.achievements.includes(id)) {
             console.log(`[GameEngine] ${label} 已領取過，不再重覆跳轉。`);
             return;
         }
+
+        // 紀錄加分前的戰力，用來比對是否有晉升
+        const oldRank = this.ranks.find(r => this.state.score >= r.min) || this.ranks[this.ranks.length - 1];
         
         this.state.achievements.push(id);
         this.state.score += scoreGain;
 
-        if (newItem) {
-            if (newItem === '🛡️ 鋼鐵護手') {
-                this.state.items = this.state.items.map(i => i === '🧤 布製護手' ? '🛡️ 鋼鐵護手' : i);
-            } else if (!this.state.items.includes(newItem)) {
-                this.state.items.push(newItem);
-            }
+        let toastMsg = "";
+
+        // 動作判定：隨機抽武器 或 升級衣服
+        if (action === 'random_weapon') {
+            const weapons = ['🗡️ 精鋼短劍', '🏹 獵人短弓', '🔱 鐵尖長槍'];
+            const w = weapons[Math.floor(Math.random() * weapons.length)];
+            this.state.weaponType = w; // 記憶到存檔中
+            this.state.items.push(w);
+            toastMsg = `✨ 拾獲裝備【${w}】，積分+${scoreGain}`;
+        } else if (action === 'upgrade_armor') {
+            this.state.items = this.state.items.map(i => i === '👕 粗製布衣' ? '🧥 強化布衫' : i);
+            toastMsg = `✨ 深入探索，裝備升級，冒險積分+${scoreGain}`;
+        } else {
+            toastMsg = `✨ 深入探索，裝備升級，冒險積分+${scoreGain}`;
         }
         
         this.save();
         this.updateUI();
 
-        // 彈窗邏輯
+        // 取得加分後的新戰力
+        const newRank = this.ranks.find(r => this.state.score >= r.min) || this.ranks[this.ranks.length - 1];
+
+        // 彈窗與滑入通知邏輯
         if (scoreGain >= 2) {
-            setTimeout(() => { alert(`🔔 發現隱藏關卡：【${label}】\n冒險積分 +${scoreGain}`); }, 100);
+            setTimeout(() => { alert(`🔔 發現隱藏關卡，冒險積分 +${scoreGain}`); }, 100);
+            // 如果觸發大摺疊剛好晉升，0.5秒後滑出晉升通知
+            if (oldRank.title !== newRank.title) {
+                setTimeout(() => { this.showToast(`✨ 戰力晉升：【${newRank.title}】`); }, 500);
+            }
         } else if (scoreGain === 1) {
-            const msg = newItem ? `✨ 拾獲裝備 ${newItem}，積分+${scoreGain}` : `✨ 發現細節：${label}，積分+${scoreGain}`;
-            this.showToast(msg);
+            this.showToast(toastMsg);
+            // 如果觸發小摺疊剛好晉升，等原本的通知 4 秒消失後，緊接著滑出晉升通知
+            if (oldRank.title !== newRank.title) {
+                setTimeout(() => { this.showToast(`✨ 戰力晉升：【${newRank.title}】`); }, 4500);
+            }
         }
     },
 
@@ -94,7 +116,7 @@ const GameEngine = {
         setTimeout(() => {
             toast.style.transform = 'translateX(150%)';
             setTimeout(() => toast.remove(), 500);
-        }, 3000); 
+        }, 4000); // 改為 4 秒消失
     }
 };
 window.addEventListener('load', () => GameEngine.init());
