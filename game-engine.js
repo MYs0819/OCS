@@ -1,5 +1,5 @@
 /* ================================================================
-   【 ⚙️ GAME ENGINE - 勇者核心引擎 (顏色強制修正版) 】
+   【 ⚙️ GAME ENGINE - 顏色鎖定強化版 】
    ================================================================ */
 const GameEngine = {
     state: {
@@ -53,18 +53,24 @@ const GameEngine = {
         
         const rankEl = document.getElementById('rank-text');
         const statusTagEl = document.getElementById('status-tag');
+        const scoreLabelEl = document.getElementById('score-label'); // 新增 ID 對接
+        const progLabelEl = document.getElementById('prog-label');   // 新增 ID 對接
         const scoreEl = document.getElementById('score-text');
         const scoreFill = document.getElementById('score-fill');
 
-        // 🎨 顏色修正：戰力(白) + 關卡(黃)
+        // 🎨 顏色：戰力(黃) + 標題(白) + 關卡(黃)
         if (rankEl) {
-            rankEl.innerHTML = `<span style="color:#FFFFFF;">戰力：${rank.title}</span>　｜　<span style="color:#fbbf24;">關卡：${this.state.location}</span>`;
+            rankEl.innerHTML = `<span style="color:#fbbf24;">戰力：</span><span style="color:#FFFFFF;">${rank.title}</span>　｜　<span style="color:#fbbf24;">關卡：</span><span style="color:#FFFFFF;">${this.state.location}</span>`;
         }
         
-        // 🎨 顏色修正：道具(藍) + 狀態(藍)
+        // 🎨 顏色：道具(藍) + 狀態(藍)
         if (statusTagEl) {
             statusTagEl.innerHTML = `<span style="color:#8ab4f8;">道具：</span><span style="color:#FFFFFF;">${this.state.items.join(' ')}</span>　｜　<span style="color:#8ab4f8;">狀態：</span><span style="color:#FFFFFF;">${this.state.status}</span>`;
         }
+
+        // 🎨 顏色：積分(淺紅) + 攻略(淺紅)
+        if (scoreLabelEl) scoreLabelEl.style.color = "#ff8a8a";
+        if (progLabelEl) progLabelEl.style.color = "#ff8a8a";
         
         if (scoreEl) scoreEl.innerText = this.state.score + "分";
         if (scoreFill) {
