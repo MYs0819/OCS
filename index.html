@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💼 勇者入職試煉</title>
+    
+    <meta property="og:title" content="🛠️｜MYs系統｜新手村登入區" />
+    <meta property="og:description" content="闖關冒險即將開始！請詳閱任務指南並完成關卡，解鎖職場新身分！" />
+    <meta property="og:image" content="https://mys0819.github.io/MYs/assets/img1/MYs_logo_去背1.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mys0819.github.io/OCS/" />
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
     <script src="game-engine.js"></script>
@@ -15,18 +22,21 @@
     </div>
 
     <div class="sticky-bar" id="block-status-1" style="top: 45px;">
-        戰力：<span id="rank-text">🥚 報到新手村　｜　關卡：⛺ 新手村</span>
+        <span id="rank-text">載入中...</span>
     </div>
 
     <div class="sticky-bar" id="block-status-2" style="top: 90px;">
-        <span id="status-tag">道具：🧤 布製護手　｜　狀態：📦 準備領取裝備</span>
+        <span id="status-tag">載入中...</span>
     </div>
 
     <div class="sticky-bar" id="block-status-3" style="top: 135px;">
-        🏆 冒險積分：<span id="score-text">0分</span>
-        <div class="progress-track"><div class="progress-fill" id="score-fill" style="width: 0%;"></div></div>
-        　｜　⚔️ 攻略進度：<span id="prog-val">0%</span>
-        <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width: 0%;"></div></div>
+        <span style="color:#ef4444;">🏆 冒險積分：</span><span id="score-text">0分</span>
+        <div class="progress-track">
+            <div class="progress-fill" id="score-fill" style="width: 0%;"></div>
+        </div>　｜　<span style="color:#ef4444;">⚔️ 攻略進度：</span><span id="prog-val">0%</span>
+        <div class="progress-track">
+            <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
+        </div>
     </div>
 
     <nav class="nav-tabs" style="top: 180px;">
@@ -55,10 +65,10 @@
             </details>
         </details>
 
-        <details onclick="GameEngine.unlock('idx-m-1', '入職報到說明', 2)">
-            <summary class="main-summary">🏛️ 入職報到說明</summary>
-            <details onclick="event.stopPropagation(); GameEngine.unlock('idx-s-1', '五大文件', 1, '💍 防禦指環')">
-                <summary class="sub-summary">【入職報到五大文件】</summary>
+        <details>
+            <summary class="main-summary" onclick="GameEngine.unlock('idx-m-1', '入職報到說明', 2)">🏛️ 入職報到說明</summary>
+            <details>
+                <summary class="sub-summary" onclick="event.stopPropagation(); GameEngine.unlock('idx-s-1', '五大文件', 1, '💍 防禦指環')">【入職報到五大文件】</summary>
                 <div class="details-body">■ 報到前必須準備五大文件,當日要繳交:
     - 經認證醫療機構-勞工體格檢查報告.
     - 經認證醫療機構-食品從業人員體檢報告.
@@ -69,8 +79,8 @@
 ■ 主動並積極回報處理狀況.</div>
             </details>
             
-            <details onclick="event.stopPropagation(); GameEngine.unlock('idx-s-2', '用途說明', 1)">
-                <summary class="sub-summary">【報到文件用途說明】</summary>
+            <details>
+                <summary class="sub-summary" onclick="event.stopPropagation(); GameEngine.unlock('idx-s-2', '用途說明', 1)">【報到文件用途說明】</summary>
                 <div class="details-body">1. 一般勞工體格檢查報告:
 ❗️依據《職業安全衛生法》§20
 勞工健康保護規則§16~17
@@ -134,11 +144,15 @@
             userName: "測試員",
             currentProg: 0      
         };
+
         function applyData(data) {
+            // 身分列填充
             document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
             document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
             document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
             document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
+            
+            // 攻略進度條 (HSL 變色)
             const pVal = document.getElementById('prog-val');
             const pFill = document.getElementById('prog-fill');
             if(pVal && pFill) {
@@ -148,7 +162,11 @@
                 pFill.style.backgroundColor = `hsl(${hue}, 80%, 55%)`;
             }
         }
-        window.onload = () => { applyData(fetchedData); };
+
+        // 頁面載入執行
+        window.addEventListener('load', () => {
+            applyData(fetchedData);
+        });
     </script>
 </body>
 </html>
