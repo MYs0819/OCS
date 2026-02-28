@@ -1,6 +1,5 @@
 /* ================================================================
    【 ⚙️ GAME ENGINE - 勇者核心引擎 】
-   描述：處理跨分頁分數、等級、裝備更換邏輯。
    ================================================================ */
 const GameEngine = {
     state: {
@@ -11,10 +10,9 @@ const GameEngine = {
         achievements: []
     },
 
-    // 🏆 職階評核標準
     ranks: [
         { min: 101, title: "💎 SS級 神話級玩家" },
-        { min: 96,  title: "🌟 S級 傳說級玩家" },
+        { min: 96,  title: "🌟 S級 傳說神隊友" },
         { min: 80,  title: "🟢 A級 菁英玩家" },
         { min: 60,  title: "🥇 B級 穩健玩家" },
         { min: 40,  title: "🥈 C級 潛力玩家" },
@@ -34,7 +32,6 @@ const GameEngine = {
         localStorage.setItem('hero_progress', JSON.stringify(this.state));
     },
 
-    // 🧩 觸發成就 (修正通知為 3 秒)
     unlock(id, label, scoreGain, newItem = null) {
         if (this.state.achievements.includes(id)) return;
         
@@ -52,12 +49,9 @@ const GameEngine = {
         this.save();
         this.updateUI();
 
-        // 大項目：Alert 彈窗
         if (scoreGain >= 2) {
             alert(`🔔 發現隱藏關卡，冒險積分+${scoreGain}`);
-        } 
-        // 小項目：Toast 通知 (顯示 3 秒)
-        else if (scoreGain === 1) {
+        } else if (scoreGain === 1) {
             const msg = newItem ? `✨ 拾獲裝備 ${newItem}，經驗值+${scoreGain}` : `✨ 發現小細節，經驗值+${scoreGain}`;
             this.showToast(msg);
         }
@@ -65,14 +59,17 @@ const GameEngine = {
 
     updateUI() {
         const rank = this.ranks.find(r => this.state.score >= r.min) || this.ranks[this.ranks.length - 1];
-        
         const rankEl = document.getElementById('rank-text');
         const statusTagEl = document.getElementById('status-tag');
         const scoreEl = document.getElementById('score-text');
         const scoreFill = document.getElementById('score-fill');
 
-        if (rankEl) rankEl.innerText = rank.title + "　｜　關卡：" + this.state.location;
-        if (statusTagEl) statusTagEl.innerText = "道具：" + this.state.items.join(' ') + "　｜　狀態：" + this.state.status;
+        if (rankEl) {
+            rankEl.innerHTML = `<span style="color:#FFFFFF;">${rank.title}</span>　｜　<span style="color:#fbbf24;">關卡：</span>${this.state.location}`;
+        }
+        if (statusTagEl) {
+            statusTagEl.innerHTML = `<span style="color:#8ab4f8;">道具：</span>${this.state.items.join(' ')}　｜　<span style="color:#8ab4f8;">狀態：</span>${this.state.status}`;
+        }
         if (scoreEl) scoreEl.innerText = this.state.score + "分";
         
         if (scoreFill) {
@@ -84,13 +81,10 @@ const GameEngine = {
 
     showToast(msg) {
         const toast = document.createElement('div');
-        toast.className = 'game-toast';
-        toast.style.cssText = "position:fixed; bottom:80px; right:20px; background:rgba(0,0,0,0.85); color:#ffd700; padding:12px 20px; border-radius:8px; border:1px solid #ffd700; transform:translateX(150%); transition:0.5s; z-index:9999;";
+        toast.style.cssText = "position:fixed; bottom:80px; right:20px; background:rgba(0,0,0,0.9); color:#ffd700; padding:12px 20px; border-radius:8px; border:1px solid #ffd700; transform:translateX(150%); transition:0.5s; z-index:10000; font-weight:bold; box-shadow:0 0 10px rgba(0,0,0,0.5);";
         toast.innerText = msg;
         document.body.appendChild(toast);
         setTimeout(() => toast.style.transform = 'translateX(0)', 100);
-        
-        // 🛠️ 顯示 3 秒後移除
         setTimeout(() => {
             toast.style.transform = 'translateX(150%)';
             setTimeout(() => toast.remove(), 500);
