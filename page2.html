@@ -4,21 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💼 勇者入職試煉</title>
-
+    
     <meta property="og:title" content="🛠️｜MYs系統｜新手村登入區" />
     <meta property="og:description" content="闖關冒險即將開始！詳閱任務指南並完成關卡，解鎖職場新身分！" />
     <meta property="og:image" content="https://mys0819.github.io/MYs/assets/img1/MYs_logo_去背1.png" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mys0819.github.io/MYs/" />
+    <meta property="og:url" content="https://mys0819.github.io/OCS/" />
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
 </head>
-<body class="page-2">
-
-    <div id="lightbox" onclick="this.style.display='none'">
-        <img id="lightbox-img" src="">
-    </div>
+<body class="page-1">
 
     <div class="sticky-bar" id="block-identity">
         <span class="dyn-company">載入中...</span>　｜　<span class="dyn-team">載入中...</span>　｜　<span class="dyn-type">載入中...</span>　｜　<span class="dyn-name">載入中...</span>
@@ -39,98 +35,77 @@
     </div>
 
     <nav class="nav-tabs">
-        <a href="index.html" class="tab-btn">手冊說明</a>
-        <a href="page2.html" class="tab-btn active">上傳教學</a>
+        <a href="index.html" class="tab-btn active">手冊說明</a>
+        <a href="page2.html" class="tab-btn">上傳教學</a>
         <a href="#" class="tab-btn">報到流程</a>
     </nav>
 
     <main class="tab-content active">
-
         <details>
-            <summary class="main-summary">⏫ 上傳檔案教學</summary>
-            <div class="details-body" style="white-space: normal;">
-                
-                <div style="white-space: pre-wrap; margin-bottom: 15px; color: var(--details-textColor);">■ 上傳個人準備文件,請務必參考正確及錯誤範例.
-■ 檔案須符合本公司限定規格.
-■ 若規格錯誤則退件再重新上傳.</div>
-
-                <strong style="display: block; font-size: 14px; color: var(--details-textColor); margin-bottom: 5px;">🍎 手機系統-IOS</strong>
-                <div style="white-space: pre-wrap; line-height: 1.8; font-weight: bold; color: var(--details-textColor); background: var(--sample-boxBgColor); padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 1px 3px rgba(0,0,0,0.3);">點擊備忘錄
-↓
-點擊右下角
-↓
-點擊相機圖示
-↓
-點擊掃描文件  
-↓
-開始掃描
-↓
-存檔雲端上傳</div>
-
-                <strong style="display: block; font-size: 14px; color: var(--details-textColor); margin-bottom: 5px;">🤖 手機系統-Android</strong>
-                <div style="white-space: pre-wrap; line-height: 1.8; font-weight: bold; color: var(--details-textColor); background: var(--sample-boxBgColor); padding: 15px; border-radius: 8px; margin-bottom: 5px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 1px 3px rgba(0,0,0,0.3);">點擊雲端硬碟
-↓
-點擊＋
-↓
-點擊掃描文件
-↓
-開始掃描
-↓
-存檔雲端上傳</div>
-
-            </div>
+            <summary class="main-summary">🔐 隱私聲明與公約</summary>
+            <details>
+                <summary class="sub-summary">【本表單聲明啟示】</summary>
+                <div class="details-body">■ 此表單僅限錄取者使用.
+■ 若非上述身分請立即退出此表單.
+■ 此表所有權歸屬<span class="dyn-company">本公司</span>.</div>
+            </details>
+            <details>
+                <summary class="sub-summary">【填寫前須知事項】</summary>
+                <div class="details-body">■ 請依照表單順序執行填寫.
+■ 請先閱讀後有疑問再發問,勿未查看直接詢問.
+■ 填寫表單若遇到困難請向人資承辦提出職場禮貌詢問.
+■ 上傳之個人資料悉依個資相關法令規範辦理保存.
+■ 每個階段未經管理員審核通過,無法解鎖下一階段.
+■ <span class="dyn-company">本公司</span>-此表單簡稱本公司.</div>
+            </details>
         </details>
 
         <details>
-            <summary class="main-summary">👀 範例對照區域</summary>
-            <div class="details-body" style="white-space: normal;">
-                <strong style="display: block; font-size: 14px; color: var(--details-textColor); margin-bottom: 8px;">📹 iPhone備忘錄掃描文件操作示範</strong>
-                <figure class="sample-box" style="margin-top: 0; margin-bottom: 15px; padding: 5px;">
-                    <video controls preload="metadata" style="max-width: 100%; border-radius: 4px; display: block;">
-                        <source src="assets/ios掃描範例.mp4" type="video/mp4">
-                    </video>
-                </figure>
-                
-                <div style="margin-top: 5px; margin-bottom: 10px; font-weight: bold; color: var(--text-green);">以下為 ✅ 正確範例對照</div>
-                <div class="horizontal-scroll">
-                    <figure class="sample-box" onclick="zoomImg(this)">
-                        <img class="sample-img" src="assets/體檢報告範本.jpg" alt="❗️體檢報告範本.jpg">
-                        <figcaption class="sample-cap">✅ 正確範例-體檢報告上傳規格</figcaption>
-                    </figure>
-                    <figure class="sample-box" onclick="zoomImg(this)">
-                        <img class="sample-img" src="assets/身分證範本-正面.jpg" alt="❗️身分證範本-正面.jpg">
-                        <figcaption class="sample-cap">✅ 正確範例-身分證正面範本</figcaption>
-                    </figure>
-                    <figure class="sample-box" onclick="zoomImg(this)">
-                        <img class="sample-img" src="assets/身分證範本-背面.png" alt="❗️身分證範本-背面.png">
-                        <figcaption class="sample-cap">✅ 正確範例-身分證背面範本</figcaption>
-                    </figure>
-                    <figure class="sample-box" onclick="zoomImg(this)">
-                        <img class="sample-img" src="assets/薪酬銀行範本.jpg" alt="❗️薪酬銀行範本.jpg">
-                        <figcaption class="sample-cap">✅ 正確範例-薪資戶頭範本</figcaption>
-                    </figure>
-                </div>
-                
-                <div style="margin-top: 15px; margin-bottom: 10px; font-weight: bold; color: var(--text-red);">以下為 ❌ 錯誤範例對照</div>
-                <div class="horizontal-scroll">
-                    <figure class="sample-box" onclick="zoomImg(this)">
-                        <img class="sample-img" src="assets/錯誤範例-1.jpg" alt="❗️錯誤範例-1.jpg">
-                        <figcaption class="sample-cap">❌ 錯誤範例-需要好閱讀</figcaption>
-                    </figure>
-                    <figure class="sample-box" onclick="zoomImg(this)">
-                        <img class="sample-img" src="assets/錯誤範例-2.jpg" alt="❗️錯誤範例-2.jpg">
-                        <figcaption class="sample-cap">❌ 錯誤範例-四角未對四個角</figcaption>
-                    </figure>
-                    <figure class="sample-box" onclick="zoomImg(this)">
-                        <img class="sample-img" src="assets/錯誤範例-3.jpg" alt="❗️錯誤範例-3.jpg">
-                        <figcaption class="sample-cap">❌ 錯誤範例-四角未對有小手入鏡</figcaption>
-                    </figure>
-                    <figure class="sample-box" onclick="zoomImg(this)">
-                        <img class="sample-img" src="assets/戶頭錯誤範例.jpg" alt="❗️戶頭錯誤範例.jpg">
-                        <figcaption class="sample-cap">❌ 錯誤範例-需要好閱讀</figcaption>
-                    </figure>
-                </div>
-            </div>
+            <summary class="main-summary">🏛️ 入職報到說明</summary>
+            <details>
+                <summary class="sub-summary">【入職報到五大文件】</summary>
+                <div class="details-body">■ 報到前必須準備五大文件,當日要繳交:
+    - 經認證醫療機構-勞工體格檢查報告.
+    - 經認證醫療機構-食品從業人員體檢報告.
+    - 兩吋照片一張.
+    - 前份工作健保轉出證明.
+    - 前份工作離職證明.
+■ 準備齊全後再送出表單且截圖回報.
+■ 主動並積極回報處理狀況.</div>
+            </details>
+            
+            <details>
+                <summary class="sub-summary">【報到文件用途說明】</summary>
+                <div class="details-body">1. 一般勞工體格檢查報告:
+❗️依據《職業安全衛生法》§20
+勞工健康保護規則§16~17
+⏍ 未滿40歲,提交的體檢報告必須在5年內.
+⏍ 40歲以上,未滿65歲,提交的體檢報告必須在3年內.
+⏍ 年滿65歲,提交的體檢報告必須在1年內.
+符合上述原則,可以不必再實施體檢.
+
+2. 食品從業人員體檢報告:
+❗️依據《食品安全衛生管理法》§8
+食品良好衛生規範準則§5
+檢查期限:本年度-近一年.
+
+3. 兩吋照片一張:
+❗️用於個人資料建檔使用.
+
+4. 前份工作健保轉出證明:
+❗️檢核後加保用.
+
+5. 前份工作離職證明:
+❗️檢核用.</div>
+            </details>
+        </details>
+
+        <details>
+            <summary class="main-summary">🏅 積極度之評核</summary>
+            <div class="details-body">👑 [ 卓越表現 ]：96-100分
+<span class="text-green">🟢 [ 表現良好 ]：80-95分</span>
+<span class="text-lightblue">⚠️ [ 尚在觀察 ]：60-79分</span>
+<span class="text-lightred">🛑 [ 資格重評 ]：60分以下</span></div>
         </details>
     </main>
 
@@ -177,15 +152,6 @@
             document.getElementById('prog-fill').style.backgroundColor = `hsl(${hue}, 80%, 55%)`; // 動態覆寫背景顏色
         }
         window.onload = () => { applyData(fetchedData); };
-
-        // 點擊圖片放大的專屬控制腳本
-        function zoomImg(el) {
-            const img = el.querySelector('img');
-            if(img) {
-                document.getElementById('lightbox-img').src = img.src;
-                document.getElementById('lightbox').style.display = 'flex';
-            }
-        }
     </script>
 </body>
 </html>
