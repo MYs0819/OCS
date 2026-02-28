@@ -3,155 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>勇者入職試煉</title>
-    
-    <meta property="og:title" content="🛠️｜MYs系統｜新手村登入區" />
-    <meta property="og:description" content="闖關冒險即將開始！請詳閱任務指南並完成關卡，解鎖職場新身分！" />
-    <meta property="og:image" content="https://mys0819.github.io/MYs/assets/img1/MYs_logo_去背1.png" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mys0819.github.io/MYs/" />
-
+    <title>📜 冒險指南 | 入職手冊</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
+    <script src="game-engine.js"></script>
+    <style>
+        /* Toast 樣式 */
+        .game-toast {
+            position: fixed; bottom: 80px; right: 20px;
+            background: rgba(0,0,0,0.85); color: #ffd700;
+            padding: 12px 20px; border-radius: 8px; border: 1px solid #ffd700;
+            transform: translateX(120%); transition: 0.5s; z-index: 1000;
+        }
+        .game-toast.show { transform: translateX(0); }
+        
+        /* 狀態列排版優化 */
+        .status-header { background: #1a1a1a; padding: 10px; position: sticky; top: 0; z-index: 99; border-bottom: 1px solid #333; font-size: 13px; }
+        .status-row { display: flex; justify-content: space-between; margin-bottom: 5px; color: #eee; }
+        .progress-container { height: 8px; background: #333; border-radius: 4px; overflow: hidden; margin-top: 5px; }
+        .bar-score { height: 100%; background: linear-gradient(90deg, #ffd700, #ff8c00); width: 0%; transition: 1s; }
+    </style>
 </head>
-<body class="page-1">
+<body>
 
-    <div class="sticky-bar" id="block-identity">
-        <span class="dyn-company">載入中...</span>　｜　<span class="dyn-team">載入中...</span>　｜　<span class="dyn-type">載入中...</span>　｜　<span class="dyn-name">載入中...</span>
-    </div>
-
-    <div class="sticky-bar" id="block-status-1">
-        戰力：<span id="rank-text">🥚 報到新手村</span>　｜　狀態：<span id="status-tag">📝 準備中</span>
-    </div>
-
-    <div class="sticky-bar" id="block-status-2">
-        🏆 冒險積分：<span id="score-text">0分</span>
-        <div class="progress-track">
-            <div class="progress-fill" id="score-fill" style="width: 0%;"></div>
-        </div>　｜　⚔️ 攻略進度：<span id="prog-val">0%</span>
-        <div class="progress-track">
-            <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
+    <div class="status-header">
+        <div class="status-row">
+            <span id="rank-text">戰力：正在載入...</span>
+            <span id="status-text">關卡：⛺ 新手村聽訓 (閱讀中)</span>
+        </div>
+        <div class="status-row">
+            <span id="item-text">道具：🧤 布製護手 | 狀態：📦 準備領取</span>
+        </div>
+        <div class="progress-container">
+            <div id="score-bar" class="bar-score"></div>
         </div>
     </div>
 
-    <nav class="nav-tabs">
-        <a href="index.html" class="tab-btn active">手冊說明</a>
-        <a href="page2.html" class="tab-btn">上傳教學</a>
-        <a href="#" class="tab-btn">報到流程</a>
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">📜 冒險指南</a>
+        <a href="page2.html" class="nav-item">🏹 鍛造秘笈</a>
+        <a href="#" class="nav-item">⚔️ 勇者試煉</a>
     </nav>
 
-    <main class="tab-content active">
-        <details>
-            <summary class="main-summary">🔐 隱私聲明與公約</summary>
-            <details>
-                <summary class="sub-summary">【本表單聲明啟示】</summary>
-                <div class="details-body">■ 此表單僅限錄取者使用.
-■ 若非上述身分請立即退出此表單.
-■ 此表所有權歸屬<span class="dyn-company">本公司</span>.</div>
-            </details>
-            <details>
-                <summary class="sub-summary">【填寫前須知事項】</summary>
-                <div class="details-body">■ 請依照表單順序執行填寫.
-■ 請先閱讀後有疑問再發問,勿未查看直接詢問.
-■ 填寫表單若遇到困難請向人資承辦提出職場禮貌詢問.
-■ 上傳之個人資料悉依個資相關法令規範辦理保存.
-■ 每個階段未經管理員審核通過,無法解鎖下一階段.
-■ <span class="dyn-company">本公司</span>-此表單簡稱本公司.</div>
-            </details>
-        </details>
+    <div class="content-container">
+        <h1>📜 冒險指南</h1>
+        <p>歡迎來到新手村！在踏上征途前，請先研讀生存法則。</p>
 
-        <details>
-            <summary class="main-summary">🏛️ 入職報到說明</summary>
-            <details>
-                <summary class="sub-summary">【入職報到五大文件】</summary>
-                <div class="details-body">■ 報到前必須準備五大文件,當日要繳交:
-    - 經認證醫療機構-勞工體格檢查報告.
-    - 經認證醫療機構-食品從業人員體檢報告.
-    - 兩吋照片一張.
-    - 前份工作健保轉出證明.
-    - 前份工作離職證明.
-■ 準備齊全後再送出表單且截圖回報.
-■ 主動並積極回報處理狀況.</div>
-            </details>
+        <details class="main-details" onclick="GameEngine.unlockAchievement('big-a', 'alert', '入職報到說明', 2)">
+            <summary>🏛️ 入職報到說明 (點擊啟動隱藏關卡)</summary>
             
-            <details>
-                <summary class="sub-summary">【報到文件用途說明】</summary>
-                <div class="details-body">1. 一般勞工體格檢查報告:
-❗️依據《職業安全衛生法》§20
-勞工健康保護規則§16~17
-⏍ 未滿40歲,提交的體檢報告必須在5年內.
-⏍ 40歲以上,未滿65歲，提交的體檢報告必須在3年內.
-⏍ 年滿65歲,提交的體檢報告必須在1年內.
-符合上述原則,可以不必再實施體檢.
+            <details class="sub-details" onclick="event.stopPropagation(); GameEngine.unlockAchievement('small-1', 'toast', null, 1, '💍 防禦指環')">
+                <summary>【入職報到五大文件】(點擊拾獲裝備)</summary>
+                <div class="details-content">
+                    1. 勞工體檢報告<br>2. 食品體檢報告<br>3. 兩吋照片<br>4. 健保轉出證明<br>5. 離職證明
+                </div>
+            </details>
 
-2. 食品從業人員體檢報告:
-❗️依據《食品安全衛生管理法》§8
-食品良好衛生規範準則§5
-檢查期限:本年度-近一年.
-
-3. 兩吋照片一張:
-❗️用於個人資料建檔使用.
-
-4. 前份工作健保轉出證明:
-❗️檢核後加保用.
-
-5. 前份工作離職證明:
-❗️檢核用.</div>
+            <details class="sub-details" onclick="event.stopPropagation(); GameEngine.unlockAchievement('small-2', 'toast', null, 1, '🛡️ 鋼鐵護手')">
+                <summary>【報到文件用途說明】(點擊汰換裝備)</summary>
+                <div class="details-content">
+                    這些文件是為了確保您的冒險資格與保險權益...
+                </div>
             </details>
         </details>
 
-        <details>
-            <summary class="main-summary">🏅 積極度之評核</summary>
-            <div class="details-body">👑 [ 卓越表現 ]：96-100分</span>
-<span class="text-green">🟢 [ 表現良好 ]：80-95分</span>
-<span class="text-lightblue">⚠️ [ 有待觀察 ]：60-79分</span>
-<span class="text-lightred">🛑 [ 資格重評 ]：60分以下</span></div>
+        <details class="main-details danger-zone">
+            <summary>🛡️ 裝備修復指南 (退件原因說明)</summary>
+            <div class="details-content">
+                <p>若您的檔案顯示 <strong>❌ 強化失敗</strong>，請修正後重新上傳：</p>
+                <ul>
+                    <li><strong>文字模糊 (鑑定失敗)</strong>：拍照時環境太暗。</li>
+                    <li><strong>切到邊角 (屬性殘缺)</strong>：文件四角未完整入鏡。</li>
+                    <li><strong>雜物過多 (異物侵入)</strong>：背景太亂或拍到手指。</li>
+                </ul>
+                <p>💡 解決方案：請至 <strong>🏹 鍛造秘笈</strong> 學習掃描技巧。</p>
+            </div>
         </details>
-    </main>
 
-    <footer class="footer">
-        <img src="assets/MYs_logo_去背.png" alt="MYs Logo" class="footer-logo">
-        © Copyright 2026 MYs System-b1.0.0-02-22-2026-115
-    </footer>
+        <details class="main-details">
+            <summary>📈 冒險積極度評核標準</summary>
+            <div class="details-content">
+                準時完成任務可獲得額外經驗值...
+            </div>
+        </details>
+    </div>
 
-    <script>
-        const fetchedData = {
-            companyName: "FIZZ FIZZ.TAIPEI", 
-            team: "外場團隊",
-            type: "兼職",
-            userName: "測試員",
-            currentScore: 90,   
-            currentProg: 45     
-        };
-        function getRankTitle(score) {
-            if (score >= 96) return "🌟 S級傳說神隊友";
-            if (score >= 80) return "🟢 A級菁英玩家";
-            if (score >= 60) return "🥇 B級穩健玩家";
-            if (score >= 40) return "🧭 潛力探索者";
-            if (score >= 20) return "🥈 C級潛力玩家";
-            if (score >= 1)  return "🥉 實習小萌新";
-            return "🥚 報到新手村"; 
-        }
-        function applyData(data) {
-            document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
-            document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
-            document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
-            document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
-            document.getElementById('score-text').innerText = data.currentScore + "分";
-            document.getElementById('rank-text').innerText = getRankTitle(data.currentScore);
-            document.getElementById('prog-val').innerText = data.currentProg + "%";
-            document.getElementById('prog-fill').style.width = data.currentProg + "%";
-
-            // ✅ 雙色進度條：冒險積分進度 (金黃色)
-            const scorePct = data.currentScore > 100 ? 100 : data.currentScore;
-            document.getElementById('score-fill').style.width = scorePct + "%";
-            document.getElementById('score-fill').style.backgroundColor = "#fbbf24";
-
-            // ✅ 雙色進度條：攻略進度平滑漸變邏輯 (0% 淺紅 -> 100% 綠色)
-            const hue = (data.currentProg / 100) * 120; // 計算色相值：0是紅，120是綠
-            document.getElementById('prog-fill').style.backgroundColor = `hsl(${hue}, 80%, 55%)`; // 動態覆寫背景顏色
-        }
-        window.onload = () => { applyData(fetchedData); };
-    </script>
 </body>
 </html>
