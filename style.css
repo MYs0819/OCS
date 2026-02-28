@@ -1,279 +1,173 @@
 /* ================================================================
-【 🎨 STYLE CONFIG - 全站通用視覺控制面板 】
-描述：負責全站色彩、字體、摺疊選單與版權區視覺。
-================================================================ */
-
+   【 🎨 MAIN STYLE - 勇者暗黑介面設定 】
+   ================================================================ */
 :root {
-  /* ------------------------------------------------------------
-     📌 [全站暗黑背景與字體顏色定義]
-     說明：統一管理全站的漸層底色與字體顏色，方便後續一鍵抽換
-     ------------------------------------------------------------ */
-  --bg-style-1: linear-gradient(0deg, rgba(43,37,37,1) 0%, rgba(0,0,0,1) 100%); /* 全站主底層背景：由深咖漸變至黑 */
-  --bg-style-2: linear-gradient(180deg, #1a1a1a 0%, #333333 100%);              /* 備用背景：由極深灰漸變至深灰 */
-  --bg-style-3: #262626;                                                        /* 純色背景：用於摺疊選單展開後的底色 */
-  --main-textColor: #FFFFFF;                                                    /* 全站預設主要文字顏色：純白 */
-
-  /* ------------------------------------------------------------
-     📌 [分頁一：內容說明] 手冊與規範
-     ------------------------------------------------------------ */
-  --p1-headerColor: #1a1a1a;          /* 頂部兩層固定列 (極深灰) */
-  --p1-bgColor: var(--bg-style-1);    /* 頁面背景套用漸層1號 */
-  --p1-titleColor: #FFFFFF;           /* 頂部狀態列的文字顏色 */
-  --p1-textColor: #FFFFFF;            /* 內容區的說明文字顏色 */
-
-  /* ------------------------------------------------------------
-     📌 [分頁二：上傳說明] 視覺化教學
-     ------------------------------------------------------------ */
-  --p2-headerColor: #1a1a1a;          /* 頂部兩層固定列 (極深灰) */
-  --p2-bgColor: var(--bg-style-1);    /* 頁面背景套用漸層1號 */
-  --p2-titleColor: #FFFFFF;           /* 頂部狀態列的文字顏色 */
-  --p2-textColor: #FFFFFF;            /* 內容區的說明文字顏色 */
-
-  /* ------------------------------------------------------------
-     📌 [分頁三：報到流程] 動態闖關區 (未來擴充預留)
-     ------------------------------------------------------------ */
-  --p3-headerColor: #1a1a1a;   /* 頂部兩層固定列 (極深灰) */
-  --p3-bgColor: var(--bg-style-1); /* 頁面背景套用漸層1號 */
-  --p3-titleColor: #FFFFFF;    /* 頂部狀態列的文字顏色 */
-  --p3-textColor: #FFFFFF;     /* 內容區的說明文字顏色 */
-
-  /* ------------------------------------------------------------
-     📂 [摺疊選單專用設定] 
-     說明：控制所有 <details> 標籤的內外觀
-     ------------------------------------------------------------ */
-  --details-bgColor: #333333;         /* 摺疊框未展開時的預設底色 (深灰) */
-  --details-subBgColor: #262626;      /* 摺疊框展開後的內部背景色 (更深的灰) */
-  --details-titleColor: #efefef;      /* 摺疊框大標題的文字顏色 */
-  --details-subTitleColor: #cccccc;   /* 小摺疊標題的文字顏色 */
-  --details-textColor: #b7b7b7;       /* 摺疊框展開後的內文說明顏色 */
-  --details-fontSize: 17px;           /* 大摺疊標題 (main-summary) */
-  --details-subFontSize: 15px;        /* 小摺疊標題 (sub-summary) */
-  --details-radius: 8px;              /* 摺疊框四周的圓角弧度 */
-
-  /* ------------------------------------------------------------
-     👀 [範例對照區專用設定]
-     說明：控制上傳教學頁面的圖片卡片外觀
-     ------------------------------------------------------------ */
-  --sample-boxBgColor: #333333;    /* 圖片外框卡片的背景顏色 */
-  --sample-boxRadius: 8px;         /* 圖片外框卡片的圓角弧度 */
-  --sample-imgRadius: 4px;         /* 卡片內部圖片本身的圓角弧度 */
-  --sample-capFontSize: 14px;      /* 圖片下方解說文字的字體大小 */
-
-  /* ------------------------------------------------------------
-     ©️ [版權區專用設定] Footer 控制
-     ------------------------------------------------------------ */
-  --footer-textColor: #999999; /* Footer 版權文字顏色 */
-  --footer-fontSize: 14px;     /* Footer 版權文字大小 */
-
-  /* ------------------------------------------------------------
-     📐 [通用尺寸設定] 
-     ------------------------------------------------------------ */
-  --font-size-text: 14px;      /* 摺疊內文一般說明的字體大小 14px */
-  --sticky-height: 45px;       /* 頂部固定列的高度 (每一層的高度) */
+  --bg-dark: #121212;
+  --card-bg: #1e1e1e;
+  --text-main: #e0e0e0;
+  --text-dim: #a0a0a0;
+  --gold: #fbbf24;
+  --green: #4ade80;
+  --red: #f87171;
+  --blue: #60a5fa;
 }
 
-/* ================================================================
-【 🏗️ 基礎架構 】
-說明：重置瀏覽器預設樣式，確保跨平台顯示一致
-================================================================ */
-
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-/* 全站圓潤字體與基礎設定 */
-body { 
-  margin: 0; 
-  font-family: "Varela Round", "Nunito", "jf-openhuninn", "微軟正黑體", sans-serif; 
-  transition: background 0.3s; 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
   line-height: 1.6;
-  color: var(--main-textColor);   /* 強制全域字體套用純白色 */
-  min-height: 100vh;              /* 確保背景至少與螢幕等高，避免漸層斷層 */
 }
 
-/* 頂部固定列基礎樣式 (置中對齊) */
+/* 頂部固定狀態列 */
 .sticky-bar {
-  position: sticky;              /* 鎖定在畫面上方 */
-  left: 0; right: 0;
-  height: var(--sticky-height);  /* 呼叫上方設定的 45px */
-  display: flex;
-  align-items: center;           /* 垂直置中 */
-  justify-content: center;       /* 水平置中 */
-  padding: 0 15px;
-  font-size: 13px;
-  font-weight: bold;
-  border-bottom: 1px solid rgba(255,255,255,0.1);   /* 底部加上淡淡的白線區隔 */
-  z-index: 100;                                     /* 確保圖層在內容區之上 */
-  white-space: nowrap;                              /* 禁止文字換行 */
-  overflow: hidden;                                 /* 超出的文字隱藏 */
-  text-overflow: ellipsis;                          /* 超出部分顯示刪節號 */
+  position: sticky;
+  left: 0;
+  right: 0;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 14px;
+  text-align: center;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  box-sizing: border-box;
 }
-#block-identity { top: 0; }                                /* 第一層：身分列緊貼最頂端 */
-#block-status-1 { top: var(--sticky-height); }             /* 第二層：戰力與狀態 */
-#block-status-2 { top: calc(var(--sticky-height) * 2); }   /* 第三層：雙進度條專用 */
 
-/* 短版進度條 (嵌入於狀態列中) */
+#block-identity { top: 0; z-index: 104; }
+#block-status-1 { top: 45px; z-index: 103; }
+#block-status-extra { top: 90px; z-index: 102; background-color: #1a1a1a; }
+#block-status-2 { top: 135px; z-index: 101; }
+
+/* 進度條樣式 */
 .progress-track {
-  width: 60px; /* 進度條總寬度 */
-  background: rgba(255,255,255,0.2); /* 軌道底色改為半透明白 */
-  height: 8px; /* 進度條高度 */
-  border-radius: 4px; /* 軌道圓角 */
-  overflow: hidden; 
   display: inline-block;
-  vertical-align: middle; /* 與文字垂直置中對齊 */
-  margin-left: 8px;
-}
-.progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease, background-color 0.5s ease; } /* 綠色填滿區段與動畫(新增背景色漸變動畫) */
-
-/* 🎨 顏色連動邏輯 (確保漸層背景正常顯示) */
-/* 使用 background: var(...) 而不是 background-color: ，因為線性漸層是圖片屬性 */
-body.page-1 { background: var(--p1-bgColor); background-attachment: fixed; color: var(--p1-textColor); }
-body.page-1 .sticky-bar { background: var(--p1-headerColor); color: var(--p1-titleColor); }
-
-body.page-2 { background: var(--p2-bgColor); background-attachment: fixed; color: var(--p2-textColor); }
-body.page-2 .sticky-bar { background: var(--p2-headerColor); color: var(--p2-titleColor); }
-
-/* 內容區與摺疊選單外部容器 */
-.tab-content { 
-  padding: 25px 20px;  /* 預留頂部與兩側空間避免被抬頭擋住 */
-  max-width: 600px;    /* 電腦版最大寬度限制 */
-  margin: 0 auto;      /* 水平置中 */
-}
-
-/* <details> 摺疊選單本體 */
-details { 
-  background-color: var(--details-bgColor);
-  border-radius: var(--details-radius); 
-  margin-bottom: 12px;                   /* 摺疊框之間的距離 */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* 暗黑模式下的陰影加深 */
+  vertical-align: middle;
+  width: 60px;
+  height: 8px;
+  background-color: #333;
+  border-radius: 4px;
+  margin: 0 5px;
   overflow: hidden;
 }
 
-/* <summary> 摺疊選單的標題列 */
-summary { 
-  padding: 15px; 
-  font-weight: bold; 
-  cursor: pointer; /* 滑鼠移過去變手勢 */
-  list-style: none; /* 隱藏預設三角形 */
-  display: flex; 
-  justify-content: space-between; /* 標題與箭頭分居左右 */
-  align-items: center; 
-  color: var(--details-titleColor);
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease, background-color 0.5s ease;
 }
 
-/* 自訂右側展開箭頭 */
-summary::-webkit-details-marker { display: none; } /* 徹底隱藏 Safari/Chrome 預設箭頭 */
-summary::after { content: "▼"; font-size: 12px; opacity: 0.5; }
-details[open] > summary::after { content: "▲"; } /* 展開時變成向上箭頭 */
-
-/* 分頁一下面框框展開後是這個顏色 #262626 */
-details[open] > .details-body {
-  background-color: var(--details-subBgColor);
-}
-details[open] > details {
-  background-color: var(--details-subBgColor);
+/* 內容區塊 */
+.tab-content {
+  padding: 20px 15px 100px 15px; /* 為底部選單留空間 */
 }
 
-/* 摺疊選單展開後的內部說明文區塊 */
-.details-body { 
-  padding: 15px; 
-  font-size: var(--font-size-text); 
-  color: var(--details-textColor); 
-  white-space: pre-wrap; /* 嚴格保留 HTML 內的換行與空格設定 */
-}
-
-/* 區分大標與小標的外觀 */
-.main-summary { font-size: var(--details-fontSize); border-bottom: 1px solid rgba(255,255,255,0.05); } /* 大標下方加一條暗線 */
-.sub-summary { background-color: rgba(255,255,255,0.03); font-size: var(--details-subFontSize); color: var(--details-subTitleColor); border-top: 1px solid rgba(255,255,255,0.05); } /* 小標上方加一條暗線區隔，並套用專屬顏色 */
-details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: none; } /* 巢狀選單內層去除框線陰影 */
-
-/* ================================================================
-【 📱 教學框與對照區排版 】
-說明：上傳教學頁面的圖片卡片與文字說明
-================================================================ */
-
-/* 範例對照區：外框樣式 (包含高度對齊邏輯) */
-.sample-box {
-  background-color: var(--sample-boxBgColor);
-  border-radius: var(--sample-boxRadius);
-  padding: 10px;
+/* 摺疊選單樣式 */
+details {
+  background: var(--card-bg);
+  border-radius: 10px;
   margin-bottom: 15px;
-  border: 1px solid rgba(255,255,255,0.1); /* 暗黑模式邊框 */
-  margin-left: 0; margin-right: 0;
-  width: 100%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  display: flex; /* 啟用彈性佈局讓內部元素自動對齊 */
-  flex-direction: column; /* 讓圖片在上，文字在下 */
-  justify-content: space-between; /* 均分上下空間，確保文字對齊底部 */
-  cursor: zoom-in; /* 滑鼠移上顯示放大鏡圖示 */
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
-/* 範例對照區：圖片樣式 (統一大小且不變形) */
+.main-summary {
+  padding: 15px;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+  background: #252525;
+  list-style: none;
+}
+
+.sub-summary {
+  padding: 12px 15px;
+  font-weight: bold;
+  background: #2a2a2a;
+  cursor: pointer;
+  list-style: none;
+  border-top: 1px solid #333;
+}
+
+.details-body {
+  padding: 15px;
+  color: var(--text-dim);
+  font-size: 15px;
+  text-align: left; /* 嚴格靠左 */
+}
+
+/* 教學頁專用圖片滑動 */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding-bottom: 10px;
+}
+
+.sample-box {
+  flex: 0 0 200px;
+  background: #252525;
+  border-radius: 8px;
+  padding: 8px;
+}
+
 .sample-img {
   width: 100%;
-  height: 180px; /* 強制所有圖片高度統一為 180px */
-  object-fit: contain; /* 讓直圖跟橫圖都在 180px 內等比例縮放完整顯示，不會被切頭切尾 */
-  background-color: rgba(255,255,255,0.03); /* 圖片兩側留白處給予極淡底色，增加質感 */
-  border-radius: var(--sample-imgRadius);
-  display: block;
-  margin-bottom: 10px; 
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-/* 範例對照區：圖片下方解說文字 */
 .sample-cap {
-  font-size: var(--sample-capFontSize);
-  color: var(--details-textColor);
-  text-align: center; 
-  line-height: 1.5;
-  padding: 0 5px;
-  font-weight: bold; 
-  margin-top: auto; /* 若圖片高度不一，將文字強制推向最底端對齊 */
+  font-size: 12px;
+  text-align: center;
+  margin-top: 5px;
 }
 
-/* 版權宣告 Footer (含上方分隔線) */
-.footer { 
-  text-align: center; 
-  padding: 40px 20px; 
-  font-size: var(--footer-fontSize); 
-  color: var(--footer-textColor); 
-  line-height: 1.5; 
-  border-top: 1px solid rgba(255,255,255,0.1); /* 暗黑模式下的淺白分隔線 */
-  margin-top: 20px; 
-}
-.footer-logo { display: block; margin: 0 auto 10px; max-width: 100px; } 
-
-/* 更細緻的文字顏色設定 (供評核標準使用) */
-.text-green { color: #10b981; font-weight: bold; }
-.text-red { color: #ef4444; font-weight: bold; }
-.text-lightred { color: #ff8a8a; font-weight: bold; } /* 淺紅 */
-.text-lightblue { color: #8ab4f8; font-weight: bold; } /* 淺藍 */
-
-/* ================================================================
-【 🎡 左右滑動專用容器 & 🔍 放大遮罩層 】
-================================================================ */
-.horizontal-scroll {
-  display: flex; /* 讓內部圖片框橫向排列 */
-  overflow-x: auto; /* 超出螢幕寬度時產生橫向捲軸 */
-  gap: 12px; /* 圖片卡片之間的間隔 */
-  padding-bottom: 15px; /* 預留底部空間給捲軸 */
-  scroll-snap-type: x mandatory; /* 讓手指滑動時有吸附效果 */
-  -webkit-overflow-scrolling: touch; /* 讓 iOS 滑動更順暢 */
-}
-
-/* 針對放在橫向滑動容器內的卡片，獨立設定寬度 */
-.horizontal-scroll .sample-box {
-  flex: 0 0 240px; /* 強制卡片寬度為 240px，不會被擠壓 */
-  width: 240px;
-  margin-bottom: 0; /* 移除預設的下方 margin */
-  scroll-snap-align: start; /* 滑動停止時吸附卡片左側邊緣 */
-}
-
-/* 針對橫向捲軸進行美化 (隱藏醜醜的預設樣式) */
-.horizontal-scroll::-webkit-scrollbar { height: 6px; } /* 捲軸高度縮小 */
-.horizontal-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; } /* 捲軸拖曳區顏色 */
-
-/* 點擊放大的全螢幕黑色遮罩層 */
+/* 燈箱效果 */
 #lightbox {
-  position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center;
-  cursor: zoom-out;
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
 }
-#lightbox img { max-width: 95%; max-height: 90%; border-radius: 8px; object-fit: contain; }
+
+#lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+/* 遊戲提示 Toast */
+.game-toast {
+  position: fixed;
+  bottom: 85px;
+  right: 20px;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  z-index: 9999;
+  transform: translateX(150%);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 頁尾 */
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  color: #666;
+}
+
+.footer-logo {
+  height: 30px;
+  display: block;
+  margin: 0 auto 10px;
+  opacity: 0.5;
+}
