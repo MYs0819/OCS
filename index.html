@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
+    <script src="game-engine.js"></script>
 </head>
 <body class="page-1">
 
@@ -21,10 +22,14 @@
     </div>
 
     <div class="sticky-bar" id="block-status-1">
-        戰力：<span id="rank-text">🥚 報到新手村</span>　｜　狀態：<span id="status-tag">📝 準備中</span>
+        戰力：<span id="rank-text">🥚 報到新手村　｜　關卡：⛺ 新手村</span>
     </div>
 
     <div class="sticky-bar" id="block-status-2">
+        <span id="status-tag">道具：🧤 布製護手　｜　狀態：📦 準備領取裝備</span>
+    </div>
+
+    <div class="sticky-bar" id="block-status-3" style="top: 135px;">
         🏆 冒險積分：<span id="score-text">0分</span>
         <div class="progress-track">
             <div class="progress-fill" id="score-fill" style="width: 0%;"></div>
@@ -34,10 +39,10 @@
         </div>
     </div>
 
-    <nav class="nav-tabs">
-        <a href="index.html" class="tab-btn active">手冊說明</a>
-        <a href="page2.html" class="tab-btn">上傳教學</a>
-        <a href="#" class="tab-btn">報到流程</a>
+    <nav class="nav-tabs" style="top: 180px;">
+        <a href="index.html" class="tab-btn active">📜 冒險指南</a>
+        <a href="page2.html" class="tab-btn">🏹 鍛造秘笈</a>
+        <a href="#" class="tab-btn">⚔️ 勇者試煉</a>
     </nav>
 
     <main class="tab-content active">
@@ -60,9 +65,9 @@
             </details>
         </details>
 
-        <details>
+        <details onclick="GameEngine.unlock('idx-m-1', '入職報到說明', 2)">
             <summary class="main-summary">🏛️ 入職報到說明</summary>
-            <details>
+            <details onclick="event.stopPropagation(); GameEngine.unlock('idx-s-1', '五大文件', 1, '💍 防禦指環')">
                 <summary class="sub-summary">【入職報到五大文件】</summary>
                 <div class="details-body">■ 報到前必須準備五大文件,當日要繳交:
     - 經認證醫療機構-勞工體格檢查報告.
@@ -74,7 +79,7 @@
 ■ 主動並積極回報處理狀況.</div>
             </details>
             
-            <details>
+            <details onclick="event.stopPropagation(); GameEngine.unlock('idx-s-2', '用途說明', 1)">
                 <summary class="sub-summary">【報到文件用途說明】</summary>
                 <div class="details-body">1. 一般勞工體格檢查報告:
 ❗️依據《職業安全衛生法》§20
@@ -101,8 +106,27 @@
         </details>
 
         <details>
+            <summary class="main-summary">🛡️ 裝備修復指南 (狀態與退件說明)</summary>
+            <div class="details-body" style="text-align: left; padding-left: 0;">
+■ 狀態顯示說明：
+⚔️ 狩獵裝備中：代表「資料已上傳」.
+⚖️ 提交公會審查：代表「資料傳完，等待審核」.
+⏳ 系統鑑定中：代表「人資正在審核中」.
+❌ 強化失敗：代表「被退件，需重新補件」.
+
+■ 若顯示 ❌ 強化失敗，請修正後重新上傳：
+1. 文字模糊 (鑑定失敗)：拍照時光線不足或對焦不準.
+2. 切到邊角 (屬性殘缺)：文件四個角未完整入鏡.
+3. 雜物過多 (異物侵入)：背景太亂或拍到手指入鏡.
+
+💡 解決方案：請參考 🏹 鍛造秘笈 使用掃描功能重新打造.
+            </div>
+        </details>
+
+        <details>
             <summary class="main-summary">🏅 積極度之評核</summary>
-            <div class="details-body">👑 [ 卓越表現 ]：96-100分</span>
+            <div class="details-body">💎 [ 巔峰神話 ]：101分以上 (隱藏彩蛋達成)
+👑 [ 卓越表現 ]：96-100分
 <span class="text-green">🟢 [ 表現良好 ]：80-95分</span>
 <span class="text-lightblue">⚠️ [ 有待觀察 ]：60-79分</span>
 <span class="text-lightred">🛑 [ 資格重評 ]：60分以下</span></div>
@@ -115,41 +139,25 @@
     </footer>
 
     <script>
+        // 🛠️ 數值歸零初始化
         const fetchedData = {
             companyName: "FIZZ FIZZ.TAIPEI", 
             team: "外場團隊",
             type: "兼職",
             userName: "測試員",
-            currentScore: 90,   
-            currentProg: 45     
+            currentProg: 0      
         };
-        function getRankTitle(score) {
-            if (score >= 96) return "🌟 S級傳說神隊友";
-            if (score >= 80) return "🟢 A級菁英玩家";
-            if (score >= 60) return "🥇 B級穩健玩家";
-            if (score >= 40) return "🧭 潛力探索者";
-            if (score >= 20) return "🥈 C級潛力玩家";
-            if (score >= 1)  return "🥉 實習小萌新";
-            return "🥚 報到新手村"; 
-        }
         function applyData(data) {
             document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
             document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
             document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
             document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
-            document.getElementById('score-text').innerText = data.currentScore + "分";
-            document.getElementById('rank-text').innerText = getRankTitle(data.currentScore);
+            
+            // 攻略進度條平滑漸變
             document.getElementById('prog-val').innerText = data.currentProg + "%";
             document.getElementById('prog-fill').style.width = data.currentProg + "%";
-
-            // ✅ 雙色進度條：冒險積分進度 (金黃色)
-            const scorePct = data.currentScore > 100 ? 100 : data.currentScore;
-            document.getElementById('score-fill').style.width = scorePct + "%";
-            document.getElementById('score-fill').style.backgroundColor = "#fbbf24";
-
-            // ✅ 雙色進度條：攻略進度平滑漸變邏輯 (0% 淺紅 -> 100% 綠色)
-            const hue = (data.currentProg / 100) * 120; // 計算色相值：0是紅，120是綠
-            document.getElementById('prog-fill').style.backgroundColor = `hsl(${hue}, 80%, 55%)`; // 動態覆寫背景顏色
+            const hue = (data.currentProg / 100) * 120;
+            document.getElementById('prog-fill').style.backgroundColor = `hsl(${hue}, 80%, 55%)`;
         }
         window.onload = () => { applyData(fetchedData); };
     </script>
