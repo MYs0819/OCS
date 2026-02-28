@@ -123,7 +123,7 @@ body {
 }
 .progress-fill { background: #10b981; height: 100%; transition: width 0.5s ease, background-color 0.5s ease; } /* 綠色填滿區段與動畫(新增背景色漸變動畫) */
 
-/* 🎨 顏色連動邏輯 (確保漸層背景正常顯示) */
+/* 🎨 顏色連動邏輯 (核心修正：確保漸層背景正常顯示) */
 /* 使用 background: var(...) 而不是 background-color: ，因為線性漸層是圖片屬性 */
 body.page-1 { background: var(--p1-bgColor); background-attachment: fixed; color: var(--p1-textColor); }
 body.page-1 .sticky-bar { background: var(--p1-headerColor); color: var(--p1-titleColor); }
