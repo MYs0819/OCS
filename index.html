@@ -4,13 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💼 勇者入職試煉</title>
-    
-    <meta property="og:title" content="🛠️｜MYs系統｜新手村登入區" />
-    <meta property="og:description" content="闖關冒險即將開始！請詳閱任務指南並完成關卡，解鎖職場新身分！" />
-    <meta property="og:image" content="https://mys0819.github.io/MYs/assets/img1/MYs_logo_去背1.png" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mys0819.github.io/OCS/" />
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
     <script src="game-engine.js"></script>
@@ -30,13 +23,10 @@
     </div>
 
     <div class="sticky-bar" id="block-status-3" style="top: 135px;">
-        <span style="color:#ef4444;">🏆 冒險積分：</span><span id="score-text">0分</span>
-        <div class="progress-track">
-            <div class="progress-fill" id="score-fill" style="width: 0%;"></div>
-        </div>　｜　<span style="color:#ef4444;">⚔️ 攻略進度：</span><span id="prog-val">0%</span>
-        <div class="progress-track">
-            <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
-        </div>
+        <span id="score-label" style="color:#ff8a8a;">🏆 冒險積分：</span><span id="score-text">0分</span>
+        <div class="progress-track"><div class="progress-fill" id="score-fill" style="width: 0%;"></div></div>
+        　｜　<span id="prog-label" style="color:#ff8a8a;">⚔️ 攻略進度：</span><span id="prog-val">0%</span>
+        <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width: 0%;"></div></div>
     </div>
 
     <nav class="nav-tabs" style="top: 180px;">
@@ -78,7 +68,6 @@
 ■ 準備齊全後再送出表單且截圖回報.
 ■ 主動並積極回報處理狀況.</div>
             </details>
-            
             <details>
                 <summary class="sub-summary" onclick="event.stopPropagation(); GameEngine.unlock('idx-s-2', '用途說明', 1)">【報到文件用途說明】</summary>
                 <div class="details-body">1. 一般勞工體格檢查報告:
@@ -137,22 +126,12 @@
     </footer>
 
     <script>
-        const fetchedData = {
-            companyName: "FIZZ FIZZ.TAIPEI", 
-            team: "外場團隊",
-            type: "兼職",
-            userName: "測試員",
-            currentProg: 0      
-        };
-
+        const fetchedData = { companyName: "FIZZ FIZZ.TAIPEI", team: "外場團隊", type: "兼職", userName: "測試員", currentProg: 0 };
         function applyData(data) {
-            // 身分列填充
             document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
             document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
             document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
             document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
-            
-            // 攻略進度條 (HSL 變色)
             const pVal = document.getElementById('prog-val');
             const pFill = document.getElementById('prog-fill');
             if(pVal && pFill) {
@@ -162,11 +141,7 @@
                 pFill.style.backgroundColor = `hsl(${hue}, 80%, 55%)`;
             }
         }
-
-        // 頁面載入執行
-        window.addEventListener('load', () => {
-            applyData(fetchedData);
-        });
+        window.addEventListener('load', () => applyData(fetchedData));
     </script>
 </body>
 </html>
