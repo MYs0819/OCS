@@ -277,3 +277,47 @@ details details { box-shadow: none; margin-bottom: 0; border-radius: 0; border: 
   cursor: zoom-out;
 }
 #lightbox img { max-width: 95%; max-height: 90%; border-radius: 8px; object-fit: contain; }
+
+/* ================================================================
+   【 🖥️ DESKTOP ADAPTIVE - 電腦版 2+1 合併佈局 】
+   說明：螢幕寬度 > 768px 時，將三層狀態列合併為一層。
+   ================================================================ */
+
+@media (min-width: 768px) {
+    /* 1. 將三層 Sticky Bar 強行拉回到同一排 (Top 45px) */
+    #block-status-1, #block-status-2, #block-status-3 {
+        top: 45px !important;
+        width: 33.33% !important; /* 三個區塊各佔 1/3 寬度 */
+        float: left;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        border-right: 1px solid rgba(255,255,255,0.05); /* 增加垂直分隔線 */
+    }
+
+    /* 2. 修正第一層 (身分列) 依然維持 100% 寬度 */
+    #block-identity {
+        width: 100% !important;
+        top: 0;
+    }
+
+    /* 3. 讓三個區塊並排的容器處理 */
+    body {
+        display: block;
+    }
+
+    /* 4. 重新計算導覽列的位置 (由原本的 180px 縮減至 90px) */
+    /* 計算方式：第一層身分(45px) + 第二層合併列(45px) = 90px */
+    .nav-tabs {
+        top: 90px !important;
+        clear: both; /* 確保不會被上方的 float 影響 */
+    }
+
+    /* 5. 調整內容區的 Padding，避免被縮減後的 Header 擋住 */
+    .tab-content {
+        padding-top: 110px; 
+    }
+
+    /* 6. 進度條在電腦版適度拉長，增加可讀性 */
+    .progress-track {
+        width: 80px;
+    }
+}
