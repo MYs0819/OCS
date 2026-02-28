@@ -4,13 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💼 勇者入職試煉</title>
-    
-    <meta property="og:title" content="🛠️｜MYs系統｜新手村登入區" />
-    <meta property="og:description" content="闖關冒險即將開始！詳閱任務指南並完成關卡，解鎖職場新身分！" />
-    <meta property="og:image" content="https://mys0819.github.io/MYs/assets/img1/MYs_logo_去背1.png" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://mys0819.github.io/OCS/" />
-
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
     <script src="game-engine.js"></script>
@@ -35,12 +28,9 @@
 
     <div class="sticky-bar" id="block-status-3" style="top: 135px;">
         🏆 冒險積分：<span id="score-text">0分</span>
-        <div class="progress-track">
-            <div class="progress-fill" id="score-fill" style="width: 0%;"></div>
-        </div>　｜　⚔️ 攻略進度：<span id="prog-val">0%</span>
-        <div class="progress-track">
-            <div class="progress-fill" id="prog-fill" style="width: 0%;"></div>
-        </div>
+        <div class="progress-track"><div class="progress-fill" id="score-fill" style="width: 0%;"></div></div>
+        　｜　⚔️ 攻略進度：<span id="prog-val">0%</span>
+        <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width: 0%;"></div></div>
     </div>
 
     <nav class="nav-tabs" style="top: 180px;">
@@ -50,11 +40,9 @@
     </nav>
 
     <main class="tab-content active">
-
         <details>
             <summary class="main-summary">⏫ 上傳檔案教學</summary>
             <div class="details-body" style="white-space: normal;">
-                
                 <div style="white-space: pre-wrap; margin-bottom: 15px; color: var(--details-textColor);">■ 上傳個人準備文件,請務必參考正確及錯誤範例.
 ■ 檔案須符合本公司限定規格.
 ■ 若規格錯誤則退件再重新上傳.</div>
@@ -82,7 +70,6 @@
 開始掃描
 ↓
 存檔雲端上傳</div>
-
             </div>
         </details>
 
@@ -145,42 +132,27 @@
     </footer>
 
     <script>
-    const fetchedData = {
-        companyName: "FIZZ FIZZ.TAIPEI", 
-        team: "外場團隊",
-        type: "兼職",
-        userName: "測試員",
-        currentProg: 0      
-    };
-
-    function applyData(data) {
-        // 第一層：身分列
-        document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
-        document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
-        document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
-        document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
-        
-        // 攻略進度條 (如果有進度條 ID 的話)
-        const progValEl = document.getElementById('prog-val');
-        const progFillEl = document.getElementById('prog-fill');
-        if (progValEl && progFillEl) {
-            progValEl.innerText = data.currentProg + "%";
-            progFillEl.style.width = data.currentProg + "%";
+        const fetchedData = {
+            companyName: "FIZZ FIZZ.TAIPEI", 
+            team: "外場團隊",
+            type: "兼職",
+            userName: "測試員",
+            currentProg: 0      
+        };
+        function applyData(data) {
+            document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
+            document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
+            document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
+            document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
         }
-    }
-
-    // 點擊放大圖片腳本 (page2 專用)
-    function zoomImg(el) {
-        const img = el.querySelector('img');
-        if(img) {
-            document.getElementById('lightbox-img').src = img.src;
-            document.getElementById('lightbox').style.display = 'flex';
+        window.onload = () => { applyData(fetchedData); };
+        function zoomImg(el) {
+            const img = el.querySelector('img');
+            if(img) {
+                document.getElementById('lightbox-img').src = img.src;
+                document.getElementById('lightbox').style.display = 'flex';
+            }
         }
-    }
-
-    window.addEventListener('load', () => {
-        applyData(fetchedData);
-    });
-</script>
+    </script>
 </body>
 </html>
