@@ -1,5 +1,6 @@
 /* ================================================================
    【 ⚙️ GAME ENGINE - 勇者核心引擎 】
+   描述：處理跨分頁分數、等級、裝備更換邏輯。
    ================================================================ */
 const GameEngine = {
     state: {
@@ -10,7 +11,7 @@ const GameEngine = {
         achievements: []
     },
 
-    // 🏆 嚴格階級設定
+    // 🏆 職階評核標準 (101分以上為巔峰神話)
     ranks: [
         { min: 101, title: "💎 SS級 神話級玩家" },
         { min: 96,  title: "🌟 S級 傳說級玩家" },
@@ -33,7 +34,7 @@ const GameEngine = {
         localStorage.setItem('hero_progress', JSON.stringify(this.state));
     },
 
-    // 🧩 觸發成就
+    // 🧩 觸發成就 (修正通知文字格式)
     unlock(id, label, scoreGain, newItem = null) {
         if (this.state.achievements.includes(id)) return;
         
@@ -51,12 +52,11 @@ const GameEngine = {
         this.save();
         this.updateUI();
 
-        // 大項目點擊彈窗 (如：大摺疊)
+        // 🛠️ 文字修正：移除冒號與括號
         if (scoreGain >= 2) {
-            alert(`🔔 發現隱藏關卡：${label}！\n(冒險積分 +${scoreGain})`);
+            alert(`🔔 發現隱藏關卡，冒險積分+${scoreGain}`);
         } else if (scoreGain === 1 && newItem) {
-            // 小項目顯示 Toast 提示
-            this.showToast(`✨ 拾取裝備：${newItem} (經驗值 +${scoreGain})`);
+            this.showToast(`✨ 拾獲裝備 ${newItem}，經驗值+${scoreGain}`);
         }
     },
 
@@ -89,7 +89,7 @@ const GameEngine = {
         setTimeout(() => {
             toast.style.transform = 'translateX(150%)';
             setTimeout(() => toast.remove(), 500);
-        }, 5000); // 顯示5秒
+        }, 5000); 
     }
 };
 window.addEventListener('load', () => GameEngine.init());
