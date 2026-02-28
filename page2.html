@@ -145,28 +145,37 @@
     </footer>
 
     <script>
-        const fetchedData = {
-            companyName: "FIZZ FIZZ.TAIPEI", 
-            team: "外場團隊",
-            type: "兼職",
-            userName: "測試員",
-            currentProg: 0      
-        };
-        function applyData(data) {
-            document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
-            document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
-            document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
-            document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
-        }
-        window.onload = () => { applyData(fetchedData); };
+    const fetchedData = {
+        companyName: "FIZZ FIZZ.TAIPEI", 
+        team: "外場團隊",
+        type: "兼職",
+        userName: "測試員",
+        currentProg: 0      
+    };
 
-        function zoomImg(el) {
-            const img = el.querySelector('img');
-            if(img) {
-                document.getElementById('lightbox-img').src = img.src;
-                document.getElementById('lightbox').style.display = 'flex';
-            }
+    function applyData(data) {
+        // ✅ 這一部分只管「第一層：身分列」，不觸碰戰力和狀態
+        document.querySelectorAll('.dyn-company').forEach(el => el.innerText = data.companyName);
+        document.querySelectorAll('.dyn-team').forEach(el => el.innerText = data.team);
+        document.querySelectorAll('.dyn-type').forEach(el => el.innerText = data.type);
+        document.querySelectorAll('.dyn-name').forEach(el => el.innerText = data.userName);
+        
+        // ✅ 這一部分只管「攻略進度條」，不觸碰冒險積分
+        const progValEl = document.getElementById('prog-val');
+        const progFillEl = document.getElementById('prog-fill');
+        
+        if (progValEl && progFillEl) {
+            progValEl.innerText = data.currentProg + "%";
+            progFillEl.style.width = data.currentProg + "%";
+            const hue = (data.currentProg / 100) * 120;
+            progFillEl.style.backgroundColor = `hsl(${hue}, 80%, 55%)`;
         }
-    </script>
+    }
+
+    // 確保頁面載入後，先跑身分資料，再由 GameEngine 接手戰力資料
+    window.addEventListener('load', () => {
+        applyData(fetchedData);
+    });
+</script>
 </body>
 </html>
