@@ -11,7 +11,7 @@ const GameEngine = {
         achievements: []
     },
 
-    // 🏆 職階評核標準 (101分以上為巔峰神話)
+    // 🏆 職階評核標準
     ranks: [
         { min: 101, title: "💎 SS級 神話級玩家" },
         { min: 96,  title: "🌟 S級 傳說級玩家" },
@@ -34,7 +34,7 @@ const GameEngine = {
         localStorage.setItem('hero_progress', JSON.stringify(this.state));
     },
 
-    // 🧩 觸發成就 (修正通知文字格式)
+    // 🧩 觸發成就 (修正通知為 3 秒)
     unlock(id, label, scoreGain, newItem = null) {
         if (this.state.achievements.includes(id)) return;
         
@@ -52,11 +52,14 @@ const GameEngine = {
         this.save();
         this.updateUI();
 
-        // 🛠️ 文字修正：移除冒號與括號
+        // 大項目：Alert 彈窗
         if (scoreGain >= 2) {
             alert(`🔔 發現隱藏關卡，冒險積分+${scoreGain}`);
-        } else if (scoreGain === 1 && newItem) {
-            this.showToast(`✨ 拾獲裝備 ${newItem}，經驗值+${scoreGain}`);
+        } 
+        // 小項目：Toast 通知 (顯示 3 秒)
+        else if (scoreGain === 1) {
+            const msg = newItem ? `✨ 拾獲裝備 ${newItem}，經驗值+${scoreGain}` : `✨ 發現小細節，經驗值+${scoreGain}`;
+            this.showToast(msg);
         }
     },
 
@@ -86,10 +89,12 @@ const GameEngine = {
         toast.innerText = msg;
         document.body.appendChild(toast);
         setTimeout(() => toast.style.transform = 'translateX(0)', 100);
+        
+        // 🛠️ 顯示 3 秒後移除
         setTimeout(() => {
             toast.style.transform = 'translateX(150%)';
             setTimeout(() => toast.remove(), 500);
-        }, 5000); 
+        }, 3000); 
     }
 };
 window.addEventListener('load', () => GameEngine.init());
